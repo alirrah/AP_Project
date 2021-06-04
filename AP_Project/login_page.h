@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QMouseEvent>
+#include <QDate>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class login_page; }
@@ -21,6 +23,7 @@ private slots:
     void mouseMoveEvent(QMouseEvent *event);
     void on_close_btn_clicked();
     void on_minimize_btn_clicked();
+    void showTime();
 
 private:
     Ui::login_page *ui;
