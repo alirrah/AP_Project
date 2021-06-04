@@ -119,9 +119,7 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         date_lbl = new QLabel(top_panel);
         date_lbl->setObjectName(QString::fromUtf8("date_lbl"));
-        QFont font1;
-        font1.setPointSize(10);
-        date_lbl->setFont(font1);
+        date_lbl->setFont(font);
 
         horizontalLayout->addWidget(date_lbl);
 
@@ -185,7 +183,7 @@ public:
         username_panel->setContentsMargins(-1, 0, -1, -1);
         username_lbl = new QLabel(main_panel_2);
         username_lbl->setObjectName(QString::fromUtf8("username_lbl"));
-        username_lbl->setFont(font1);
+        username_lbl->setFont(font);
 
         username_panel->addWidget(username_lbl);
 
@@ -193,7 +191,7 @@ public:
         username_txt->setObjectName(QString::fromUtf8("username_txt"));
         username_txt->setMinimumSize(QSize(0, 30));
         username_txt->setMaximumSize(QSize(16777215, 30));
-        username_txt->setFont(font1);
+        username_txt->setFont(font);
         username_txt->setAlignment(Qt::AlignCenter);
 
         username_panel->addWidget(username_txt);
@@ -210,7 +208,7 @@ public:
         password_panel->setContentsMargins(-1, 0, -1, -1);
         password_lbl = new QLabel(main_panel_2);
         password_lbl->setObjectName(QString::fromUtf8("password_lbl"));
-        password_lbl->setFont(font1);
+        password_lbl->setFont(font);
 
         password_panel->addWidget(password_lbl);
 
@@ -218,7 +216,7 @@ public:
         password_txt->setObjectName(QString::fromUtf8("password_txt"));
         password_txt->setMinimumSize(QSize(0, 30));
         password_txt->setMaximumSize(QSize(16777215, 30));
-        password_txt->setFont(font1);
+        password_txt->setFont(font);
         password_txt->setEchoMode(QLineEdit::Password);
         password_txt->setAlignment(Qt::AlignCenter);
 
@@ -252,7 +250,7 @@ public:
         admin_rbtn->setObjectName(QString::fromUtf8("admin_rbtn"));
         admin_rbtn->setMinimumSize(QSize(0, 30));
         admin_rbtn->setMaximumSize(QSize(16777215, 30));
-        admin_rbtn->setFont(font1);
+        admin_rbtn->setFont(font);
         admin_rbtn->setAcceptDrops(false);
 
         admin_panel->addWidget(admin_rbtn);
@@ -271,7 +269,7 @@ public:
         register_btn->setObjectName(QString::fromUtf8("register_btn"));
         register_btn->setMinimumSize(QSize(0, 30));
         register_btn->setSizeIncrement(QSize(0, 30));
-        register_btn->setFont(font1);
+        register_btn->setFont(font);
         register_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         enter_panel->addWidget(register_btn);
@@ -284,7 +282,7 @@ public:
         login_btn->setObjectName(QString::fromUtf8("login_btn"));
         login_btn->setMinimumSize(QSize(0, 30));
         login_btn->setMaximumSize(QSize(16777215, 30));
-        login_btn->setFont(font1);
+        login_btn->setFont(font);
         login_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         enter_panel->addWidget(login_btn);

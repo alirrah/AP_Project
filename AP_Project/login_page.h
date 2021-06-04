@@ -11,7 +11,10 @@
 #include "admin_page.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class login_page; }
+namespace Ui
+{
+    class login_page;
+}
 QT_END_NAMESPACE
 
 class login_page : public QMainWindow
@@ -30,9 +33,7 @@ private slots:
     void showTime();
     void clear();
     void on_password_btn_clicked();
-
     void on_login_btn_clicked();
-
     void on_register_btn_clicked();
 
 private:
