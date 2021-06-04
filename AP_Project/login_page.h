@@ -25,6 +25,8 @@ private slots:
     void on_minimize_btn_clicked();
     void showTime();
 
+    void on_password_btn_clicked();
+
 private:
     Ui::login_page *ui;
     int m_nMouseClick_X_Coordinate;

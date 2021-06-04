@@ -44,3 +44,18 @@ void login_page::showTime()
     QString time = QDate::currentDate().toString("yyyy/MM/dd") + "  " + QTime::currentTime().toString("hh:mm:ss");
     ui->date_lbl->setText(time);
 }
+
+// change password_txt echomode and password_btn icon
+void login_page::on_password_btn_clicked()
+{
+    if (ui->password_txt->echoMode() == QLineEdit::Normal)
+    {
+        ui->password_txt->setEchoMode(QLineEdit::Password);
+        ui->password_btn->setIcon(QIcon(":/icon/lock.ico"));
+    }
+    else
+    {
+        ui->password_txt->setEchoMode(QLineEdit::Normal);
+        ui->password_btn->setIcon(QIcon(":/icon/unlock.ico"));
+    }
+}
