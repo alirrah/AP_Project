@@ -28,13 +28,15 @@ private slots:
     void on_close_btn_clicked();
     void on_minimize_btn_clicked();
     void showTime();
-
+    void clear();
     void on_password_btn_clicked();
+
+    void on_login_btn_clicked();
 
 private:
     Ui::login_page *ui;
-    user_page *user;
-    admin_page *admin;
+    user_page *userpage;
+    admin_page *adminpage;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
 };
