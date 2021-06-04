@@ -33,6 +33,8 @@ private slots:
 
     void on_login_btn_clicked();
 
+    void on_register_btn_clicked();
+
 private:
     Ui::login_page *ui;
     user_page *userpage;
