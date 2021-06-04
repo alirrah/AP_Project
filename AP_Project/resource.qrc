@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>blurred-background-supermarket-aisle-with-products_62890-121.jpg</file>
+    </qresource>
+    <qresource prefix="/icon">
+        <file>close.ico</file>
+        <file>lock.ico</file>
+        <file>mini.ico</file>
+        <file>unlock.ico</file>
+        <file>User.ico</file>
+    </qresource>
+</RCC>

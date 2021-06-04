@@ -10,6 +10,7 @@
 #define UI_LOGIN_PAGE_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
@@ -63,10 +64,13 @@ public:
     {
         if (login_page->objectName().isEmpty())
             login_page->setObjectName(QString::fromUtf8("login_page"));
-        login_page->resize(449, 384);
+        login_page->resize(449, 400);
         QFont font;
         font.setPointSize(12);
         login_page->setFont(font);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icon/User.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        login_page->setWindowIcon(icon);
         centralwidget = new QWidget(login_page);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
@@ -94,6 +98,10 @@ public:
         minimize_btn->setMinimumSize(QSize(40, 40));
         minimize_btn->setMaximumSize(QSize(40, 40));
         minimize_btn->setCursor(QCursor(Qt::PointingHandCursor));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icon/mini.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        minimize_btn->setIcon(icon1);
+        minimize_btn->setIconSize(QSize(35, 25));
 
         horizontalLayout->addWidget(minimize_btn);
 
@@ -104,6 +112,10 @@ public:
         close_btn->setMinimumSize(QSize(40, 40));
         close_btn->setMaximumSize(QSize(40, 40));
         close_btn->setCursor(QCursor(Qt::PointingHandCursor));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icon/close.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        close_btn->setIcon(icon2);
+        close_btn->setIconSize(QSize(35, 35));
 
         horizontalLayout->addWidget(close_btn);
 
@@ -173,6 +185,10 @@ public:
         password_btn->setMinimumSize(QSize(30, 30));
         password_btn->setMaximumSize(QSize(30, 30));
         password_btn->setCursor(QCursor(Qt::PointingHandCursor));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icon/lock.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        password_btn->setIcon(icon3);
+        password_btn->setIconSize(QSize(20, 20));
 
         password_panel->addWidget(password_btn);
 

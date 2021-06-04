@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>449</width>
-    <height>384</height>
+    <height>400</height>
    </rect>
   </property>
   <property name="font">
@@ -17,6 +17,10 @@
   </property>
   <property name="windowTitle">
    <string>login_page</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/icon/User.ico</normaloff>:/icon/User.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -72,6 +76,16 @@
          <property name="text">
           <string/>
          </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/icon/mini.ico</normaloff>:/icon/mini.ico</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>35</width>
+           <height>25</height>
+          </size>
+         </property>
         </widget>
        </item>
        <item>
@@ -102,6 +116,16 @@
          </property>
          <property name="text">
           <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/icon/close.ico</normaloff>:/icon/close.ico</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
          </property>
         </widget>
        </item>
@@ -293,6 +317,16 @@
              <property name="text">
               <string/>
              </property>
+             <property name="icon">
+              <iconset resource="resource.qrc">
+               <normaloff>:/icon/lock.ico</normaloff>:/icon/lock.ico</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
             </widget>
            </item>
           </layout>
@@ -480,6 +514,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>
