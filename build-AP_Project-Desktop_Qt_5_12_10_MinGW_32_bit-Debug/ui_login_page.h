@@ -39,7 +39,7 @@ public:
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_7;
     QSpacerItem *horizontalSpacer_3;
-    QFrame *mian_panel;
+    QFrame *main_panel_2;
     QVBoxLayout *main_panel;
     QHBoxLayout *username_panel;
     QLabel *username_lbl;
@@ -64,23 +64,64 @@ public:
     {
         if (login_page->objectName().isEmpty())
             login_page->setObjectName(QString::fromUtf8("login_page"));
-        login_page->resize(449, 400);
+        login_page->resize(449, 380);
         QFont font;
         font.setPointSize(12);
         login_page->setFont(font);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/icon/User.ico"), QSize(), QIcon::Normal, QIcon::Off);
         login_page->setWindowIcon(icon);
+        login_page->setStyleSheet(QString::fromUtf8("#top_panel\n"
+"{\n"
+"	 background-color: qlineargradient(spread:reflect, x1:0.5, y1:0, x2:0, y2:0, stop:0 rgba(91, 204, 233, 200), stop:1 rgba(32, 80, 96, 150));\n"
+" }\n"
+"#password_lbl, #username_lbl, #admin_rbtn, #date_lbl\n"
+"{\n"
+" 	color: white;\n"
+" }\n"
+"#password_txt, #username_txt\n"
+"{\n"
+"	 border-radius: 3px;\n"
+" }\n"
+"#centralwidget \n"
+"{\n"
+"	border-image :url(:/image/blurred-background-supermarket-aisle-with-products_62890-121.jpg);\n"
+" }\n"
+"#login_btn, #register_btn, #close_btn, #minimize_btn ,#password_btn\n"
+"{\n"
+"  	color: white;\n"
+"  	background-color: #45ada8;\n"
+"  	border-width: 0px;\n"
+"  	border-radius: 3px;\n"
+"}\n"
+"#login_btn:hover, #register_btn:hover , #minimize_btn:hover, #password_btn:hover \n"
+"{\n"
+" 	background-color: #547980;\n"
+" }\n"
+" #close_btn:hover\n"
+"{\n"
+"	 background-color: rgb(158, 0, 0);\n"
+"}\n"
+"#main_panel_2\n"
+"{\n"
+"  	background: rgba(0, 0, 0, 0.5);\n"
+"  	border-radius: 8px;\n"
+"}"));
         centralwidget = new QWidget(login_page);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         top_panel = new QFrame(centralwidget);
         top_panel->setObjectName(QString::fromUtf8("top_panel"));
+        top_panel->setMinimumSize(QSize(431, 58));
+        top_panel->setMaximumSize(QSize(431, 58));
         horizontalLayout = new QHBoxLayout(top_panel);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         date_lbl = new QLabel(top_panel);
         date_lbl->setObjectName(QString::fromUtf8("date_lbl"));
+        QFont font1;
+        font1.setPointSize(10);
+        date_lbl->setFont(font1);
 
         horizontalLayout->addWidget(date_lbl);
 
@@ -116,6 +157,7 @@ public:
         icon2.addFile(QString::fromUtf8(":/icon/close.ico"), QSize(), QIcon::Normal, QIcon::Off);
         close_btn->setIcon(icon2);
         close_btn->setIconSize(QSize(35, 35));
+        close_btn->setCheckable(false);
 
         horizontalLayout->addWidget(close_btn);
 
@@ -133,23 +175,25 @@ public:
 
         horizontalLayout_7->addItem(horizontalSpacer_3);
 
-        mian_panel = new QFrame(centralwidget);
-        mian_panel->setObjectName(QString::fromUtf8("mian_panel"));
-        main_panel = new QVBoxLayout(mian_panel);
+        main_panel_2 = new QFrame(centralwidget);
+        main_panel_2->setObjectName(QString::fromUtf8("main_panel_2"));
+        main_panel = new QVBoxLayout(main_panel_2);
         main_panel->setObjectName(QString::fromUtf8("main_panel"));
         main_panel->setContentsMargins(20, 20, 20, 20);
         username_panel = new QHBoxLayout();
         username_panel->setObjectName(QString::fromUtf8("username_panel"));
         username_panel->setContentsMargins(-1, 0, -1, -1);
-        username_lbl = new QLabel(mian_panel);
+        username_lbl = new QLabel(main_panel_2);
         username_lbl->setObjectName(QString::fromUtf8("username_lbl"));
+        username_lbl->setFont(font1);
 
         username_panel->addWidget(username_lbl);
 
-        username_txt = new QLineEdit(mian_panel);
+        username_txt = new QLineEdit(main_panel_2);
         username_txt->setObjectName(QString::fromUtf8("username_txt"));
         username_txt->setMinimumSize(QSize(0, 30));
         username_txt->setMaximumSize(QSize(16777215, 30));
+        username_txt->setFont(font1);
         username_txt->setAlignment(Qt::AlignCenter);
 
         username_panel->addWidget(username_txt);
@@ -157,28 +201,30 @@ public:
 
         main_panel->addLayout(username_panel);
 
-        verticalSpacer_5 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_5 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         main_panel->addItem(verticalSpacer_5);
 
         password_panel = new QHBoxLayout();
         password_panel->setObjectName(QString::fromUtf8("password_panel"));
         password_panel->setContentsMargins(-1, 0, -1, -1);
-        password_lbl = new QLabel(mian_panel);
+        password_lbl = new QLabel(main_panel_2);
         password_lbl->setObjectName(QString::fromUtf8("password_lbl"));
+        password_lbl->setFont(font1);
 
         password_panel->addWidget(password_lbl);
 
-        password_txt = new QLineEdit(mian_panel);
+        password_txt = new QLineEdit(main_panel_2);
         password_txt->setObjectName(QString::fromUtf8("password_txt"));
         password_txt->setMinimumSize(QSize(0, 30));
         password_txt->setMaximumSize(QSize(16777215, 30));
+        password_txt->setFont(font1);
         password_txt->setEchoMode(QLineEdit::Password);
         password_txt->setAlignment(Qt::AlignCenter);
 
         password_panel->addWidget(password_txt);
 
-        password_btn = new QPushButton(mian_panel);
+        password_btn = new QPushButton(main_panel_2);
         password_btn->setObjectName(QString::fromUtf8("password_btn"));
         sizePolicy.setHeightForWidth(password_btn->sizePolicy().hasHeightForWidth());
         password_btn->setSizePolicy(sizePolicy);
@@ -195,17 +241,18 @@ public:
 
         main_panel->addLayout(password_panel);
 
-        verticalSpacer_6 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_6 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         main_panel->addItem(verticalSpacer_6);
 
         admin_panel = new QHBoxLayout();
         admin_panel->setObjectName(QString::fromUtf8("admin_panel"));
         admin_panel->setContentsMargins(-1, -1, -1, 0);
-        admin_rbtn = new QRadioButton(mian_panel);
+        admin_rbtn = new QRadioButton(main_panel_2);
         admin_rbtn->setObjectName(QString::fromUtf8("admin_rbtn"));
         admin_rbtn->setMinimumSize(QSize(0, 30));
         admin_rbtn->setMaximumSize(QSize(16777215, 30));
+        admin_rbtn->setFont(font1);
         admin_rbtn->setAcceptDrops(false);
 
         admin_panel->addWidget(admin_rbtn);
@@ -220,10 +267,11 @@ public:
         enter_panel = new QHBoxLayout();
         enter_panel->setObjectName(QString::fromUtf8("enter_panel"));
         enter_panel->setContentsMargins(-1, -1, -1, 0);
-        register_btn = new QPushButton(mian_panel);
+        register_btn = new QPushButton(main_panel_2);
         register_btn->setObjectName(QString::fromUtf8("register_btn"));
         register_btn->setMinimumSize(QSize(0, 30));
         register_btn->setSizeIncrement(QSize(0, 30));
+        register_btn->setFont(font1);
         register_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         enter_panel->addWidget(register_btn);
@@ -232,10 +280,11 @@ public:
 
         enter_panel->addItem(horizontalSpacer_4);
 
-        login_btn = new QPushButton(mian_panel);
+        login_btn = new QPushButton(main_panel_2);
         login_btn->setObjectName(QString::fromUtf8("login_btn"));
         login_btn->setMinimumSize(QSize(0, 30));
         login_btn->setMaximumSize(QSize(16777215, 30));
+        login_btn->setFont(font1);
         login_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         enter_panel->addWidget(login_btn);
@@ -244,7 +293,7 @@ public:
         main_panel->addLayout(enter_panel);
 
 
-        horizontalLayout_7->addWidget(mian_panel);
+        horizontalLayout_7->addWidget(main_panel_2);
 
         horizontalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 

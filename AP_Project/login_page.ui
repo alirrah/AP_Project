@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>449</width>
-    <height>400</height>
+    <height>380</height>
    </rect>
   </property>
   <property name="font">
@@ -22,13 +22,68 @@
    <iconset resource="resource.qrc">
     <normaloff>:/icon/User.ico</normaloff>:/icon/User.ico</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#top_panel
+{
+	 background-color: qlineargradient(spread:reflect, x1:0.5, y1:0, x2:0, y2:0, stop:0 rgba(91, 204, 233, 200), stop:1 rgba(32, 80, 96, 150));
+ }
+#password_lbl, #username_lbl, #admin_rbtn, #date_lbl
+{
+ 	color: white;
+ }
+#password_txt, #username_txt
+{
+	 border-radius: 3px;
+ }
+#centralwidget 
+{
+	border-image :url(:/image/blurred-background-supermarket-aisle-with-products_62890-121.jpg);
+ }
+#login_btn, #register_btn, #close_btn, #minimize_btn ,#password_btn
+{
+  	color: white;
+  	background-color: #45ada8;
+  	border-width: 0px;
+  	border-radius: 3px;
+}
+#login_btn:hover, #register_btn:hover , #minimize_btn:hover, #password_btn:hover 
+{
+ 	background-color: #547980;
+ }
+ #close_btn:hover
+{
+	 background-color: rgb(158, 0, 0);
+}
+#main_panel_2
+{
+  	background: rgba(0, 0, 0, 0.5);
+  	border-radius: 8px;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QFrame" name="top_panel">
+      <property name="minimumSize">
+       <size>
+        <width>431</width>
+        <height>58</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>431</width>
+        <height>58</height>
+       </size>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QLabel" name="date_lbl">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>11400/03/14  14:37</string>
          </property>
@@ -127,6 +182,9 @@
            <height>35</height>
           </size>
          </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
         </widget>
        </item>
       </layout>
@@ -179,7 +237,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QFrame" name="mian_panel">
+       <widget class="QFrame" name="main_panel_2">
         <layout class="QVBoxLayout" name="main_panel">
          <property name="leftMargin">
           <number>20</number>
@@ -200,6 +258,11 @@
            </property>
            <item>
             <widget class="QLabel" name="username_lbl">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Username</string>
              </property>
@@ -218,6 +281,11 @@
                <width>16777215</width>
                <height>30</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
              </property>
              <property name="toolTip">
               <string>Enter Your Username</string>
@@ -243,7 +311,7 @@
            <property name="sizeHint" stdset="0">
             <size>
              <width>20</width>
-             <height>20</height>
+             <height>10</height>
             </size>
            </property>
           </spacer>
@@ -255,6 +323,11 @@
            </property>
            <item>
             <widget class="QLabel" name="password_lbl">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Password </string>
              </property>
@@ -273,6 +346,11 @@
                <width>16777215</width>
                <height>30</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
              </property>
              <property name="toolTip">
               <string>Enter Your Password</string>
@@ -342,7 +420,7 @@
            <property name="sizeHint" stdset="0">
             <size>
              <width>20</width>
-             <height>20</height>
+             <height>10</height>
             </size>
            </property>
           </spacer>
@@ -365,6 +443,11 @@
                <width>16777215</width>
                <height>30</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
              </property>
              <property name="acceptDrops">
               <bool>false</bool>
@@ -414,6 +497,11 @@
                <height>30</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
@@ -457,6 +545,11 @@
                <width>16777215</width>
                <height>30</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
              </property>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
