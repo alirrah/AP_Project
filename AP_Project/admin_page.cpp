@@ -1,9 +1,7 @@
 #include "admin_page.h"
 #include "ui_admin_page.h"
 
-admin_page::admin_page(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::admin_page)
+admin_page::admin_page(member user,QWidget *parent) :QWidget(parent), ui(new Ui::admin_page)
 {
     ui->setupUi(this);
 }

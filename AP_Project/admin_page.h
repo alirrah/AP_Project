@@ -2,6 +2,7 @@
 #define ADMIN_PAGE_H
 
 #include <QWidget>
+#include "member.h"
 
 namespace Ui {
 class admin_page;
@@ -12,7 +13,7 @@ class admin_page : public QWidget
     Q_OBJECT
 
 public:
-    explicit admin_page(QWidget *parent = nullptr);
+    explicit admin_page(member user,QWidget *parent = nullptr);
     ~admin_page();
 
 private:

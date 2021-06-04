@@ -5,6 +5,10 @@
 #include <QMouseEvent>
 #include <QDate>
 #include <QTimer>
+#include <QMessageBox>
+#include "member.h"
+#include "user_page.h"
+#include "admin_page.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class login_page; }
@@ -29,6 +33,8 @@ private slots:
 
 private:
     Ui::login_page *ui;
+    user_page *user;
+    admin_page *admin;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
 };
