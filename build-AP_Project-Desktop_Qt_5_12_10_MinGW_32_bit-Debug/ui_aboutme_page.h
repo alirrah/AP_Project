@@ -10,7 +10,9 @@
 #define UI_ABOUTME_PAGE_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -24,27 +26,29 @@ class Ui_aboutme_page
 {
 public:
     QVBoxLayout *verticalLayout;
+    QFrame *top_panel;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
+    QLabel *aboutme_lbl;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton;
+    QPushButton *close_btn;
     QSpacerItem *verticalSpacer;
+    QFrame *main_panel;
     QHBoxLayout *horizontalLayout_3;
-    QLabel *label_2;
-    QVBoxLayout *verticalLayout_2;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_5;
-    QLabel *label_6;
-    QLabel *label_7;
-    QLabel *label_8;
-    QLabel *label_10;
-    QLabel *label_11;
-    QLabel *label_9;
+    QLabel *image;
+    QVBoxLayout *tell_panel;
+    QLabel *lbl1;
+    QLabel *lbl2;
+    QLabel *lbl3;
+    QLabel *lbl4;
+    QLabel *lbl5;
+    QLabel *lbl6;
+    QLabel *lbl7;
+    QLabel *lbl8;
+    QLabel *lbl9;
     QSpacerItem *verticalSpacer_2;
-    QHBoxLayout *horizontalLayout_2;
+    QHBoxLayout *button_panel;
     QSpacerItem *horizontalSpacer_2;
-    QPushButton *pushButton_2;
+    QPushButton *ok_btn;
 
     void setupUi(QWidget *aboutme_page)
     {
@@ -54,116 +58,127 @@ public:
         QFont font;
         font.setPointSize(12);
         aboutme_page->setFont(font);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icon/About.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        aboutme_page->setWindowIcon(icon);
         verticalLayout = new QVBoxLayout(aboutme_page);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        horizontalLayout = new QHBoxLayout();
+        top_panel = new QFrame(aboutme_page);
+        top_panel->setObjectName(QString::fromUtf8("top_panel"));
+        horizontalLayout = new QHBoxLayout(top_panel);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label = new QLabel(aboutme_page);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setFont(font);
+        aboutme_lbl = new QLabel(top_panel);
+        aboutme_lbl->setObjectName(QString::fromUtf8("aboutme_lbl"));
+        aboutme_lbl->setFont(font);
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addWidget(aboutme_lbl);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        pushButton = new QPushButton(aboutme_page);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setMinimumSize(QSize(40, 40));
-        pushButton->setMaximumSize(QSize(40, 40));
+        close_btn = new QPushButton(top_panel);
+        close_btn->setObjectName(QString::fromUtf8("close_btn"));
+        close_btn->setMinimumSize(QSize(40, 40));
+        close_btn->setMaximumSize(QSize(40, 40));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icon/close.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        close_btn->setIcon(icon1);
+        close_btn->setIconSize(QSize(35, 35));
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(close_btn);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        verticalLayout->addWidget(top_panel);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
 
-        horizontalLayout_3 = new QHBoxLayout();
+        main_panel = new QFrame(aboutme_page);
+        main_panel->setObjectName(QString::fromUtf8("main_panel"));
+        horizontalLayout_3 = new QHBoxLayout(main_panel);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(-1, 0, -1, -1);
-        label_2 = new QLabel(aboutme_page);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        horizontalLayout_3->setContentsMargins(-1, 1, -1, -1);
+        image = new QLabel(main_panel);
+        image->setObjectName(QString::fromUtf8("image"));
 
-        horizontalLayout_3->addWidget(label_2);
+        horizontalLayout_3->addWidget(image);
 
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(6, 6, 6, 6);
-        label_3 = new QLabel(aboutme_page);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        tell_panel = new QVBoxLayout();
+        tell_panel->setObjectName(QString::fromUtf8("tell_panel"));
+        tell_panel->setContentsMargins(6, 6, 6, 6);
+        lbl1 = new QLabel(main_panel);
+        lbl1->setObjectName(QString::fromUtf8("lbl1"));
 
-        verticalLayout_2->addWidget(label_3);
+        tell_panel->addWidget(lbl1);
 
-        label_4 = new QLabel(aboutme_page);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
+        lbl2 = new QLabel(main_panel);
+        lbl2->setObjectName(QString::fromUtf8("lbl2"));
 
-        verticalLayout_2->addWidget(label_4);
+        tell_panel->addWidget(lbl2);
 
-        label_5 = new QLabel(aboutme_page);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
+        lbl3 = new QLabel(main_panel);
+        lbl3->setObjectName(QString::fromUtf8("lbl3"));
 
-        verticalLayout_2->addWidget(label_5);
+        tell_panel->addWidget(lbl3);
 
-        label_6 = new QLabel(aboutme_page);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
+        lbl4 = new QLabel(main_panel);
+        lbl4->setObjectName(QString::fromUtf8("lbl4"));
 
-        verticalLayout_2->addWidget(label_6);
+        tell_panel->addWidget(lbl4);
 
-        label_7 = new QLabel(aboutme_page);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
+        lbl5 = new QLabel(main_panel);
+        lbl5->setObjectName(QString::fromUtf8("lbl5"));
 
-        verticalLayout_2->addWidget(label_7);
+        tell_panel->addWidget(lbl5);
 
-        label_8 = new QLabel(aboutme_page);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
+        lbl6 = new QLabel(main_panel);
+        lbl6->setObjectName(QString::fromUtf8("lbl6"));
 
-        verticalLayout_2->addWidget(label_8);
+        tell_panel->addWidget(lbl6);
 
-        label_10 = new QLabel(aboutme_page);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
+        lbl7 = new QLabel(main_panel);
+        lbl7->setObjectName(QString::fromUtf8("lbl7"));
 
-        verticalLayout_2->addWidget(label_10);
+        tell_panel->addWidget(lbl7);
 
-        label_11 = new QLabel(aboutme_page);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
+        lbl8 = new QLabel(main_panel);
+        lbl8->setObjectName(QString::fromUtf8("lbl8"));
 
-        verticalLayout_2->addWidget(label_11);
+        tell_panel->addWidget(lbl8);
 
-        label_9 = new QLabel(aboutme_page);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
+        lbl9 = new QLabel(main_panel);
+        lbl9->setObjectName(QString::fromUtf8("lbl9"));
 
-        verticalLayout_2->addWidget(label_9);
-
-
-        horizontalLayout_3->addLayout(verticalLayout_2);
+        tell_panel->addWidget(lbl9);
 
 
-        verticalLayout->addLayout(horizontalLayout_3);
+        horizontalLayout_3->addLayout(tell_panel);
+
+
+        verticalLayout->addWidget(main_panel);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_2);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(-1, 0, -1, -1);
+        button_panel = new QHBoxLayout();
+        button_panel->setObjectName(QString::fromUtf8("button_panel"));
+        button_panel->setContentsMargins(-1, 0, -1, -1);
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_2->addItem(horizontalSpacer_2);
+        button_panel->addItem(horizontalSpacer_2);
 
-        pushButton_2 = new QPushButton(aboutme_page);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setMinimumSize(QSize(80, 40));
-        pushButton_2->setMaximumSize(QSize(80, 40));
+        ok_btn = new QPushButton(aboutme_page);
+        ok_btn->setObjectName(QString::fromUtf8("ok_btn"));
+        ok_btn->setMinimumSize(QSize(80, 40));
+        ok_btn->setMaximumSize(QSize(80, 40));
 
-        horizontalLayout_2->addWidget(pushButton_2);
+        button_panel->addWidget(ok_btn);
 
 
-        verticalLayout->addLayout(horizontalLayout_2);
+        verticalLayout->addLayout(button_panel);
 
 
         retranslateUi(aboutme_page);
@@ -174,19 +189,19 @@ public:
     void retranslateUi(QWidget *aboutme_page)
     {
         aboutme_page->setWindowTitle(QApplication::translate("aboutme_page", "Form", nullptr));
-        label->setText(QApplication::translate("aboutme_page", "About Me", nullptr));
-        pushButton->setText(QString());
-        label_2->setText(QString());
-        label_3->setText(QApplication::translate("aboutme_page", "This app is a grocery store.", nullptr));
-        label_4->setText(QApplication::translate("aboutme_page", "Written by : Alireza Rahmani Samani", nullptr));
-        label_5->setText(QApplication::translate("aboutme_page", "Version : 1.0", nullptr));
-        label_6->setText(QApplication::translate("aboutme_page", "For : Advanced Programming", nullptr));
-        label_7->setText(QApplication::translate("aboutme_page", "Explanation :", nullptr));
-        label_8->setText(QApplication::translate("aboutme_page", "This program consists of two parts, the", nullptr));
-        label_10->setText(QApplication::translate("aboutme_page", " user and the admin, each of which is", nullptr));
-        label_11->setText(QApplication::translate("aboutme_page", " separate from the othe.", nullptr));
-        label_9->setText(QApplication::translate("aboutme_page", "Thanks for using this app.", nullptr));
-        pushButton_2->setText(QApplication::translate("aboutme_page", "Ok", nullptr));
+        aboutme_lbl->setText(QApplication::translate("aboutme_page", "About Me", nullptr));
+        close_btn->setText(QString());
+        image->setText(QString());
+        lbl1->setText(QApplication::translate("aboutme_page", "This app is a grocery store.", nullptr));
+        lbl2->setText(QApplication::translate("aboutme_page", "Written by : Alireza Rahmani Samani", nullptr));
+        lbl3->setText(QApplication::translate("aboutme_page", "Version : 1.0", nullptr));
+        lbl4->setText(QApplication::translate("aboutme_page", "For : Advanced Programming", nullptr));
+        lbl5->setText(QApplication::translate("aboutme_page", "Explanation :", nullptr));
+        lbl6->setText(QApplication::translate("aboutme_page", "This program consists of two parts, the", nullptr));
+        lbl7->setText(QApplication::translate("aboutme_page", " user and the admin, each of which is", nullptr));
+        lbl8->setText(QApplication::translate("aboutme_page", " separate from the othe.", nullptr));
+        lbl9->setText(QApplication::translate("aboutme_page", "Thanks for using this app.", nullptr));
+        ok_btn->setText(QApplication::translate("aboutme_page", "Ok", nullptr));
     } // retranslateUi
 
 };

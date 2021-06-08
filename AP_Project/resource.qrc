@@ -8,5 +8,6 @@
         <file>mini.ico</file>
         <file>unlock.ico</file>
         <file>User.ico</file>
+        <file>About.ico</file>
     </qresource>
 </RCC>
