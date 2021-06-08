@@ -23,7 +23,7 @@ public:
     {
         if (user_page->objectName().isEmpty())
             user_page->setObjectName(QString::fromUtf8("user_page"));
-        user_page->resize(400, 300);
+        user_page->resize(1005, 526);
 
         retranslateUi(user_page);
 

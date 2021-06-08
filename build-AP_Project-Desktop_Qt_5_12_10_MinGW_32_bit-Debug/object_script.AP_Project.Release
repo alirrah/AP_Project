@@ -1,0 +1,11 @@
+release/aboutme_page.o
+release/admin_page.o
+release/main.o
+release/login_page.o
+release/member.o
+release/user_page.o
+release/qrc_resource.o
+release/moc_aboutme_page.o
+release/moc_admin_page.o
+release/moc_login_page.o
+release/moc_user_page.o
