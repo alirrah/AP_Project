@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>595</width>
-    <height>439</height>
+    <width>617</width>
+    <height>446</height>
    </rect>
   </property>
   <property name="font">
@@ -21,6 +21,48 @@
   <property name="windowIcon">
    <iconset resource="resource.qrc">
     <normaloff>:/icon/About.ico</normaloff>:/icon/About.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#top_panel
+{
+	 background-color: qlineargradient(spread:reflect, x1:0.5, y1:0, x2:0, y2:0, stop:0 rgba(91, 204, 233, 200), stop:1 rgba(32, 80, 96, 150));
+ }
+#lbl1, #lbl2, #lbl3, #lbl3, #lbl4, #lbl5, #lbl6, #lbl7, #lbl8, #lbl9, #aboutme_lbl
+{
+ 	color: white;
+ }
+#centralwidget 
+{
+	border-image :url(:/image/blurred-background-supermarket-aisle-with-products_62890-121.jpg);
+ }
+#ok_btn, #close_btn
+{
+  	color: white;
+  	background-color: #45ada8;
+  	border-width: 0px;
+  	border-radius: 3px;
+}
+#ok_btn:hover
+{
+ 	background-color: #547980;
+ }
+ #close_btn:hover
+{
+	 background-color: rgb(158, 0, 0);
+}
+#main_panel
+{
+  	background: rgba(0, 0, 0, 0.5);
+  	border-radius: 8px;
+}
+#image
+{
+	border-radius : 8px;
+}
+#aboutme_page
+{
+	background-color : rgb(190, 190, 190)
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -100,12 +142,30 @@
     <widget class="QFrame" name="main_panel">
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <property name="topMargin">
-       <number>1</number>
+       <number>9</number>
       </property>
       <item>
        <widget class="QLabel" name="image">
+        <property name="minimumSize">
+         <size>
+          <width>285</width>
+          <height>250</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>285</width>
+          <height>250</height>
+         </size>
+        </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resource.qrc">:/image/156677927.jpg</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -125,6 +185,11 @@
         </property>
         <item>
          <widget class="QLabel" name="lbl1">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>This app is a grocery store.</string>
           </property>
@@ -132,6 +197,11 @@
         </item>
         <item>
          <widget class="QLabel" name="lbl2">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Written by : Alireza Rahmani Samani</string>
           </property>
@@ -139,6 +209,11 @@
         </item>
         <item>
          <widget class="QLabel" name="lbl3">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Version : 1.0</string>
           </property>
@@ -146,6 +221,11 @@
         </item>
         <item>
          <widget class="QLabel" name="lbl4">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>For : Advanced Programming</string>
           </property>
@@ -153,6 +233,11 @@
         </item>
         <item>
          <widget class="QLabel" name="lbl5">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Explanation :</string>
           </property>
@@ -160,6 +245,11 @@
         </item>
         <item>
          <widget class="QLabel" name="lbl6">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>This program consists of two parts, the</string>
           </property>
@@ -167,6 +257,11 @@
         </item>
         <item>
          <widget class="QLabel" name="lbl7">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string> user and the admin, each of which is</string>
           </property>
@@ -174,6 +269,11 @@
         </item>
         <item>
          <widget class="QLabel" name="lbl8">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string> separate from the othe.</string>
           </property>
@@ -181,6 +281,11 @@
         </item>
         <item>
          <widget class="QLabel" name="lbl9">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Thanks for using this app.</string>
           </property>
@@ -235,6 +340,11 @@
          <width>80</width>
          <height>40</height>
         </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
        </property>
        <property name="text">
         <string>Ok</string>

@@ -54,13 +54,53 @@ public:
     {
         if (aboutme_page->objectName().isEmpty())
             aboutme_page->setObjectName(QString::fromUtf8("aboutme_page"));
-        aboutme_page->resize(595, 439);
+        aboutme_page->resize(617, 446);
         QFont font;
         font.setPointSize(12);
         aboutme_page->setFont(font);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/icon/About.ico"), QSize(), QIcon::Normal, QIcon::Off);
         aboutme_page->setWindowIcon(icon);
+        aboutme_page->setStyleSheet(QString::fromUtf8("#top_panel\n"
+"{\n"
+"	 background-color: qlineargradient(spread:reflect, x1:0.5, y1:0, x2:0, y2:0, stop:0 rgba(91, 204, 233, 200), stop:1 rgba(32, 80, 96, 150));\n"
+" }\n"
+"#lbl1, #lbl2, #lbl3, #lbl3, #lbl4, #lbl5, #lbl6, #lbl7, #lbl8, #lbl9, #aboutme_lbl\n"
+"{\n"
+" 	color: white;\n"
+" }\n"
+"#centralwidget \n"
+"{\n"
+"	border-image :url(:/image/blurred-background-supermarket-aisle-with-products_62890-121.jpg);\n"
+" }\n"
+"#ok_btn, #close_btn\n"
+"{\n"
+"  	color: white;\n"
+"  	background-color: #45ada8;\n"
+"  	border-width: 0px;\n"
+"  	border-radius: 3px;\n"
+"}\n"
+"#ok_btn:hover\n"
+"{\n"
+" 	background-color: #547980;\n"
+" }\n"
+" #close_btn:hover\n"
+"{\n"
+"	 background-color: rgb(158, 0, 0);\n"
+"}\n"
+"#main_panel\n"
+"{\n"
+"  	background: rgba(0, 0, 0, 0.5);\n"
+"  	border-radius: 8px;\n"
+"}\n"
+"#image\n"
+"{\n"
+"	border-radius : 8px;\n"
+"}\n"
+"#aboutme_page\n"
+"{\n"
+"	background-color : rgb(190, 190, 190)\n"
+"}"));
         verticalLayout = new QVBoxLayout(aboutme_page);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         top_panel = new QFrame(aboutme_page);
@@ -99,9 +139,13 @@ public:
         main_panel->setObjectName(QString::fromUtf8("main_panel"));
         horizontalLayout_3 = new QHBoxLayout(main_panel);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(-1, 1, -1, -1);
+        horizontalLayout_3->setContentsMargins(-1, 9, -1, -1);
         image = new QLabel(main_panel);
         image->setObjectName(QString::fromUtf8("image"));
+        image->setMinimumSize(QSize(285, 250));
+        image->setMaximumSize(QSize(285, 250));
+        image->setPixmap(QPixmap(QString::fromUtf8(":/image/156677927.jpg")));
+        image->setScaledContents(true);
 
         horizontalLayout_3->addWidget(image);
 
@@ -110,46 +154,55 @@ public:
         tell_panel->setContentsMargins(6, 6, 6, 6);
         lbl1 = new QLabel(main_panel);
         lbl1->setObjectName(QString::fromUtf8("lbl1"));
+        lbl1->setFont(font);
 
         tell_panel->addWidget(lbl1);
 
         lbl2 = new QLabel(main_panel);
         lbl2->setObjectName(QString::fromUtf8("lbl2"));
+        lbl2->setFont(font);
 
         tell_panel->addWidget(lbl2);
 
         lbl3 = new QLabel(main_panel);
         lbl3->setObjectName(QString::fromUtf8("lbl3"));
+        lbl3->setFont(font);
 
         tell_panel->addWidget(lbl3);
 
         lbl4 = new QLabel(main_panel);
         lbl4->setObjectName(QString::fromUtf8("lbl4"));
+        lbl4->setFont(font);
 
         tell_panel->addWidget(lbl4);
 
         lbl5 = new QLabel(main_panel);
         lbl5->setObjectName(QString::fromUtf8("lbl5"));
+        lbl5->setFont(font);
 
         tell_panel->addWidget(lbl5);
 
         lbl6 = new QLabel(main_panel);
         lbl6->setObjectName(QString::fromUtf8("lbl6"));
+        lbl6->setFont(font);
 
         tell_panel->addWidget(lbl6);
 
         lbl7 = new QLabel(main_panel);
         lbl7->setObjectName(QString::fromUtf8("lbl7"));
+        lbl7->setFont(font);
 
         tell_panel->addWidget(lbl7);
 
         lbl8 = new QLabel(main_panel);
         lbl8->setObjectName(QString::fromUtf8("lbl8"));
+        lbl8->setFont(font);
 
         tell_panel->addWidget(lbl8);
 
         lbl9 = new QLabel(main_panel);
         lbl9->setObjectName(QString::fromUtf8("lbl9"));
+        lbl9->setFont(font);
 
         tell_panel->addWidget(lbl9);
 
@@ -174,6 +227,7 @@ public:
         ok_btn->setObjectName(QString::fromUtf8("ok_btn"));
         ok_btn->setMinimumSize(QSize(80, 40));
         ok_btn->setMaximumSize(QSize(80, 40));
+        ok_btn->setFont(font);
 
         button_panel->addWidget(ok_btn);
 

@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/image">
         <file>blurred-background-supermarket-aisle-with-products_62890-121.jpg</file>
+        <file>156677927.jpg</file>
     </qresource>
     <qresource prefix="/icon">
         <file>close.ico</file>
