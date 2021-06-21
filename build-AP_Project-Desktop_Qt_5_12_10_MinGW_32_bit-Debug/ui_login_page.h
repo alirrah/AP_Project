@@ -9,6 +9,7 @@
 #ifndef UI_LOGIN_PAGE_H
 #define UI_LOGIN_PAGE_H
 
+#include <QtCore/QLocale>
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
@@ -107,6 +108,7 @@ public:
 "  	background: rgba(0, 0, 0, 0.5);\n"
 "  	border-radius: 8px;\n"
 "}"));
+        login_page->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         centralwidget = new QWidget(login_page);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
