@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -33,494 +34,589 @@ class Ui_user_page
 {
 public:
     QVBoxLayout *verticalLayout;
+    QFrame *top_panel;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
+    QLabel *date_lbl;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
+    QPushButton *minimize_btn;
+    QPushButton *close_btn;
+    QFrame *information_panel;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label_3;
+    QLabel *information_lbl;
     QSpacerItem *horizontalSpacer_2;
-    QLabel *label_2;
-    QProgressBar *progressBar;
+    QLabel *cost_lbl;
+    QProgressBar *cost_prossbar;
     QSpacerItem *verticalSpacer;
-    QHBoxLayout *horizontalLayout_3;
+    QHBoxLayout *main_panel;
+    QFrame *tool_panel;
     QVBoxLayout *verticalLayout_2;
-    QTabWidget *tabWidget;
-    QWidget *tab;
+    QTabWidget *tool_tabwidget;
+    QWidget *search_tab;
     QVBoxLayout *verticalLayout_7;
     QSpacerItem *verticalSpacer_19;
-    QGroupBox *groupBox;
+    QGroupBox *group_gbox;
     QVBoxLayout *verticalLayout_8;
-    QComboBox *comboBox;
-    QLineEdit *lineEdit_9;
+    QComboBox *group_combox;
+    QLineEdit *word_txt;
     QSpacerItem *verticalSpacer_20;
-    QGroupBox *groupBox_2;
+    QGroupBox *by_gbox;
     QVBoxLayout *verticalLayout_9;
-    QRadioButton *radioButton;
-    QRadioButton *radioButton_2;
-    QRadioButton *radioButton_3;
-    QRadioButton *radioButton_4;
-    QRadioButton *radioButton_5;
+    QRadioButton *name_rbtn;
+    QRadioButton *company_rbtn;
+    QRadioButton *group_rbtn;
+    QRadioButton *price_rbtn;
+    QRadioButton *remain_rbtn;
     QSpacerItem *verticalSpacer_21;
-    QWidget *tab_2;
+    QWidget *credit_tab;
     QVBoxLayout *verticalLayout_6;
     QSpacerItem *verticalSpacer_11;
-    QHBoxLayout *horizontalLayout_10;
-    QLabel *label_11;
-    QLineEdit *lineEdit_6;
+    QHBoxLayout *amount_panel;
+    QLabel *amount_lbl;
+    QLineEdit *amount_txt;
     QSpacerItem *verticalSpacer_12;
-    QHBoxLayout *horizontalLayout_11;
-    QLabel *label_12;
-    QLineEdit *lineEdit_7;
+    QHBoxLayout *card_panel;
+    QLabel *card_lbl;
+    QLineEdit *card_txt;
     QSpacerItem *verticalSpacer_13;
-    QHBoxLayout *horizontalLayout_12;
-    QLabel *label_13;
-    QLineEdit *lineEdit_8;
+    QHBoxLayout *cvv2_panel;
+    QLabel *cvv2_lbl;
+    QLineEdit *cvv2_txt;
     QSpacerItem *verticalSpacer_14;
-    QHBoxLayout *horizontalLayout_13;
-    QLabel *label_14;
-    QDateEdit *dateEdit;
+    QHBoxLayout *date_panel;
+    QLabel *date_lbl_2;
+    QDateEdit *date_txt;
     QSpacerItem *verticalSpacer_15;
-    QHBoxLayout *horizontalLayout_14;
-    QLabel *label_15;
-    QLineEdit *lineEdit_10;
-    QSpacerItem *verticalSpacer_18;
+    QHBoxLayout *second_panel;
+    QLabel *secondpassword_lbl;
+    QLineEdit *second_txt;
     QSpacerItem *verticalSpacer_17;
-    QPushButton *pushButton_6;
+    QPushButton *increasecredit_btn;
     QSpacerItem *verticalSpacer_16;
-    QWidget *tab_3;
+    QWidget *password_tab;
     QVBoxLayout *verticalLayout_4;
     QSpacerItem *verticalSpacer_3;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *label_6;
-    QLineEdit *lineEdit;
-    QSpacerItem *verticalSpacer_2;
-    QHBoxLayout *horizontalLayout_7;
-    QLabel *label_8;
-    QLineEdit *lineEdit_3;
+    QHBoxLayout *username_panel;
+    QLabel *username_lbl;
+    QLineEdit *username_txt;
+    QSpacerItem *verticalSpacer_4;
+    QHBoxLayout *oldpassword_panel;
+    QLabel *oldpassword_lbl;
+    QLineEdit *oldpassword_txt;
+    QSpacerItem *verticalSpacer_5;
+    QHBoxLayout *newpassword_panel;
+    QLabel *newpassword_lbl;
+    QLineEdit *newpassword_txt;
     QSpacerItem *verticalSpacer_6;
-    QHBoxLayout *horizontalLayout_8;
-    QLabel *label_9;
-    QLineEdit *lineEdit_4;
+    QHBoxLayout *repeatpassword_panel;
+    QLabel *repeatpassword_lbl;
+    QLineEdit *repeatpassword_txt;
+    QSpacerItem *verticalSpacer_2;
+    QPushButton *passwordapply_btn;
     QSpacerItem *verticalSpacer_7;
-    QHBoxLayout *horizontalLayout_9;
-    QLabel *label_10;
-    QLineEdit *lineEdit_5;
-    QSpacerItem *verticalSpacer_8;
-    QSpacerItem *verticalSpacer_10;
-    QPushButton *pushButton_5;
-    QSpacerItem *verticalSpacer_9;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
+    QPushButton *aboutme_btn;
+    QPushButton *payment_btn;
+    QFrame *table_panel;
     QVBoxLayout *verticalLayout_3;
-    QLabel *label_4;
-    QTableWidget *tableWidget;
-    QLabel *label_5;
-    QTableWidget *tableWidget_2;
+    QLabel *product_lbl;
+    QTableWidget *product_table;
+    QLabel *shopping_lbl;
+    QTableWidget *shopping_table;
 
     void setupUi(QWidget *user_page)
     {
         if (user_page->objectName().isEmpty())
             user_page->setObjectName(QString::fromUtf8("user_page"));
-        user_page->resize(1005, 585);
+        user_page->resize(1000, 756);
+        user_page->setMinimumSize(QSize(0, 0));
         QFont font;
         font.setPointSize(12);
         user_page->setFont(font);
         verticalLayout = new QVBoxLayout(user_page);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        horizontalLayout = new QHBoxLayout();
+        top_panel = new QFrame(user_page);
+        top_panel->setObjectName(QString::fromUtf8("top_panel"));
+        horizontalLayout = new QHBoxLayout(top_panel);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label = new QLabel(user_page);
-        label->setObjectName(QString::fromUtf8("label"));
+        date_lbl = new QLabel(top_panel);
+        date_lbl->setObjectName(QString::fromUtf8("date_lbl"));
+        date_lbl->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addWidget(date_lbl);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        pushButton_2 = new QPushButton(user_page);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        minimize_btn = new QPushButton(top_panel);
+        minimize_btn->setObjectName(QString::fromUtf8("minimize_btn"));
+        minimize_btn->setMinimumSize(QSize(40, 40));
+        minimize_btn->setMaximumSize(QSize(40, 40));
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(minimize_btn);
 
-        pushButton = new QPushButton(user_page);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        close_btn = new QPushButton(top_panel);
+        close_btn->setObjectName(QString::fromUtf8("close_btn"));
+        close_btn->setMinimumSize(QSize(40, 40));
+        close_btn->setMaximumSize(QSize(40, 40));
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(close_btn);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        verticalLayout->addWidget(top_panel);
 
-        horizontalLayout_2 = new QHBoxLayout();
+        information_panel = new QFrame(user_page);
+        information_panel->setObjectName(QString::fromUtf8("information_panel"));
+        horizontalLayout_2 = new QHBoxLayout(information_panel);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(-1, 0, -1, -1);
-        label_3 = new QLabel(user_page);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        horizontalLayout_2->setContentsMargins(-1, 1, -1, -1);
+        information_lbl = new QLabel(information_panel);
+        information_lbl->setObjectName(QString::fromUtf8("information_lbl"));
+        information_lbl->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout_2->addWidget(label_3);
+        horizontalLayout_2->addWidget(information_lbl);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        label_2 = new QLabel(user_page);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        cost_lbl = new QLabel(information_panel);
+        cost_lbl->setObjectName(QString::fromUtf8("cost_lbl"));
 
-        horizontalLayout_2->addWidget(label_2);
+        horizontalLayout_2->addWidget(cost_lbl);
 
-        progressBar = new QProgressBar(user_page);
-        progressBar->setObjectName(QString::fromUtf8("progressBar"));
-        progressBar->setValue(24);
+        cost_prossbar = new QProgressBar(information_panel);
+        cost_prossbar->setObjectName(QString::fromUtf8("cost_prossbar"));
+        cost_prossbar->setValue(24);
 
-        horizontalLayout_2->addWidget(progressBar);
+        horizontalLayout_2->addWidget(cost_prossbar);
 
 
-        verticalLayout->addLayout(horizontalLayout_2);
+        verticalLayout->addWidget(information_panel);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(-1, 0, -1, -1);
-        verticalLayout_2 = new QVBoxLayout();
+        main_panel = new QHBoxLayout();
+        main_panel->setObjectName(QString::fromUtf8("main_panel"));
+        main_panel->setContentsMargins(-1, 0, -1, -1);
+        tool_panel = new QFrame(user_page);
+        tool_panel->setObjectName(QString::fromUtf8("tool_panel"));
+        tool_panel->setMaximumSize(QSize(400, 16777215));
+        verticalLayout_2 = new QVBoxLayout(tool_panel);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(-1, 0, -1, 0);
-        tabWidget = new QTabWidget(user_page);
-        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tab = new QWidget();
-        tab->setObjectName(QString::fromUtf8("tab"));
-        verticalLayout_7 = new QVBoxLayout(tab);
+        verticalLayout_2->setContentsMargins(-1, 1, -1, 1);
+        tool_tabwidget = new QTabWidget(tool_panel);
+        tool_tabwidget->setObjectName(QString::fromUtf8("tool_tabwidget"));
+        tool_tabwidget->setMinimumSize(QSize(388, 0));
+        tool_tabwidget->setMaximumSize(QSize(388, 16777215));
+        tool_tabwidget->setUsesScrollButtons(true);
+        tool_tabwidget->setDocumentMode(false);
+        tool_tabwidget->setTabsClosable(false);
+        tool_tabwidget->setMovable(false);
+        tool_tabwidget->setTabBarAutoHide(false);
+        search_tab = new QWidget();
+        search_tab->setObjectName(QString::fromUtf8("search_tab"));
+        verticalLayout_7 = new QVBoxLayout(search_tab);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
         verticalSpacer_19 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_7->addItem(verticalSpacer_19);
 
-        groupBox = new QGroupBox(tab);
-        groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        verticalLayout_8 = new QVBoxLayout(groupBox);
+        group_gbox = new QGroupBox(search_tab);
+        group_gbox->setObjectName(QString::fromUtf8("group_gbox"));
+        verticalLayout_8 = new QVBoxLayout(group_gbox);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
-        comboBox = new QComboBox(groupBox);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        group_combox = new QComboBox(group_gbox);
+        group_combox->setObjectName(QString::fromUtf8("group_combox"));
+        group_combox->setMinimumSize(QSize(0, 30));
 
-        verticalLayout_8->addWidget(comboBox);
+        verticalLayout_8->addWidget(group_combox);
 
 
-        verticalLayout_7->addWidget(groupBox);
+        verticalLayout_7->addWidget(group_gbox);
 
-        lineEdit_9 = new QLineEdit(tab);
-        lineEdit_9->setObjectName(QString::fromUtf8("lineEdit_9"));
+        word_txt = new QLineEdit(search_tab);
+        word_txt->setObjectName(QString::fromUtf8("word_txt"));
+        word_txt->setMinimumSize(QSize(0, 30));
 
-        verticalLayout_7->addWidget(lineEdit_9);
+        verticalLayout_7->addWidget(word_txt);
 
         verticalSpacer_20 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_7->addItem(verticalSpacer_20);
 
-        groupBox_2 = new QGroupBox(tab);
-        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        verticalLayout_9 = new QVBoxLayout(groupBox_2);
+        by_gbox = new QGroupBox(search_tab);
+        by_gbox->setObjectName(QString::fromUtf8("by_gbox"));
+        verticalLayout_9 = new QVBoxLayout(by_gbox);
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
-        radioButton = new QRadioButton(groupBox_2);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
+        name_rbtn = new QRadioButton(by_gbox);
+        name_rbtn->setObjectName(QString::fromUtf8("name_rbtn"));
+        name_rbtn->setMinimumSize(QSize(0, 30));
 
-        verticalLayout_9->addWidget(radioButton);
+        verticalLayout_9->addWidget(name_rbtn);
 
-        radioButton_2 = new QRadioButton(groupBox_2);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
+        company_rbtn = new QRadioButton(by_gbox);
+        company_rbtn->setObjectName(QString::fromUtf8("company_rbtn"));
+        company_rbtn->setMinimumSize(QSize(0, 30));
 
-        verticalLayout_9->addWidget(radioButton_2);
+        verticalLayout_9->addWidget(company_rbtn);
 
-        radioButton_3 = new QRadioButton(groupBox_2);
-        radioButton_3->setObjectName(QString::fromUtf8("radioButton_3"));
+        group_rbtn = new QRadioButton(by_gbox);
+        group_rbtn->setObjectName(QString::fromUtf8("group_rbtn"));
+        group_rbtn->setMinimumSize(QSize(0, 30));
 
-        verticalLayout_9->addWidget(radioButton_3);
+        verticalLayout_9->addWidget(group_rbtn);
 
-        radioButton_4 = new QRadioButton(groupBox_2);
-        radioButton_4->setObjectName(QString::fromUtf8("radioButton_4"));
+        price_rbtn = new QRadioButton(by_gbox);
+        price_rbtn->setObjectName(QString::fromUtf8("price_rbtn"));
+        price_rbtn->setMinimumSize(QSize(0, 30));
 
-        verticalLayout_9->addWidget(radioButton_4);
+        verticalLayout_9->addWidget(price_rbtn);
 
-        radioButton_5 = new QRadioButton(groupBox_2);
-        radioButton_5->setObjectName(QString::fromUtf8("radioButton_5"));
+        remain_rbtn = new QRadioButton(by_gbox);
+        remain_rbtn->setObjectName(QString::fromUtf8("remain_rbtn"));
 
-        verticalLayout_9->addWidget(radioButton_5);
+        verticalLayout_9->addWidget(remain_rbtn);
 
 
-        verticalLayout_7->addWidget(groupBox_2);
+        verticalLayout_7->addWidget(by_gbox);
 
         verticalSpacer_21 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_7->addItem(verticalSpacer_21);
 
-        tabWidget->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        verticalLayout_6 = new QVBoxLayout(tab_2);
+        tool_tabwidget->addTab(search_tab, QString());
+        credit_tab = new QWidget();
+        credit_tab->setObjectName(QString::fromUtf8("credit_tab"));
+        verticalLayout_6 = new QVBoxLayout(credit_tab);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        verticalSpacer_11 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_11 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_6->addItem(verticalSpacer_11);
 
-        horizontalLayout_10 = new QHBoxLayout();
-        horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        label_11 = new QLabel(tab_2);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
+        amount_panel = new QHBoxLayout();
+        amount_panel->setObjectName(QString::fromUtf8("amount_panel"));
+        amount_lbl = new QLabel(credit_tab);
+        amount_lbl->setObjectName(QString::fromUtf8("amount_lbl"));
+        amount_lbl->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout_10->addWidget(label_11);
+        amount_panel->addWidget(amount_lbl);
 
-        lineEdit_6 = new QLineEdit(tab_2);
-        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
+        amount_txt = new QLineEdit(credit_tab);
+        amount_txt->setObjectName(QString::fromUtf8("amount_txt"));
+        amount_txt->setMinimumSize(QSize(0, 30));
+        amount_txt->setMaximumSize(QSize(222, 16777215));
 
-        horizontalLayout_10->addWidget(lineEdit_6);
+        amount_panel->addWidget(amount_txt);
 
 
-        verticalLayout_6->addLayout(horizontalLayout_10);
+        verticalLayout_6->addLayout(amount_panel);
 
-        verticalSpacer_12 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_12 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_6->addItem(verticalSpacer_12);
 
-        horizontalLayout_11 = new QHBoxLayout();
-        horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
-        label_12 = new QLabel(tab_2);
-        label_12->setObjectName(QString::fromUtf8("label_12"));
+        card_panel = new QHBoxLayout();
+        card_panel->setObjectName(QString::fromUtf8("card_panel"));
+        card_lbl = new QLabel(credit_tab);
+        card_lbl->setObjectName(QString::fromUtf8("card_lbl"));
+        card_lbl->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout_11->addWidget(label_12);
+        card_panel->addWidget(card_lbl);
 
-        lineEdit_7 = new QLineEdit(tab_2);
-        lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
+        card_txt = new QLineEdit(credit_tab);
+        card_txt->setObjectName(QString::fromUtf8("card_txt"));
+        card_txt->setMinimumSize(QSize(0, 30));
+        card_txt->setMaximumSize(QSize(222, 16777215));
 
-        horizontalLayout_11->addWidget(lineEdit_7);
+        card_panel->addWidget(card_txt);
 
 
-        verticalLayout_6->addLayout(horizontalLayout_11);
+        verticalLayout_6->addLayout(card_panel);
 
-        verticalSpacer_13 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_13 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_6->addItem(verticalSpacer_13);
 
-        horizontalLayout_12 = new QHBoxLayout();
-        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
-        label_13 = new QLabel(tab_2);
-        label_13->setObjectName(QString::fromUtf8("label_13"));
+        cvv2_panel = new QHBoxLayout();
+        cvv2_panel->setObjectName(QString::fromUtf8("cvv2_panel"));
+        cvv2_lbl = new QLabel(credit_tab);
+        cvv2_lbl->setObjectName(QString::fromUtf8("cvv2_lbl"));
+        cvv2_lbl->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout_12->addWidget(label_13);
+        cvv2_panel->addWidget(cvv2_lbl);
 
-        lineEdit_8 = new QLineEdit(tab_2);
-        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
+        cvv2_txt = new QLineEdit(credit_tab);
+        cvv2_txt->setObjectName(QString::fromUtf8("cvv2_txt"));
+        cvv2_txt->setMinimumSize(QSize(222, 30));
+        cvv2_txt->setMaximumSize(QSize(222, 16777215));
 
-        horizontalLayout_12->addWidget(lineEdit_8);
+        cvv2_panel->addWidget(cvv2_txt);
 
 
-        verticalLayout_6->addLayout(horizontalLayout_12);
+        verticalLayout_6->addLayout(cvv2_panel);
 
-        verticalSpacer_14 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_14 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_6->addItem(verticalSpacer_14);
 
-        horizontalLayout_13 = new QHBoxLayout();
-        horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
-        label_14 = new QLabel(tab_2);
-        label_14->setObjectName(QString::fromUtf8("label_14"));
+        date_panel = new QHBoxLayout();
+        date_panel->setObjectName(QString::fromUtf8("date_panel"));
+        date_lbl_2 = new QLabel(credit_tab);
+        date_lbl_2->setObjectName(QString::fromUtf8("date_lbl_2"));
+        date_lbl_2->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout_13->addWidget(label_14);
+        date_panel->addWidget(date_lbl_2);
 
-        dateEdit = new QDateEdit(tab_2);
-        dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
+        date_txt = new QDateEdit(credit_tab);
+        date_txt->setObjectName(QString::fromUtf8("date_txt"));
+        date_txt->setMinimumSize(QSize(222, 30));
+        date_txt->setMaximumSize(QSize(222, 16777215));
 
-        horizontalLayout_13->addWidget(dateEdit);
+        date_panel->addWidget(date_txt);
 
 
-        verticalLayout_6->addLayout(horizontalLayout_13);
+        verticalLayout_6->addLayout(date_panel);
 
-        verticalSpacer_15 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_15 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_6->addItem(verticalSpacer_15);
 
-        horizontalLayout_14 = new QHBoxLayout();
-        horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
-        label_15 = new QLabel(tab_2);
-        label_15->setObjectName(QString::fromUtf8("label_15"));
+        second_panel = new QHBoxLayout();
+        second_panel->setObjectName(QString::fromUtf8("second_panel"));
+        secondpassword_lbl = new QLabel(credit_tab);
+        secondpassword_lbl->setObjectName(QString::fromUtf8("secondpassword_lbl"));
+        secondpassword_lbl->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout_14->addWidget(label_15);
+        second_panel->addWidget(secondpassword_lbl);
 
-        lineEdit_10 = new QLineEdit(tab_2);
-        lineEdit_10->setObjectName(QString::fromUtf8("lineEdit_10"));
+        second_txt = new QLineEdit(credit_tab);
+        second_txt->setObjectName(QString::fromUtf8("second_txt"));
+        second_txt->setMinimumSize(QSize(222, 30));
+        second_txt->setMaximumSize(QSize(222, 16777215));
 
-        horizontalLayout_14->addWidget(lineEdit_10);
+        second_panel->addWidget(second_txt);
 
 
-        verticalLayout_6->addLayout(horizontalLayout_14);
-
-        verticalSpacer_18 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_6->addItem(verticalSpacer_18);
+        verticalLayout_6->addLayout(second_panel);
 
         verticalSpacer_17 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_6->addItem(verticalSpacer_17);
 
-        pushButton_6 = new QPushButton(tab_2);
-        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+        increasecredit_btn = new QPushButton(credit_tab);
+        increasecredit_btn->setObjectName(QString::fromUtf8("increasecredit_btn"));
+        increasecredit_btn->setMinimumSize(QSize(0, 30));
 
-        verticalLayout_6->addWidget(pushButton_6);
+        verticalLayout_6->addWidget(increasecredit_btn);
 
-        verticalSpacer_16 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_16 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_6->addItem(verticalSpacer_16);
 
-        tabWidget->addTab(tab_2, QString());
-        tab_3 = new QWidget();
-        tab_3->setObjectName(QString::fromUtf8("tab_3"));
-        verticalLayout_4 = new QVBoxLayout(tab_3);
+        tool_tabwidget->addTab(credit_tab, QString());
+        password_tab = new QWidget();
+        password_tab->setObjectName(QString::fromUtf8("password_tab"));
+        verticalLayout_4 = new QVBoxLayout(password_tab);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_3 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_4->addItem(verticalSpacer_3);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        label_6 = new QLabel(tab_3);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
+        username_panel = new QHBoxLayout();
+        username_panel->setObjectName(QString::fromUtf8("username_panel"));
+        username_lbl = new QLabel(password_tab);
+        username_lbl->setObjectName(QString::fromUtf8("username_lbl"));
+        username_lbl->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout_4->addWidget(label_6);
+        username_panel->addWidget(username_lbl);
 
-        lineEdit = new QLineEdit(tab_3);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        username_txt = new QLineEdit(password_tab);
+        username_txt->setObjectName(QString::fromUtf8("username_txt"));
+        username_txt->setMinimumSize(QSize(0, 30));
+        username_txt->setMaximumSize(QSize(225, 16777215));
 
-        horizontalLayout_4->addWidget(lineEdit);
+        username_panel->addWidget(username_txt);
 
 
-        verticalLayout_4->addLayout(horizontalLayout_4);
+        verticalLayout_4->addLayout(username_panel);
+
+        verticalSpacer_4 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_4->addItem(verticalSpacer_4);
+
+        oldpassword_panel = new QHBoxLayout();
+        oldpassword_panel->setObjectName(QString::fromUtf8("oldpassword_panel"));
+        oldpassword_lbl = new QLabel(password_tab);
+        oldpassword_lbl->setObjectName(QString::fromUtf8("oldpassword_lbl"));
+        oldpassword_lbl->setMinimumSize(QSize(0, 30));
+
+        oldpassword_panel->addWidget(oldpassword_lbl);
+
+        oldpassword_txt = new QLineEdit(password_tab);
+        oldpassword_txt->setObjectName(QString::fromUtf8("oldpassword_txt"));
+        oldpassword_txt->setMinimumSize(QSize(0, 30));
+        oldpassword_txt->setMaximumSize(QSize(225, 16777215));
+
+        oldpassword_panel->addWidget(oldpassword_txt);
+
+
+        verticalLayout_4->addLayout(oldpassword_panel);
+
+        verticalSpacer_5 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_4->addItem(verticalSpacer_5);
+
+        newpassword_panel = new QHBoxLayout();
+        newpassword_panel->setObjectName(QString::fromUtf8("newpassword_panel"));
+        newpassword_lbl = new QLabel(password_tab);
+        newpassword_lbl->setObjectName(QString::fromUtf8("newpassword_lbl"));
+        newpassword_lbl->setMinimumSize(QSize(0, 30));
+        newpassword_lbl->setMaximumSize(QSize(225, 16777215));
+
+        newpassword_panel->addWidget(newpassword_lbl);
+
+        newpassword_txt = new QLineEdit(password_tab);
+        newpassword_txt->setObjectName(QString::fromUtf8("newpassword_txt"));
+        newpassword_txt->setMinimumSize(QSize(0, 30));
+        newpassword_txt->setMaximumSize(QSize(225, 16777215));
+
+        newpassword_panel->addWidget(newpassword_txt);
+
+
+        verticalLayout_4->addLayout(newpassword_panel);
+
+        verticalSpacer_6 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_4->addItem(verticalSpacer_6);
+
+        repeatpassword_panel = new QHBoxLayout();
+        repeatpassword_panel->setObjectName(QString::fromUtf8("repeatpassword_panel"));
+        repeatpassword_lbl = new QLabel(password_tab);
+        repeatpassword_lbl->setObjectName(QString::fromUtf8("repeatpassword_lbl"));
+        repeatpassword_lbl->setMinimumSize(QSize(0, 30));
+
+        repeatpassword_panel->addWidget(repeatpassword_lbl);
+
+        repeatpassword_txt = new QLineEdit(password_tab);
+        repeatpassword_txt->setObjectName(QString::fromUtf8("repeatpassword_txt"));
+        repeatpassword_txt->setMinimumSize(QSize(30, 30));
+        repeatpassword_txt->setMaximumSize(QSize(225, 16777215));
+
+        repeatpassword_panel->addWidget(repeatpassword_txt);
+
+
+        verticalLayout_4->addLayout(repeatpassword_panel);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_4->addItem(verticalSpacer_2);
 
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        label_8 = new QLabel(tab_3);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
+        passwordapply_btn = new QPushButton(password_tab);
+        passwordapply_btn->setObjectName(QString::fromUtf8("passwordapply_btn"));
+        passwordapply_btn->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout_7->addWidget(label_8);
-
-        lineEdit_3 = new QLineEdit(tab_3);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-
-        horizontalLayout_7->addWidget(lineEdit_3);
-
-
-        verticalLayout_4->addLayout(horizontalLayout_7);
-
-        verticalSpacer_6 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_4->addItem(verticalSpacer_6);
-
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        label_9 = new QLabel(tab_3);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-
-        horizontalLayout_8->addWidget(label_9);
-
-        lineEdit_4 = new QLineEdit(tab_3);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-
-        horizontalLayout_8->addWidget(lineEdit_4);
-
-
-        verticalLayout_4->addLayout(horizontalLayout_8);
+        verticalLayout_4->addWidget(passwordapply_btn);
 
         verticalSpacer_7 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_4->addItem(verticalSpacer_7);
 
-        horizontalLayout_9 = new QHBoxLayout();
-        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        label_10 = new QLabel(tab_3);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
+        tool_tabwidget->addTab(password_tab, QString());
 
-        horizontalLayout_9->addWidget(label_10);
+        verticalLayout_2->addWidget(tool_tabwidget);
 
-        lineEdit_5 = new QLineEdit(tab_3);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
+        aboutme_btn = new QPushButton(tool_panel);
+        aboutme_btn->setObjectName(QString::fromUtf8("aboutme_btn"));
+        aboutme_btn->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout_9->addWidget(lineEdit_5);
+        verticalLayout_2->addWidget(aboutme_btn);
 
+        payment_btn = new QPushButton(tool_panel);
+        payment_btn->setObjectName(QString::fromUtf8("payment_btn"));
+        payment_btn->setMinimumSize(QSize(0, 30));
 
-        verticalLayout_4->addLayout(horizontalLayout_9);
-
-        verticalSpacer_8 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_4->addItem(verticalSpacer_8);
-
-        verticalSpacer_10 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_4->addItem(verticalSpacer_10);
-
-        pushButton_5 = new QPushButton(tab_3);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-
-        verticalLayout_4->addWidget(pushButton_5);
-
-        verticalSpacer_9 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_4->addItem(verticalSpacer_9);
-
-        tabWidget->addTab(tab_3, QString());
-
-        verticalLayout_2->addWidget(tabWidget);
-
-        pushButton_3 = new QPushButton(user_page);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-
-        verticalLayout_2->addWidget(pushButton_3);
-
-        pushButton_4 = new QPushButton(user_page);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-
-        verticalLayout_2->addWidget(pushButton_4);
+        verticalLayout_2->addWidget(payment_btn);
 
 
-        horizontalLayout_3->addLayout(verticalLayout_2);
+        main_panel->addWidget(tool_panel);
 
-        verticalLayout_3 = new QVBoxLayout();
+        table_panel = new QFrame(user_page);
+        table_panel->setObjectName(QString::fromUtf8("table_panel"));
+        verticalLayout_3 = new QVBoxLayout(table_panel);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        verticalLayout_3->setContentsMargins(0, -1, -1, -1);
-        label_4 = new QLabel(user_page);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
+        verticalLayout_3->setContentsMargins(9, 9, 9, 9);
+        product_lbl = new QLabel(table_panel);
+        product_lbl->setObjectName(QString::fromUtf8("product_lbl"));
 
-        verticalLayout_3->addWidget(label_4);
+        verticalLayout_3->addWidget(product_lbl);
 
-        tableWidget = new QTableWidget(user_page);
-        tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
+        product_table = new QTableWidget(table_panel);
+        if (product_table->columnCount() < 5)
+            product_table->setColumnCount(5);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        __qtablewidgetitem->setTextAlignment(Qt::AlignCenter);
+        product_table->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        __qtablewidgetitem1->setTextAlignment(Qt::AlignCenter);
+        product_table->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        __qtablewidgetitem2->setTextAlignment(Qt::AlignCenter);
+        product_table->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        __qtablewidgetitem3->setTextAlignment(Qt::AlignCenter);
+        product_table->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        __qtablewidgetitem4->setTextAlignment(Qt::AlignCenter);
+        product_table->setHorizontalHeaderItem(4, __qtablewidgetitem4);
+        product_table->setObjectName(QString::fromUtf8("product_table"));
+        product_table->horizontalHeader()->setCascadingSectionResizes(false);
+        product_table->horizontalHeader()->setHighlightSections(true);
+        product_table->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
+        product_table->horizontalHeader()->setStretchLastSection(true);
+        product_table->verticalHeader()->setProperty("showSortIndicator", QVariant(false));
 
-        verticalLayout_3->addWidget(tableWidget);
+        verticalLayout_3->addWidget(product_table);
 
-        label_5 = new QLabel(user_page);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
+        shopping_lbl = new QLabel(table_panel);
+        shopping_lbl->setObjectName(QString::fromUtf8("shopping_lbl"));
 
-        verticalLayout_3->addWidget(label_5);
+        verticalLayout_3->addWidget(shopping_lbl);
 
-        tableWidget_2 = new QTableWidget(user_page);
-        tableWidget_2->setObjectName(QString::fromUtf8("tableWidget_2"));
+        shopping_table = new QTableWidget(table_panel);
+        if (shopping_table->columnCount() < 5)
+            shopping_table->setColumnCount(5);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        __qtablewidgetitem5->setTextAlignment(Qt::AlignCenter);
+        shopping_table->setHorizontalHeaderItem(0, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        __qtablewidgetitem6->setTextAlignment(Qt::AlignCenter);
+        shopping_table->setHorizontalHeaderItem(1, __qtablewidgetitem6);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        __qtablewidgetitem7->setTextAlignment(Qt::AlignCenter);
+        shopping_table->setHorizontalHeaderItem(2, __qtablewidgetitem7);
+        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
+        __qtablewidgetitem8->setTextAlignment(Qt::AlignCenter);
+        shopping_table->setHorizontalHeaderItem(3, __qtablewidgetitem8);
+        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
+        __qtablewidgetitem9->setTextAlignment(Qt::AlignCenter);
+        shopping_table->setHorizontalHeaderItem(4, __qtablewidgetitem9);
+        shopping_table->setObjectName(QString::fromUtf8("shopping_table"));
+        shopping_table->horizontalHeader()->setStretchLastSection(true);
 
-        verticalLayout_3->addWidget(tableWidget_2);
+        verticalLayout_3->addWidget(shopping_table);
 
 
-        horizontalLayout_3->addLayout(verticalLayout_3);
+        main_panel->addWidget(table_panel);
 
 
-        verticalLayout->addLayout(horizontalLayout_3);
+        verticalLayout->addLayout(main_panel);
 
 
         retranslateUi(user_page);
 
-        tabWidget->setCurrentIndex(0);
+        tool_tabwidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(user_page);
@@ -529,36 +625,56 @@ public:
     void retranslateUi(QWidget *user_page)
     {
         user_page->setWindowTitle(QApplication::translate("user_page", "Form", nullptr));
-        label->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        pushButton_2->setText(QApplication::translate("user_page", "PushButton", nullptr));
-        pushButton->setText(QApplication::translate("user_page", "PushButton", nullptr));
-        label_3->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        label_2->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        groupBox->setTitle(QApplication::translate("user_page", "GroupBox", nullptr));
-        groupBox_2->setTitle(QApplication::translate("user_page", "GroupBox", nullptr));
-        radioButton->setText(QApplication::translate("user_page", "RadioButton", nullptr));
-        radioButton_2->setText(QApplication::translate("user_page", "RadioButton", nullptr));
-        radioButton_3->setText(QApplication::translate("user_page", "RadioButton", nullptr));
-        radioButton_4->setText(QApplication::translate("user_page", "RadioButton", nullptr));
-        radioButton_5->setText(QApplication::translate("user_page", "RadioButton", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("user_page", "Tab 1", nullptr));
-        label_11->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        label_12->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        label_13->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        label_14->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        label_15->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        pushButton_6->setText(QApplication::translate("user_page", "PushButton", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("user_page", "Tab 2", nullptr));
-        label_6->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        label_8->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        label_9->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        label_10->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        pushButton_5->setText(QApplication::translate("user_page", "PushButton", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("user_page", "Page", nullptr));
-        pushButton_3->setText(QApplication::translate("user_page", "PushButton", nullptr));
-        pushButton_4->setText(QApplication::translate("user_page", "PushButton", nullptr));
-        label_4->setText(QApplication::translate("user_page", "TextLabel", nullptr));
-        label_5->setText(QApplication::translate("user_page", "TextLabel", nullptr));
+        date_lbl->setText(QApplication::translate("user_page", "11400/03/14  14:37", nullptr));
+        minimize_btn->setText(QString());
+        close_btn->setText(QString());
+        information_lbl->setText(QApplication::translate("user_page", "User : Credit:", nullptr));
+        cost_lbl->setText(QApplication::translate("user_page", "Cost : 0 $", nullptr));
+        group_gbox->setTitle(QApplication::translate("user_page", "Group : ", nullptr));
+        by_gbox->setTitle(QApplication::translate("user_page", "By :", nullptr));
+        name_rbtn->setText(QApplication::translate("user_page", "Name", nullptr));
+        company_rbtn->setText(QApplication::translate("user_page", "Company", nullptr));
+        group_rbtn->setText(QApplication::translate("user_page", "Group", nullptr));
+        price_rbtn->setText(QApplication::translate("user_page", "price", nullptr));
+        remain_rbtn->setText(QApplication::translate("user_page", "Remain", nullptr));
+        tool_tabwidget->setTabText(tool_tabwidget->indexOf(search_tab), QApplication::translate("user_page", "Search", nullptr));
+        amount_lbl->setText(QApplication::translate("user_page", "Amount :", nullptr));
+        card_lbl->setText(QApplication::translate("user_page", "Card Number :", nullptr));
+        cvv2_lbl->setText(QApplication::translate("user_page", "CVV2 :", nullptr));
+        date_lbl_2->setText(QApplication::translate("user_page", "Expiration Date :", nullptr));
+        secondpassword_lbl->setText(QApplication::translate("user_page", "Second Password :", nullptr));
+        increasecredit_btn->setText(QApplication::translate("user_page", "Apply", nullptr));
+        tool_tabwidget->setTabText(tool_tabwidget->indexOf(credit_tab), QApplication::translate("user_page", "Increase Credit", nullptr));
+        username_lbl->setText(QApplication::translate("user_page", "Username :", nullptr));
+        oldpassword_lbl->setText(QApplication::translate("user_page", "Old Password :", nullptr));
+        newpassword_lbl->setText(QApplication::translate("user_page", "New Password :", nullptr));
+        repeatpassword_lbl->setText(QApplication::translate("user_page", "Repeat Password :", nullptr));
+        passwordapply_btn->setText(QApplication::translate("user_page", "Apply", nullptr));
+        tool_tabwidget->setTabText(tool_tabwidget->indexOf(password_tab), QApplication::translate("user_page", "Change Password", nullptr));
+        aboutme_btn->setText(QApplication::translate("user_page", "About Me", nullptr));
+        payment_btn->setText(QApplication::translate("user_page", "Payment", nullptr));
+        product_lbl->setText(QApplication::translate("user_page", "products List :", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = product_table->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("user_page", "Name", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = product_table->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("user_page", "Company", nullptr));
+        QTableWidgetItem *___qtablewidgetitem2 = product_table->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QApplication::translate("user_page", "Group", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = product_table->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QApplication::translate("user_page", "Price", nullptr));
+        QTableWidgetItem *___qtablewidgetitem4 = product_table->horizontalHeaderItem(4);
+        ___qtablewidgetitem4->setText(QApplication::translate("user_page", "Remain", nullptr));
+        shopping_lbl->setText(QApplication::translate("user_page", "Shopping List :", nullptr));
+        QTableWidgetItem *___qtablewidgetitem5 = shopping_table->horizontalHeaderItem(0);
+        ___qtablewidgetitem5->setText(QApplication::translate("user_page", "Name", nullptr));
+        QTableWidgetItem *___qtablewidgetitem6 = shopping_table->horizontalHeaderItem(1);
+        ___qtablewidgetitem6->setText(QApplication::translate("user_page", "Company", nullptr));
+        QTableWidgetItem *___qtablewidgetitem7 = shopping_table->horizontalHeaderItem(2);
+        ___qtablewidgetitem7->setText(QApplication::translate("user_page", "Group", nullptr));
+        QTableWidgetItem *___qtablewidgetitem8 = shopping_table->horizontalHeaderItem(3);
+        ___qtablewidgetitem8->setText(QApplication::translate("user_page", "Price", nullptr));
+        QTableWidgetItem *___qtablewidgetitem9 = shopping_table->horizontalHeaderItem(4);
+        ___qtablewidgetitem9->setText(QApplication::translate("user_page", "Number", nullptr));
     } // retranslateUi
 
 };
