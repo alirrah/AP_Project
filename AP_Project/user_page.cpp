@@ -376,9 +376,47 @@ void user_page::on_product_table_cellDoubleClicked(int row, int column)
     }
 }
 
-
-
-
+void user_page::on_shopping_table_cellDoubleClicked(int row, int column)
+{
+    cost = 0;
+    int i = 0;
+    for(auto itr = products.begin(); itr != products.end(); ++itr)
+    {
+        if(itr->get_name() == buys[row].get_name() && itr->get_company() == buys[row].get_company() && itr->get_group() == buys[row].get_group())
+        {
+            itr->set_remain(itr->get_remain()+1);
+            break;
+        }
+    }
+    for(auto itr = buys.begin(); itr != buys.end(); ++itr)
+    {
+        if(itr->get_name() == buys[row].get_name() && itr->get_company() == buys[row].get_company() && itr->get_group() == buys[row].get_group())
+        {
+            itr->set_number(itr->get_number()-1);
+            if(itr->get_number() <= 0)
+            {
+                buys.removeAt(i);
+            }
+            break;
+        }
+        i++;
+    }
+    search();
+    ui->shopping_table->setRowCount(buys.size());
+    ui->shopping_table->setColumnCount(5);
+    i = 0;
+    for(auto itr = buys.begin(); itr != buys.end(); ++itr)
+    {
+        ui->shopping_table->setItem(i, 0, new QTableWidgetItem(itr->get_name()));
+        ui->shopping_table->setItem(i, 1, new QTableWidgetItem(itr->get_company()));
+        ui->shopping_table->setItem(i, 2, new QTableWidgetItem(itr->get_group()));
+        ui->shopping_table->setItem(i, 3, new QTableWidgetItem(QString::number(itr->get_number())));
+        ui->shopping_table->setItem(i++, 4, new QTableWidgetItem(QString::number(itr->get_price())));
+        cost += itr->get_price() * itr->get_number();
+    }
+    ui->cost_lbl->setText("Cost : " + QString::number(cost) + "$");
+    ui->cost_prossbar->setValue(cost);
+}
 
 void user_page::search()
 {
