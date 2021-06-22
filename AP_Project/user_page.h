@@ -33,6 +33,8 @@ private slots:
     void on_minimize_btn_clicked();
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void search();
+    void showTime();
 
 private:
     Ui::user_page *ui;
