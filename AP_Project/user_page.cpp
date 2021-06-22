@@ -316,6 +316,68 @@ void user_page::on_increasecredit_btn_clicked()
     }
 }
 
+void user_page::on_product_table_cellDoubleClicked(int row, int column)
+{
+    try
+    {
+        product check(ui->product_table->item(row,0)->text(),ui->product_table->item(row,1)->text(),ui->product_table->item(row,2)->text(),ui->product_table->item(row,3)->text().toDouble(),ui->product_table->item(row,4)->text().toInt());
+        QVector<product>::iterator it;
+        for(auto itr = products.begin(); itr != products.end(); ++itr)
+        {
+            if(check == *itr)
+            {
+                it = itr;
+                break;
+            }
+            it = products.end();
+        }
+        if(it == products.end())
+          throw "The product could not be found.";
+        if(cost + it->get_price() > information.get_credit())
+            throw "Money is not enough.";
+        if(it->get_remain() <= 0)
+            throw "The product is finished.";
+        it->set_remain(it->get_remain() - 1);
+        search();
+        bool flag = false;
+        cost = 0;
+        for(auto itr = buys.begin(); itr != buys.end(); ++itr)
+        {
+            if(itr->get_name() == it->get_name() && itr->get_company() == it->get_company() && itr->get_group() == it->get_group())
+            {
+                itr->set_number(itr->get_number() + 1);
+                flag = true;
+                break;
+            }
+        }
+        if(!flag)
+        {
+            buy b(it->get_name(), it->get_company(), it->get_group(), it->get_price(), 1);
+            buys.push_back(b);
+        }
+        ui->shopping_table->setRowCount(buys.size());
+        ui->shopping_table->setColumnCount(5);
+        int i = 0;
+        for(auto itr = buys.begin(); itr != buys.end(); ++itr)
+        {
+            ui->shopping_table->setItem(i, 0, new QTableWidgetItem(itr->get_name()));
+            ui->shopping_table->setItem(i, 1, new QTableWidgetItem(itr->get_company()));
+            ui->shopping_table->setItem(i, 2, new QTableWidgetItem(itr->get_group()));
+            ui->shopping_table->setItem(i, 3, new QTableWidgetItem(QString::number(itr->get_number())));
+            ui->shopping_table->setItem(i++, 4, new QTableWidgetItem(QString::number(itr->get_price())));
+            cost += itr->get_price() * itr->get_number();
+        }
+        ui->cost_lbl->setText("Cost : " + QString::number(cost) + "$");
+        ui->cost_prossbar->setValue(cost);
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+    }
+}
+
+
+
 
 
 void user_page::search()
