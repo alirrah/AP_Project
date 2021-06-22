@@ -423,6 +423,7 @@ public:
         card_txt->setObjectName(QString::fromUtf8("card_txt"));
         card_txt->setMinimumSize(QSize(0, 30));
         card_txt->setMaximumSize(QSize(222, 16777215));
+        card_txt->setMaxLength(16);
         card_txt->setAlignment(Qt::AlignCenter);
 
         card_panel->addWidget(card_txt);
@@ -751,7 +752,7 @@ public:
 
         retranslateUi(user_page);
 
-        tool_tabwidget->setCurrentIndex(2);
+        tool_tabwidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(user_page);
@@ -810,6 +811,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         card_txt->setToolTip(QApplication::translate("user_page", "Enter Your Card Number", nullptr));
 #endif // QT_NO_TOOLTIP
+        card_txt->setInputMask(QString());
         card_txt->setPlaceholderText(QApplication::translate("user_page", "Your Card Number", nullptr));
         cvv2_lbl->setText(QApplication::translate("user_page", "CVV2 :", nullptr));
 #ifndef QT_NO_TOOLTIP

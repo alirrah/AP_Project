@@ -361,7 +361,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
               <enum>QTabWidget::Rounded</enum>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>1</number>
              </property>
              <property name="elideMode">
               <enum>Qt::ElideLeft</enum>
@@ -701,6 +701,12 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                    </property>
                    <property name="toolTip">
                     <string>Enter Your Card Number</string>
+                   </property>
+                   <property name="inputMask">
+                    <string/>
+                   </property>
+                   <property name="maxLength">
+                    <number>16</number>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
