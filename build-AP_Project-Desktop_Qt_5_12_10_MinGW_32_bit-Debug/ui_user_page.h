@@ -9,6 +9,8 @@
 #ifndef UI_USER_PAGE_H
 #define UI_USER_PAGE_H
 
+#include <QtCore/QDate>
+#include <QtCore/QLocale>
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
@@ -35,6 +37,8 @@ class Ui_user_page
 {
 public:
     QVBoxLayout *verticalLayout;
+    QFrame *back_panel;
+    QVBoxLayout *verticalLayout_5;
     QFrame *top_panel;
     QHBoxLayout *horizontalLayout;
     QLabel *date_lbl;
@@ -127,7 +131,7 @@ public:
     {
         if (user_page->objectName().isEmpty())
             user_page->setObjectName(QString::fromUtf8("user_page"));
-        user_page->resize(1000, 756);
+        user_page->resize(1000, 689);
         user_page->setMinimumSize(QSize(0, 0));
         QFont font;
         font.setPointSize(12);
@@ -135,16 +139,59 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/icon/add_to_shopping_cart.ico"), QSize(), QIcon::Normal, QIcon::Off);
         user_page->setWindowIcon(icon);
-        user_page->setStyleSheet(QString::fromUtf8(""));
+        user_page->setStyleSheet(QString::fromUtf8("#back_panel\n"
+"{\n"
+"border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);\n"
+" }\n"
+"#top_panel, #information_panel\n"
+"{\n"
+" background-color: qlineargradient(spread:reflect, x1:0.5, y1:0, x2:0, y2:0, stop:0 rgba(91, 204, 233, 200), stop:1 rgba(32, 80, 96, 150));\n"
+" }\n"
+"#date_lbl,#information_lbl, #cost_lbl, #product_lbl, #shopping_lbl\n"
+"{\n"
+" color: white;\n"
+" }\n"
+"#passwordapply_btn, #increasecredit_btn, #close_btn, #minimize_btn,#aboutme_btn, #payment_btn\n"
+"{\n"
+"  color: white;\n"
+"  background-color: #45ada8;\n"
+"  border-width: 0px;\n"
+"  border-radius: 3px;\n"
+"}\n"
+"#passwordapply_btn:hover, #increasecredit_btn:hover , #minimize_btn:hover, #aboutme_btn:hover, #payment_btn:hover\n"
+"{\n"
+" background-color: #547980;\n"
+" }\n"
+"#tool_panel, #table_panel\n"
+"{\n"
+"  background: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+" #close_btn:hover\n"
+"{\n"
+"	 background-color: rgb(158, 0, 0);\n"
+"}\n"
+"#search_tab, #credit_tab, #password_tab\n"
+"{\n"
+"	background-color: rgb(240, 240, 240);\n"
+"}"));
         verticalLayout = new QVBoxLayout(user_page);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        top_panel = new QFrame(user_page);
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        back_panel = new QFrame(user_page);
+        back_panel->setObjectName(QString::fromUtf8("back_panel"));
+        verticalLayout_5 = new QVBoxLayout(back_panel);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        verticalLayout_5->setContentsMargins(9, 9, 9, 9);
+        top_panel = new QFrame(back_panel);
         top_panel->setObjectName(QString::fromUtf8("top_panel"));
         horizontalLayout = new QHBoxLayout(top_panel);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         date_lbl = new QLabel(top_panel);
         date_lbl->setObjectName(QString::fromUtf8("date_lbl"));
         date_lbl->setMinimumSize(QSize(0, 30));
+        QFont font1;
+        font1.setPointSize(10);
+        date_lbl->setFont(font1);
 
         horizontalLayout->addWidget(date_lbl);
 
@@ -175,16 +222,17 @@ public:
         horizontalLayout->addWidget(close_btn);
 
 
-        verticalLayout->addWidget(top_panel);
+        verticalLayout_5->addWidget(top_panel);
 
-        information_panel = new QFrame(user_page);
+        information_panel = new QFrame(back_panel);
         information_panel->setObjectName(QString::fromUtf8("information_panel"));
         horizontalLayout_2 = new QHBoxLayout(information_panel);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(-1, 1, -1, -1);
+        horizontalLayout_2->setContentsMargins(-1, 9, -1, -1);
         information_lbl = new QLabel(information_panel);
         information_lbl->setObjectName(QString::fromUtf8("information_lbl"));
         information_lbl->setMinimumSize(QSize(0, 30));
+        information_lbl->setFont(font1);
 
         horizontalLayout_2->addWidget(information_lbl);
 
@@ -194,35 +242,54 @@ public:
 
         cost_lbl = new QLabel(information_panel);
         cost_lbl->setObjectName(QString::fromUtf8("cost_lbl"));
+        cost_lbl->setFont(font1);
 
         horizontalLayout_2->addWidget(cost_lbl);
 
         cost_prossbar = new QProgressBar(information_panel);
         cost_prossbar->setObjectName(QString::fromUtf8("cost_prossbar"));
+        cost_prossbar->setMinimumSize(QSize(0, 30));
         cost_prossbar->setValue(24);
+        cost_prossbar->setTextVisible(false);
 
         horizontalLayout_2->addWidget(cost_prossbar);
 
 
-        verticalLayout->addWidget(information_panel);
+        verticalLayout_5->addWidget(information_panel);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout->addItem(verticalSpacer);
+        verticalLayout_5->addItem(verticalSpacer);
 
         main_panel = new QHBoxLayout();
         main_panel->setObjectName(QString::fromUtf8("main_panel"));
         main_panel->setContentsMargins(-1, 0, -1, -1);
-        tool_panel = new QFrame(user_page);
+        tool_panel = new QFrame(back_panel);
         tool_panel->setObjectName(QString::fromUtf8("tool_panel"));
         tool_panel->setMaximumSize(QSize(400, 16777215));
         verticalLayout_2 = new QVBoxLayout(tool_panel);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(-1, 1, -1, 1);
+        verticalLayout_2->setContentsMargins(-1, 9, -1, 9);
         tool_tabwidget = new QTabWidget(tool_panel);
         tool_tabwidget->setObjectName(QString::fromUtf8("tool_tabwidget"));
         tool_tabwidget->setMinimumSize(QSize(388, 0));
         tool_tabwidget->setMaximumSize(QSize(388, 16777215));
+        QFont font2;
+        font2.setPointSize(10);
+        font2.setBold(false);
+        font2.setWeight(50);
+        font2.setStrikeOut(false);
+        font2.setKerning(true);
+        tool_tabwidget->setFont(font2);
+        tool_tabwidget->setMouseTracking(false);
+        tool_tabwidget->setTabletTracking(false);
+        tool_tabwidget->setAcceptDrops(false);
+        tool_tabwidget->setLayoutDirection(Qt::LeftToRight);
+        tool_tabwidget->setAutoFillBackground(false);
+        tool_tabwidget->setLocale(QLocale(QLocale::Persian, QLocale::Iran));
+        tool_tabwidget->setTabPosition(QTabWidget::North);
+        tool_tabwidget->setTabShape(QTabWidget::Rounded);
+        tool_tabwidget->setElideMode(Qt::ElideLeft);
         tool_tabwidget->setUsesScrollButtons(true);
         tool_tabwidget->setDocumentMode(false);
         tool_tabwidget->setTabsClosable(false);
@@ -238,11 +305,13 @@ public:
 
         group_gbox = new QGroupBox(search_tab);
         group_gbox->setObjectName(QString::fromUtf8("group_gbox"));
+        group_gbox->setFont(font1);
         verticalLayout_8 = new QVBoxLayout(group_gbox);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         group_combox = new QComboBox(group_gbox);
         group_combox->setObjectName(QString::fromUtf8("group_combox"));
         group_combox->setMinimumSize(QSize(0, 30));
+        group_combox->setFont(font1);
 
         verticalLayout_8->addWidget(group_combox);
 
@@ -252,6 +321,9 @@ public:
         word_txt = new QLineEdit(search_tab);
         word_txt->setObjectName(QString::fromUtf8("word_txt"));
         word_txt->setMinimumSize(QSize(0, 30));
+        word_txt->setFont(font1);
+        word_txt->setAlignment(Qt::AlignCenter);
+        word_txt->setReadOnly(false);
 
         verticalLayout_7->addWidget(word_txt);
 
@@ -261,34 +333,40 @@ public:
 
         by_gbox = new QGroupBox(search_tab);
         by_gbox->setObjectName(QString::fromUtf8("by_gbox"));
+        by_gbox->setFont(font1);
         verticalLayout_9 = new QVBoxLayout(by_gbox);
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
         name_rbtn = new QRadioButton(by_gbox);
         name_rbtn->setObjectName(QString::fromUtf8("name_rbtn"));
         name_rbtn->setMinimumSize(QSize(0, 30));
+        name_rbtn->setFont(font1);
 
         verticalLayout_9->addWidget(name_rbtn);
 
         company_rbtn = new QRadioButton(by_gbox);
         company_rbtn->setObjectName(QString::fromUtf8("company_rbtn"));
         company_rbtn->setMinimumSize(QSize(0, 30));
+        company_rbtn->setFont(font1);
 
         verticalLayout_9->addWidget(company_rbtn);
 
         group_rbtn = new QRadioButton(by_gbox);
         group_rbtn->setObjectName(QString::fromUtf8("group_rbtn"));
         group_rbtn->setMinimumSize(QSize(0, 30));
+        group_rbtn->setFont(font1);
 
         verticalLayout_9->addWidget(group_rbtn);
 
         price_rbtn = new QRadioButton(by_gbox);
         price_rbtn->setObjectName(QString::fromUtf8("price_rbtn"));
         price_rbtn->setMinimumSize(QSize(0, 30));
+        price_rbtn->setFont(font1);
 
         verticalLayout_9->addWidget(price_rbtn);
 
         remain_rbtn = new QRadioButton(by_gbox);
         remain_rbtn->setObjectName(QString::fromUtf8("remain_rbtn"));
+        remain_rbtn->setFont(font1);
 
         verticalLayout_9->addWidget(remain_rbtn);
 
@@ -313,6 +391,7 @@ public:
         amount_lbl = new QLabel(credit_tab);
         amount_lbl->setObjectName(QString::fromUtf8("amount_lbl"));
         amount_lbl->setMinimumSize(QSize(0, 30));
+        amount_lbl->setFont(font1);
 
         amount_panel->addWidget(amount_lbl);
 
@@ -320,6 +399,7 @@ public:
         amount_txt->setObjectName(QString::fromUtf8("amount_txt"));
         amount_txt->setMinimumSize(QSize(0, 30));
         amount_txt->setMaximumSize(QSize(222, 16777215));
+        amount_txt->setAlignment(Qt::AlignCenter);
 
         amount_panel->addWidget(amount_txt);
 
@@ -335,6 +415,7 @@ public:
         card_lbl = new QLabel(credit_tab);
         card_lbl->setObjectName(QString::fromUtf8("card_lbl"));
         card_lbl->setMinimumSize(QSize(0, 30));
+        card_lbl->setFont(font1);
 
         card_panel->addWidget(card_lbl);
 
@@ -342,6 +423,7 @@ public:
         card_txt->setObjectName(QString::fromUtf8("card_txt"));
         card_txt->setMinimumSize(QSize(0, 30));
         card_txt->setMaximumSize(QSize(222, 16777215));
+        card_txt->setAlignment(Qt::AlignCenter);
 
         card_panel->addWidget(card_txt);
 
@@ -357,6 +439,7 @@ public:
         cvv2_lbl = new QLabel(credit_tab);
         cvv2_lbl->setObjectName(QString::fromUtf8("cvv2_lbl"));
         cvv2_lbl->setMinimumSize(QSize(0, 30));
+        cvv2_lbl->setFont(font1);
 
         cvv2_panel->addWidget(cvv2_lbl);
 
@@ -364,6 +447,7 @@ public:
         cvv2_txt->setObjectName(QString::fromUtf8("cvv2_txt"));
         cvv2_txt->setMinimumSize(QSize(222, 30));
         cvv2_txt->setMaximumSize(QSize(222, 16777215));
+        cvv2_txt->setAlignment(Qt::AlignCenter);
 
         cvv2_panel->addWidget(cvv2_txt);
 
@@ -386,6 +470,18 @@ public:
         date_txt->setObjectName(QString::fromUtf8("date_txt"));
         date_txt->setMinimumSize(QSize(222, 30));
         date_txt->setMaximumSize(QSize(222, 16777215));
+        date_txt->setWrapping(false);
+        date_txt->setFrame(true);
+        date_txt->setAlignment(Qt::AlignCenter);
+        date_txt->setReadOnly(false);
+        date_txt->setAccelerated(false);
+        date_txt->setKeyboardTracking(true);
+        date_txt->setProperty("showGroupSeparator", QVariant(false));
+        date_txt->setMinimumDate(QDate(1752, 9, 15));
+        date_txt->setCalendarPopup(true);
+        date_txt->setCurrentSectionIndex(0);
+        date_txt->setTimeSpec(Qt::LocalTime);
+        date_txt->setDate(QDate(2020, 1, 1));
 
         date_panel->addWidget(date_txt);
 
@@ -408,6 +504,8 @@ public:
         second_txt->setObjectName(QString::fromUtf8("second_txt"));
         second_txt->setMinimumSize(QSize(222, 30));
         second_txt->setMaximumSize(QSize(222, 16777215));
+        second_txt->setEchoMode(QLineEdit::Password);
+        second_txt->setAlignment(Qt::AlignCenter);
 
         second_panel->addWidget(second_txt);
 
@@ -424,7 +522,7 @@ public:
 
         verticalLayout_6->addWidget(increasecredit_btn);
 
-        verticalSpacer_16 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_16 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_6->addItem(verticalSpacer_16);
 
@@ -442,6 +540,7 @@ public:
         username_lbl = new QLabel(password_tab);
         username_lbl->setObjectName(QString::fromUtf8("username_lbl"));
         username_lbl->setMinimumSize(QSize(0, 30));
+        username_lbl->setFont(font1);
 
         username_panel->addWidget(username_lbl);
 
@@ -449,6 +548,8 @@ public:
         username_txt->setObjectName(QString::fromUtf8("username_txt"));
         username_txt->setMinimumSize(QSize(0, 30));
         username_txt->setMaximumSize(QSize(225, 16777215));
+        username_txt->setFont(font1);
+        username_txt->setAlignment(Qt::AlignCenter);
 
         username_panel->addWidget(username_txt);
 
@@ -464,6 +565,7 @@ public:
         oldpassword_lbl = new QLabel(password_tab);
         oldpassword_lbl->setObjectName(QString::fromUtf8("oldpassword_lbl"));
         oldpassword_lbl->setMinimumSize(QSize(0, 30));
+        oldpassword_lbl->setFont(font1);
 
         oldpassword_panel->addWidget(oldpassword_lbl);
 
@@ -471,6 +573,9 @@ public:
         oldpassword_txt->setObjectName(QString::fromUtf8("oldpassword_txt"));
         oldpassword_txt->setMinimumSize(QSize(0, 30));
         oldpassword_txt->setMaximumSize(QSize(225, 16777215));
+        oldpassword_txt->setFont(font1);
+        oldpassword_txt->setEchoMode(QLineEdit::Password);
+        oldpassword_txt->setAlignment(Qt::AlignCenter);
 
         oldpassword_panel->addWidget(oldpassword_txt);
 
@@ -487,6 +592,7 @@ public:
         newpassword_lbl->setObjectName(QString::fromUtf8("newpassword_lbl"));
         newpassword_lbl->setMinimumSize(QSize(0, 30));
         newpassword_lbl->setMaximumSize(QSize(225, 16777215));
+        newpassword_lbl->setFont(font1);
 
         newpassword_panel->addWidget(newpassword_lbl);
 
@@ -494,6 +600,9 @@ public:
         newpassword_txt->setObjectName(QString::fromUtf8("newpassword_txt"));
         newpassword_txt->setMinimumSize(QSize(0, 30));
         newpassword_txt->setMaximumSize(QSize(225, 16777215));
+        newpassword_txt->setFont(font1);
+        newpassword_txt->setEchoMode(QLineEdit::Password);
+        newpassword_txt->setAlignment(Qt::AlignCenter);
 
         newpassword_panel->addWidget(newpassword_txt);
 
@@ -509,6 +618,7 @@ public:
         repeatpassword_lbl = new QLabel(password_tab);
         repeatpassword_lbl->setObjectName(QString::fromUtf8("repeatpassword_lbl"));
         repeatpassword_lbl->setMinimumSize(QSize(0, 30));
+        repeatpassword_lbl->setFont(font1);
 
         repeatpassword_panel->addWidget(repeatpassword_lbl);
 
@@ -516,6 +626,8 @@ public:
         repeatpassword_txt->setObjectName(QString::fromUtf8("repeatpassword_txt"));
         repeatpassword_txt->setMinimumSize(QSize(30, 30));
         repeatpassword_txt->setMaximumSize(QSize(225, 16777215));
+        repeatpassword_txt->setEchoMode(QLineEdit::Password);
+        repeatpassword_txt->setAlignment(Qt::AlignCenter);
 
         repeatpassword_panel->addWidget(repeatpassword_txt);
 
@@ -529,6 +641,7 @@ public:
         passwordapply_btn = new QPushButton(password_tab);
         passwordapply_btn->setObjectName(QString::fromUtf8("passwordapply_btn"));
         passwordapply_btn->setMinimumSize(QSize(0, 30));
+        passwordapply_btn->setFont(font1);
 
         verticalLayout_4->addWidget(passwordapply_btn);
 
@@ -543,25 +656,28 @@ public:
         aboutme_btn = new QPushButton(tool_panel);
         aboutme_btn->setObjectName(QString::fromUtf8("aboutme_btn"));
         aboutme_btn->setMinimumSize(QSize(0, 30));
+        aboutme_btn->setFont(font1);
 
         verticalLayout_2->addWidget(aboutme_btn);
 
         payment_btn = new QPushButton(tool_panel);
         payment_btn->setObjectName(QString::fromUtf8("payment_btn"));
         payment_btn->setMinimumSize(QSize(0, 30));
+        payment_btn->setFont(font1);
 
         verticalLayout_2->addWidget(payment_btn);
 
 
         main_panel->addWidget(tool_panel);
 
-        table_panel = new QFrame(user_page);
+        table_panel = new QFrame(back_panel);
         table_panel->setObjectName(QString::fromUtf8("table_panel"));
         verticalLayout_3 = new QVBoxLayout(table_panel);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(9, 9, 9, 9);
         product_lbl = new QLabel(table_panel);
         product_lbl->setObjectName(QString::fromUtf8("product_lbl"));
+        product_lbl->setFont(font1);
 
         verticalLayout_3->addWidget(product_lbl);
 
@@ -584,6 +700,7 @@ public:
         __qtablewidgetitem4->setTextAlignment(Qt::AlignCenter);
         product_table->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         product_table->setObjectName(QString::fromUtf8("product_table"));
+        product_table->setFont(font1);
         product_table->horizontalHeader()->setCascadingSectionResizes(false);
         product_table->horizontalHeader()->setHighlightSections(true);
         product_table->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
@@ -594,6 +711,7 @@ public:
 
         shopping_lbl = new QLabel(table_panel);
         shopping_lbl->setObjectName(QString::fromUtf8("shopping_lbl"));
+        shopping_lbl->setFont(font1);
 
         verticalLayout_3->addWidget(shopping_lbl);
 
@@ -616,6 +734,7 @@ public:
         __qtablewidgetitem9->setTextAlignment(Qt::AlignCenter);
         shopping_table->setHorizontalHeaderItem(4, __qtablewidgetitem9);
         shopping_table->setObjectName(QString::fromUtf8("shopping_table"));
+        shopping_table->setFont(font1);
         shopping_table->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout_3->addWidget(shopping_table);
@@ -624,7 +743,10 @@ public:
         main_panel->addWidget(table_panel);
 
 
-        verticalLayout->addLayout(main_panel);
+        verticalLayout_5->addLayout(main_panel);
+
+
+        verticalLayout->addWidget(back_panel);
 
 
         retranslateUi(user_page);
@@ -639,11 +761,39 @@ public:
     {
         user_page->setWindowTitle(QApplication::translate("user_page", "User Page", nullptr));
         date_lbl->setText(QApplication::translate("user_page", "11400/03/14  14:37", nullptr));
+#ifndef QT_NO_TOOLTIP
+        minimize_btn->setToolTip(QApplication::translate("user_page", "Minimize", nullptr));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        minimize_btn->setStatusTip(QString());
+#endif // QT_NO_STATUSTIP
         minimize_btn->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        close_btn->setToolTip(QApplication::translate("user_page", "Close", nullptr));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        close_btn->setStatusTip(QString());
+#endif // QT_NO_STATUSTIP
         close_btn->setText(QString());
         information_lbl->setText(QApplication::translate("user_page", "User : Credit:", nullptr));
         cost_lbl->setText(QApplication::translate("user_page", "Cost : 0 $", nullptr));
+#ifndef QT_NO_STATUSTIP
+        tool_tabwidget->setStatusTip(QString());
+#endif // QT_NO_STATUSTIP
+#ifndef QT_NO_WHATSTHIS
+        tool_tabwidget->setWhatsThis(QString());
+#endif // QT_NO_WHATSTHIS
+#ifndef QT_NO_ACCESSIBILITY
+        tool_tabwidget->setAccessibleName(QString());
+#endif // QT_NO_ACCESSIBILITY
+#ifndef QT_NO_ACCESSIBILITY
+        tool_tabwidget->setAccessibleDescription(QString());
+#endif // QT_NO_ACCESSIBILITY
         group_gbox->setTitle(QApplication::translate("user_page", "Group : ", nullptr));
+#ifndef QT_NO_TOOLTIP
+        word_txt->setToolTip(QApplication::translate("user_page", "Enter Word for Search", nullptr));
+#endif // QT_NO_TOOLTIP
+        word_txt->setPlaceholderText(QApplication::translate("user_page", "Word for Search", nullptr));
         by_gbox->setTitle(QApplication::translate("user_page", "By :", nullptr));
         name_rbtn->setText(QApplication::translate("user_page", "Name", nullptr));
         company_rbtn->setText(QApplication::translate("user_page", "Company", nullptr));
@@ -652,19 +802,76 @@ public:
         remain_rbtn->setText(QApplication::translate("user_page", "Remain", nullptr));
         tool_tabwidget->setTabText(tool_tabwidget->indexOf(search_tab), QApplication::translate("user_page", "Search", nullptr));
         amount_lbl->setText(QApplication::translate("user_page", "Amount :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        amount_txt->setToolTip(QApplication::translate("user_page", "Enter Amount of Money", nullptr));
+#endif // QT_NO_TOOLTIP
+        amount_txt->setPlaceholderText(QApplication::translate("user_page", "Amount of Money", nullptr));
         card_lbl->setText(QApplication::translate("user_page", "Card Number :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        card_txt->setToolTip(QApplication::translate("user_page", "Enter Your Card Number", nullptr));
+#endif // QT_NO_TOOLTIP
+        card_txt->setPlaceholderText(QApplication::translate("user_page", "Your Card Number", nullptr));
         cvv2_lbl->setText(QApplication::translate("user_page", "CVV2 :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        cvv2_txt->setToolTip(QApplication::translate("user_page", "Enter Your CVV2 of Your Card", nullptr));
+#endif // QT_NO_TOOLTIP
+        cvv2_txt->setPlaceholderText(QApplication::translate("user_page", "CVV2 Card", nullptr));
         date_lbl_2->setText(QApplication::translate("user_page", "Expiration Date :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        date_txt->setToolTip(QApplication::translate("user_page", "Enter Your Ex Date of Your Card", nullptr));
+#endif // QT_NO_TOOLTIP
         secondpassword_lbl->setText(QApplication::translate("user_page", "Second Password :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        second_txt->setToolTip(QApplication::translate("user_page", "Enter Your Second Password", nullptr));
+#endif // QT_NO_TOOLTIP
+        second_txt->setPlaceholderText(QApplication::translate("user_page", "Second Password Card", nullptr));
+#ifndef QT_NO_TOOLTIP
+        increasecredit_btn->setToolTip(QApplication::translate("user_page", "Click to Compelete the Payment Operation", nullptr));
+#endif // QT_NO_TOOLTIP
         increasecredit_btn->setText(QApplication::translate("user_page", "Apply", nullptr));
         tool_tabwidget->setTabText(tool_tabwidget->indexOf(credit_tab), QApplication::translate("user_page", "Increase Credit", nullptr));
         username_lbl->setText(QApplication::translate("user_page", "Username :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        username_txt->setToolTip(QApplication::translate("user_page", "Enter Your Username", nullptr));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        username_txt->setStatusTip(QString());
+#endif // QT_NO_STATUSTIP
+#ifndef QT_NO_WHATSTHIS
+        username_txt->setWhatsThis(QString());
+#endif // QT_NO_WHATSTHIS
+#ifndef QT_NO_ACCESSIBILITY
+        username_txt->setAccessibleName(QString());
+#endif // QT_NO_ACCESSIBILITY
+        username_txt->setPlaceholderText(QApplication::translate("user_page", "Your Username", nullptr));
         oldpassword_lbl->setText(QApplication::translate("user_page", "Old Password :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        oldpassword_txt->setToolTip(QApplication::translate("user_page", "Enter Your Password", nullptr));
+#endif // QT_NO_TOOLTIP
+        oldpassword_txt->setText(QString());
+        oldpassword_txt->setPlaceholderText(QApplication::translate("user_page", "Your Password", nullptr));
         newpassword_lbl->setText(QApplication::translate("user_page", "New Password :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        newpassword_txt->setToolTip(QApplication::translate("user_page", "Enter a New Password", nullptr));
+#endif // QT_NO_TOOLTIP
+        newpassword_txt->setPlaceholderText(QApplication::translate("user_page", "New Password", nullptr));
         repeatpassword_lbl->setText(QApplication::translate("user_page", "Repeat Password :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        repeatpassword_txt->setToolTip(QApplication::translate("user_page", "Enter a New password", nullptr));
+#endif // QT_NO_TOOLTIP
+        repeatpassword_txt->setPlaceholderText(QApplication::translate("user_page", "Repeat New Password", nullptr));
+#ifndef QT_NO_TOOLTIP
+        passwordapply_btn->setToolTip(QApplication::translate("user_page", "Click to Change Your password", nullptr));
+#endif // QT_NO_TOOLTIP
         passwordapply_btn->setText(QApplication::translate("user_page", "Apply", nullptr));
         tool_tabwidget->setTabText(tool_tabwidget->indexOf(password_tab), QApplication::translate("user_page", "Change Password", nullptr));
+#ifndef QT_NO_TOOLTIP
+        aboutme_btn->setToolTip(QApplication::translate("user_page", "Click to Open New Window About Me", nullptr));
+#endif // QT_NO_TOOLTIP
         aboutme_btn->setText(QApplication::translate("user_page", "About Me", nullptr));
+#ifndef QT_NO_TOOLTIP
+        payment_btn->setToolTip(QApplication::translate("user_page", "Pay the Bill and Buying", nullptr));
+#endif // QT_NO_TOOLTIP
         payment_btn->setText(QApplication::translate("user_page", "Payment", nullptr));
         product_lbl->setText(QApplication::translate("user_page", "products List :", nullptr));
         QTableWidgetItem *___qtablewidgetitem = product_table->horizontalHeaderItem(0);
@@ -677,6 +884,9 @@ public:
         ___qtablewidgetitem3->setText(QApplication::translate("user_page", "Price", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = product_table->horizontalHeaderItem(4);
         ___qtablewidgetitem4->setText(QApplication::translate("user_page", "Remain", nullptr));
+#ifndef QT_NO_TOOLTIP
+        product_table->setToolTip(QApplication::translate("user_page", "Double-Click to Selet a Product", nullptr));
+#endif // QT_NO_TOOLTIP
         shopping_lbl->setText(QApplication::translate("user_page", "Shopping List :", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = shopping_table->horizontalHeaderItem(0);
         ___qtablewidgetitem5->setText(QApplication::translate("user_page", "Name", nullptr));
@@ -688,6 +898,9 @@ public:
         ___qtablewidgetitem8->setText(QApplication::translate("user_page", "Price", nullptr));
         QTableWidgetItem *___qtablewidgetitem9 = shopping_table->horizontalHeaderItem(4);
         ___qtablewidgetitem9->setText(QApplication::translate("user_page", "Number", nullptr));
+#ifndef QT_NO_TOOLTIP
+        shopping_table->setToolTip(QApplication::translate("user_page", "Double-Click to Remove Product", nullptr));
+#endif // QT_NO_TOOLTIP
     } // retranslateUi
 
 };
