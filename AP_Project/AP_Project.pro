@@ -16,6 +16,7 @@ SOURCES += \
     login_page.cpp \
     member.cpp \
     product.cpp \
+    search.cpp \
     user_page.cpp
 
 HEADERS += \

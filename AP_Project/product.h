@@ -2,6 +2,7 @@
 #define PRODUCT_H
 
 #include <QtCore>
+#include "search.cpp"
 
 class product
 {

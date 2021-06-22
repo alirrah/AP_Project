@@ -180,8 +180,8 @@ void user_page::on_payment_btn_clicked()
     }
     catch (char const *p)
     {
-          QMessageBox::information(this, "Error", p);
-          this->close();
+        QMessageBox::information(this, "Error", p);
+        this->close();
     }
 }
 
@@ -332,7 +332,7 @@ void user_page::on_product_table_cellDoubleClicked(int row, int column)
             it = products.end();
         }
         if(it == products.end())
-          throw "The product could not be found.";
+            throw "The product could not be found.";
         if(cost + it->get_price() > information.get_credit())
             throw "Money is not enough.";
         if(it->get_remain() <= 0)
@@ -420,5 +420,91 @@ void user_page::on_shopping_table_cellDoubleClicked(int row, int column)
 
 void user_page::search()
 {
-
+    QVector<product> search;
+    QString group = ui->group_combox->currentText();
+    if(ui->group_rbtn->isChecked())
+    {
+        for(auto itr = products.begin(); itr != products.end(); ++itr)
+        {
+            if(search_open(ui->word_txt->text(),itr->get_group()))
+            {
+                search.push_back(*itr);
+            }
+        }
+    }
+    else if(group == "All")
+    {
+        if(ui->word_txt->text() == "")
+        {
+            search = products;
+        }
+        else if(ui->name_rbtn->isChecked())
+        {
+            for(auto itr = products.begin(); itr != products.end(); ++itr)
+                if(search_open(ui->word_txt->text(),itr->get_name()))
+                    search.push_back(*itr);
+        }
+        else if(ui->company_rbtn->isChecked())
+        {
+            for(auto itr = products.begin(); itr != products.end(); ++itr)
+                if(search_open(ui->word_txt->text(),itr->get_company()))
+                    search.push_back(*itr);
+        }
+        else if(ui->price_rbtn->isChecked())
+        {
+            for(auto itr = products.begin(); itr != products.end(); ++itr)
+                if(search_open(ui->word_txt->text().toDouble(),itr->get_price()))
+                    search.push_back(*itr);
+        }
+        else
+        {
+            for(auto itr = products.begin(); itr != products.end(); ++itr)
+                if(search_open(ui->word_txt->text().toInt(), itr->get_remain()))
+                    search.push_back(*itr);
+        }
+    }
+    else
+    {
+        if(ui->word_txt->text() == "")
+        {
+            for(auto itr = products.begin(); itr != products.end(); ++itr)
+                if(group == itr->get_group())
+                    search.push_back(*itr);
+        }
+        else if(ui->name_rbtn->isChecked())
+        {
+            for(auto itr = products.begin(); itr != products.end(); ++itr)
+                if(search_open(ui->word_txt->text(),itr->get_name()) && (group == itr->get_group()))
+                    search.push_back(*itr);
+        }
+        else if(ui->company_rbtn->isChecked())
+        {
+            for(auto itr = products.begin(); itr != products.end(); ++itr)
+                if(search_open(ui->word_txt->text(),itr->get_company()) && (group == itr->get_group()))
+                    search.push_back(*itr);
+        }
+        else if(ui->price_rbtn->isChecked())
+        {
+            for(auto itr = products.begin(); itr != products.end(); ++itr)
+                if(search_open(ui->word_txt->text().toDouble(),itr->get_price()) && (group == itr->get_group()))
+                    search.push_back(*itr);
+        }
+        else
+        {
+            for(auto itr = products.begin(); itr != products.end(); ++itr)
+                if(search_open(ui->word_txt->text().toInt(), itr->get_remain()) && (group == itr->get_group()))
+                    search.push_back(*itr);
+        }
+    }
+    ui->product_table->setRowCount(search.size());
+    ui->product_table->setColumnCount(5);
+    int i = 0;
+    for(auto itr = search.begin(); itr != search.end(); ++itr)
+    {
+        ui->product_table->setItem(i, 0, new QTableWidgetItem(itr->get_name()));
+        ui->product_table->setItem(i, 1, new QTableWidgetItem(itr->get_company()));
+        ui->product_table->setItem(i, 2, new QTableWidgetItem(itr->get_group()));
+        ui->product_table->setItem(i, 3, new QTableWidgetItem(QString::number(itr->get_price())));
+        ui->product_table->setItem(i++, 4, new QTableWidgetItem(QString::number(itr->get_remain())));
+    }
 }
