@@ -10,6 +10,7 @@
 #define UI_USER_PAGE_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
@@ -131,6 +132,10 @@ public:
         QFont font;
         font.setPointSize(12);
         user_page->setFont(font);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icon/add_to_shopping_cart.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        user_page->setWindowIcon(icon);
+        user_page->setStyleSheet(QString::fromUtf8(""));
         verticalLayout = new QVBoxLayout(user_page);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         top_panel = new QFrame(user_page);
@@ -151,6 +156,10 @@ public:
         minimize_btn->setObjectName(QString::fromUtf8("minimize_btn"));
         minimize_btn->setMinimumSize(QSize(40, 40));
         minimize_btn->setMaximumSize(QSize(40, 40));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icon/mini.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        minimize_btn->setIcon(icon1);
+        minimize_btn->setIconSize(QSize(25, 35));
 
         horizontalLayout->addWidget(minimize_btn);
 
@@ -158,6 +167,10 @@ public:
         close_btn->setObjectName(QString::fromUtf8("close_btn"));
         close_btn->setMinimumSize(QSize(40, 40));
         close_btn->setMaximumSize(QSize(40, 40));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icon/close.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        close_btn->setIcon(icon2);
+        close_btn->setIconSize(QSize(35, 35));
 
         horizontalLayout->addWidget(close_btn);
 
@@ -616,7 +629,7 @@ public:
 
         retranslateUi(user_page);
 
-        tool_tabwidget->setCurrentIndex(0);
+        tool_tabwidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(user_page);
@@ -624,7 +637,7 @@ public:
 
     void retranslateUi(QWidget *user_page)
     {
-        user_page->setWindowTitle(QApplication::translate("user_page", "Form", nullptr));
+        user_page->setWindowTitle(QApplication::translate("user_page", "User Page", nullptr));
         date_lbl->setText(QApplication::translate("user_page", "11400/03/14  14:37", nullptr));
         minimize_btn->setText(QString());
         close_btn->setText(QString());

@@ -22,7 +22,14 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>User Page</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/icon/add_to_shopping_cart.ico</normaloff>:/icon/add_to_shopping_cart.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -71,6 +78,16 @@
         <property name="text">
          <string/>
         </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/icon/mini.ico</normaloff>:/icon/mini.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>35</height>
+         </size>
+        </property>
        </widget>
       </item>
       <item>
@@ -89,6 +106,16 @@
         </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/icon/close.ico</normaloff>:/icon/close.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>35</width>
+          <height>35</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -192,7 +219,7 @@
            </size>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="usesScrollButtons">
            <bool>true</bool>
@@ -1067,6 +1094,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

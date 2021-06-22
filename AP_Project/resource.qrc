@@ -2,6 +2,7 @@
     <qresource prefix="/image">
         <file>blurred-background-supermarket-aisle-with-products_62890-121.jpg</file>
         <file>156677927.jpg</file>
+        <file>grocery-cart-shutterstock_1620856499.jpg</file>
     </qresource>
     <qresource prefix="/icon">
         <file>close.ico</file>
@@ -10,5 +11,6 @@
         <file>unlock.ico</file>
         <file>User.ico</file>
         <file>About.ico</file>
+        <file>add_to_shopping_cart.ico</file>
     </qresource>
 </RCC>
