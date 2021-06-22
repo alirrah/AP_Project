@@ -185,6 +185,72 @@ void user_page::on_payment_btn_clicked()
     }
 }
 
+void user_page::on_passwordapply_btn_clicked()
+{
+    try
+    {
+        QString username = ui->username_txt->text();
+        QString oldpassword = ui->oldpassword_txt->text();
+        QString newpassword = ui->newpassword_txt->text();
+        QString repeatpassword = ui->repeatpassword_txt->text();
+        if(username == "" || oldpassword == "" || newpassword == "" || repeatpassword == "")
+            throw "Some infomation is blank. Enter complete information.";
+        if(newpassword != repeatpassword)
+            throw "New password and repeatition are not the same. Enter them the same as each other.";
+        if(username != information.get_username())
+            throw "Enter your username correctly.";
+        if(oldpassword != information.get_password())
+            throw "Password is incorrect. Please enter your password correctly.";
+        QVector<member> list;
+        member check;
+        QFile file("user.txt");
+        file.open(QFile::ReadWrite | QFile::Text);
+        if (!file.isOpen())
+            throw "File could not be opened.";
+        QTextStream ReadWrite(&file);
+        while (!ReadWrite.atEnd())
+        {
+            check.set_username(ReadWrite.readLine());
+            check.set_password(ReadWrite.readLine());
+            QString admin = ReadWrite.readLine();
+            check.set_admin(admin == "1" ? 1 : 0);
+            check.set_credit(ReadWrite.readLine().toDouble());
+            if (check.get_username() == username)
+            {
+                check.set_password(newpassword);
+                information.set_password(check.get_password());
+            }
+            list.push_back(check);
+        }
+        file.seek(0);
+        for(auto itr = list.begin(); itr != list.end(); ++itr)
+        {
+            ReadWrite << itr->get_username() + "\n";
+            ReadWrite << itr->get_password() + "\n";
+            ReadWrite << (itr->get_admin() == true ? "1\n" : "0\n");
+            ReadWrite << QString::number(itr->get_credit()) + "\n";
+        }
+        file.close();
+        QMessageBox::information(this, "Change", "Password changed successfully");
+        clear_password();
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+        clear_password();
+    }
+}
+
+void user_page::clear_password()
+{
+    ui->username_txt->clear();
+    ui->oldpassword_txt->clear();
+    ui->newpassword_txt->clear();
+    ui->repeatpassword_txt->clear();
+}
+
+
+
 void user_page::search()
 {
 

@@ -35,10 +35,10 @@ private slots:
     void mouseMoveEvent(QMouseEvent *event);
     void search();
     void showTime();
-
     void on_aboutme_btn_clicked();
-
     void on_payment_btn_clicked();
+    void on_passwordapply_btn_clicked();
+    void clear_password();
 
 private:
     Ui::user_page *ui;
