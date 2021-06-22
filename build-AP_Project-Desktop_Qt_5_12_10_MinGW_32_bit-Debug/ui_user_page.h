@@ -266,6 +266,7 @@ public:
         main_panel->setContentsMargins(-1, 0, -1, -1);
         tool_panel = new QFrame(back_panel);
         tool_panel->setObjectName(QString::fromUtf8("tool_panel"));
+        tool_panel->setMinimumSize(QSize(0, 545));
         tool_panel->setMaximumSize(QSize(400, 16777215));
         verticalLayout_2 = new QVBoxLayout(tool_panel);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
@@ -751,8 +752,13 @@ public:
 
 
         retranslateUi(user_page);
+        QObject::connect(name_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
+        QObject::connect(company_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
+        QObject::connect(group_rbtn, SIGNAL(clicked()), group_gbox, SLOT(hide()));
+        QObject::connect(price_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
+        QObject::connect(remain_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
 
-        tool_tabwidget->setCurrentIndex(1);
+        tool_tabwidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(user_page);

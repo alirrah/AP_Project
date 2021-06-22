@@ -288,6 +288,12 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
         </property>
         <item>
          <widget class="QFrame" name="tool_panel">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>545</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>400</width>
@@ -361,7 +367,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
               <enum>QTabWidget::Rounded</enum>
              </property>
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <property name="elideMode">
               <enum>Qt::ElideLeft</enum>
@@ -1554,5 +1560,86 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
  <resources>
   <include location="resource.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>name_rbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>group_gbox</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>76</x>
+     <y>399</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>120</x>
+     <y>222</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>company_rbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>group_gbox</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>428</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>82</x>
+     <y>225</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>group_rbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>group_gbox</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>469</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>354</x>
+     <y>272</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>price_rbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>group_gbox</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>157</x>
+     <y>494</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>201</x>
+     <y>272</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>remain_rbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>group_gbox</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>267</x>
+     <y>532</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>306</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
