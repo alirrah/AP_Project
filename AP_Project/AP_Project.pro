@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     login_page.cpp \
     member.cpp \
+    product.cpp \
     user_page.cpp
 
 HEADERS += \
@@ -21,6 +22,7 @@ HEADERS += \
     admin_page.h \
     login_page.h \
     member.h \
+    product.h \
     user_page.h
 
 FORMS += \

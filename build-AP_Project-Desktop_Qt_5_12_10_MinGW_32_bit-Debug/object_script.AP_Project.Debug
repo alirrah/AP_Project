@@ -3,6 +3,7 @@ debug/admin_page.o
 debug/main.o
 debug/login_page.o
 debug/member.o
+debug/product.o
 debug/user_page.o
 debug/qrc_resource.o
 debug/moc_aboutme_page.o
