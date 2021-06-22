@@ -38,6 +38,8 @@ private slots:
 
     void on_aboutme_btn_clicked();
 
+    void on_payment_btn_clicked();
+
 private:
     Ui::user_page *ui;
     member information;

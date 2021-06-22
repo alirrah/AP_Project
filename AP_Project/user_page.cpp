@@ -109,6 +109,82 @@ void user_page::on_aboutme_btn_clicked()
     about->show();
 }
 
+void user_page::on_payment_btn_clicked()
+{
+    try
+    {
+        if(cost == 0)
+            throw "You did not buy anything.";
+        QVector<member> list;
+        member check;
+        QFile file("user.txt");
+        file.open(QFile::ReadWrite | QFile::Text);
+        if (!file.isOpen())
+            throw "File could not be opened.";
+        QTextStream ReadWrite(&file);
+        while (!ReadWrite.atEnd())
+        {
+            check.set_username(ReadWrite.readLine());
+            check.set_password(ReadWrite.readLine());
+            QString admin = ReadWrite.readLine();
+            check.set_admin(admin == "1" ? 1 : 0);
+            check.set_credit(ReadWrite.readLine().toDouble());
+            if (check.get_username() == information.get_username())
+            {
+                check.set_credit(check.get_credit()-cost);
+                information.set_credit(check.get_credit());
+            }
+            list.push_back(check);
+        }
+        file.seek(0);
+        for(auto itr = list.begin(); itr != list.end(); ++itr)
+        {
+            ReadWrite << itr->get_username() + "\n";
+            ReadWrite << itr->get_password() + "\n";
+            ReadWrite << (itr->get_admin() == true ? "1\n" : "0\n");
+            ReadWrite << QString::number(itr->get_credit()) + "\n";
+        }
+        file.close();
+        QFile food("food.txt");
+        food.open(QFile::WriteOnly | QFile::Text);
+        if (!food.isOpen())
+            throw "File could not be opened.";
+        QTextStream Write(&food);
+        for(auto itr = products.begin(); itr != products.end(); ++itr)
+        {
+            Write << itr->get_name() + "\n";
+            Write << itr->get_company() + "\n";
+            Write << itr->get_group() + "\n";
+            Write << QString::number(itr->get_price()) + "\n";
+            Write << QString::number(itr->get_remain()) + "\n";
+        }
+        food.close();
+        QFile report("report.txt");
+        report.open(QIODevice::Append | QIODevice::Text);
+        if(!report.isOpen())
+            throw "File could not be opened.";
+        QTextStream write(&report);
+        write << information.get_username() + "\n";
+        write << QString::number(buys.size()) + "\n";
+        for(auto itr = buys.begin(); itr != buys.end(); ++itr)
+        {
+            write << itr->get_name() + "\n";
+            write << itr->get_company() + "\n";
+            write << itr->get_group() + "\n";
+            write << QString::number(itr->get_price()) + "\n";
+            write << QString::number(itr->get_number()) + "\n";
+        }
+        report.close();
+        QMessageBox::information(this, "Change", "Thanks for buying.");
+        this->close();
+    }
+    catch (char const *p)
+    {
+          QMessageBox::information(this, "Error", p);
+          this->close();
+    }
+}
+
 void user_page::search()
 {
 
