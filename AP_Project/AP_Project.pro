@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     aboutme_page.cpp \
     admin_page.cpp \
+    buy.cpp \
     main.cpp \
     login_page.cpp \
     member.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     aboutme_page.h \
     admin_page.h \
+    buy.h \
     login_page.h \
     member.h \
     product.h \

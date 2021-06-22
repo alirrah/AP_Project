@@ -1,5 +1,6 @@
 debug/aboutme_page.o
 debug/admin_page.o
+debug/buy.o
 debug/main.o
 debug/login_page.o
 debug/member.o
