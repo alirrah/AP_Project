@@ -101,8 +101,15 @@ void user_page::showTime()
     ui->date_lbl->setText(time);
 }
 
+//show about me page
+void user_page::on_aboutme_btn_clicked()
+{
+    about = new aboutme_page();
+    about->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    about->show();
+}
+
 void user_page::search()
 {
 
 }
-

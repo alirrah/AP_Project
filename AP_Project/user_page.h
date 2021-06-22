@@ -36,6 +36,8 @@ private slots:
     void search();
     void showTime();
 
+    void on_aboutme_btn_clicked();
+
 private:
     Ui::user_page *ui;
     member information;
