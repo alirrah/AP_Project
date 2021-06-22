@@ -159,7 +159,7 @@ void user_page::on_payment_btn_clicked()
             Write << QString::number(itr->get_remain()) + "\n";
         }
         food.close();
-        QFile report("report.txt");
+        QFile report("reportbuy.txt");
         report.open(QIODevice::Append | QIODevice::Text);
         if(!report.isOpen())
             throw "File could not be opened.";
@@ -247,6 +247,73 @@ void user_page::clear_password()
     ui->oldpassword_txt->clear();
     ui->newpassword_txt->clear();
     ui->repeatpassword_txt->clear();
+    ui->amount_txt->clear();
+    ui->card_txt->clear();
+    ui->cvv2_txt->clear();
+    ui->second_txt->clear();
+}
+
+void user_page::on_increasecredit_btn_clicked()
+{
+    try
+    {
+        QString amount = ui->amount_txt->text();
+        QString card = ui->card_txt->text();
+        QString cvv2 = ui->cvv2_txt->text();
+        QString secondpassword = ui->second_txt->text();
+        if(amount == "" || card == "" || cvv2 == "" || secondpassword == "")
+            throw "Some infomation is blank. Enter comlete information.";
+        if(amount.toDouble() <= 0)
+            throw "The amount must be positive.";
+        QVector<member> list;
+        member check;
+        QFile file("user.txt");
+        file.open(QFile::ReadWrite | QFile::Text);
+        if (!file.isOpen())
+            throw "File could not be opened.";
+        QTextStream ReadWrite(&file);
+        while (!ReadWrite.atEnd())
+        {
+            check.set_username(ReadWrite.readLine());
+            check.set_password(ReadWrite.readLine());
+            QString admin = ReadWrite.readLine();
+            check.set_admin(admin == "1" ? 1 : 0);
+            check.set_credit(ReadWrite.readLine().toDouble());
+            if (check.get_username() == information.get_username())
+            {
+                check.set_credit(check.get_credit() + amount.toDouble());
+                information.set_credit(check.get_credit());
+            }
+            list.push_back(check);
+        }
+        file.seek(0);
+        for(auto itr = list.begin(); itr != list.end(); ++itr)
+        {
+            ReadWrite << itr->get_username() + "\n";
+            ReadWrite << itr->get_password() + "\n";
+            ReadWrite << (itr->get_admin() == true ? "1\n" : "0\n");
+            ReadWrite << QString::number(itr->get_credit()) + "\n";
+        }
+        file.close();
+        QMessageBox::information(this, "Change", "Payment operation completed successfully.");
+        ui->cost_prossbar->setMaximum(check.get_credit());
+        ui->information_lbl->setText("User : " + information.get_username() + "\t Credit : " + QString::number(information.get_credit()) + "$");
+        clear_password();
+        QFile report("reportpay.txt");
+        report.open(QIODevice::Append | QIODevice::Text);
+        if(!report.isOpen())
+            throw "File could not be opened.";
+        QTextStream write(&report);
+        write << information.get_username() + "\n";
+        write << amount + "\n";
+        write << card + "\n";
+        report.close();
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+        clear_password();
+    }
 }
 
 

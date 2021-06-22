@@ -367,7 +367,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
               <enum>QTabWidget::Rounded</enum>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>1</number>
              </property>
              <property name="elideMode">
               <enum>Qt::ElideLeft</enum>

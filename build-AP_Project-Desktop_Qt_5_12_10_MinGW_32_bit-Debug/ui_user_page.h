@@ -758,7 +758,7 @@ public:
         QObject::connect(price_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
         QObject::connect(remain_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
 
-        tool_tabwidget->setCurrentIndex(2);
+        tool_tabwidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(user_page);
