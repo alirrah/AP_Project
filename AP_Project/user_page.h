@@ -1,10 +1,19 @@
 #ifndef USER_PAGE_H
 #define USER_PAGE_H
 
+#include <QTableWidgetItem>
+#include <QTableWidget>
+#include <QTimer>
+#include <QDate>
+#include <QTime>
+#include <QMessageBox>
 #include <QWidget>
+#include <QVector>
 #include <QMouseEvent>
 #include "member.h"
 #include "aboutme_page.h"
+#include "product.h"
+#include "buy.h"
 
 
 namespace Ui {
@@ -30,6 +39,9 @@ private:
     member information;
     aboutme_page *about;
     double cost;
+    QVector<product> products;
+    QVector<QString> group;
+    QVector<buy> buys;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
 
