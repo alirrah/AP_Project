@@ -109,6 +109,7 @@ void user_page::on_aboutme_btn_clicked()
     about->show();
 }
 
+//pay the bill and close the window
 void user_page::on_payment_btn_clicked()
 {
     try
@@ -159,6 +160,7 @@ void user_page::on_payment_btn_clicked()
             Write << QString::number(itr->get_remain()) + "\n";
         }
         food.close();
+        //write at the end of the reportbuy.txt for daily report
         QFile report("reportbuy.txt");
         report.open(QIODevice::Append | QIODevice::Text);
         if(!report.isOpen())
@@ -185,6 +187,7 @@ void user_page::on_payment_btn_clicked()
     }
 }
 
+//change password by user
 void user_page::on_passwordapply_btn_clicked()
 {
     try
@@ -231,17 +234,26 @@ void user_page::on_passwordapply_btn_clicked()
             ReadWrite << QString::number(itr->get_credit()) + "\n";
         }
         file.close();
+        //write at the end of the reportuser.txt for daily report
+        QFile report("reportuser.txt");
+        report.open(QIODevice::Append | QIODevice::Text);
+        if(!report.isOpen())
+            throw "File could not be opened.";
+        QTextStream write(&report);
+        write << information.get_username() + " changed his/her password\n";
+        report.close();
         QMessageBox::information(this, "Change", "Password changed successfully");
-        clear_password();
+        clear_txt();
     }
     catch (char const *p)
     {
         QMessageBox::information(this, "Error", p);
-        clear_password();
+        clear_txt();
     }
 }
 
-void user_page::clear_password()
+//clean line_edits
+void user_page::clear_txt()
 {
     ui->username_txt->clear();
     ui->oldpassword_txt->clear();
@@ -253,6 +265,7 @@ void user_page::clear_password()
     ui->second_txt->clear();
 }
 
+//for pay and increase your credit
 void user_page::on_increasecredit_btn_clicked()
 {
     try
@@ -295,27 +308,27 @@ void user_page::on_increasecredit_btn_clicked()
             ReadWrite << QString::number(itr->get_credit()) + "\n";
         }
         file.close();
-        QMessageBox::information(this, "Change", "Payment operation completed successfully.");
         ui->cost_prossbar->setMaximum(check.get_credit());
         ui->information_lbl->setText("User : " + information.get_username() + "\t Credit : " + QString::number(information.get_credit()) + "$");
-        clear_password();
-        QFile report("reportpay.txt");
+        //write at the end of the reportuser.txt for daily report
+        QFile report("reportuser.txt");
         report.open(QIODevice::Append | QIODevice::Text);
         if(!report.isOpen())
             throw "File could not be opened.";
         QTextStream write(&report);
-        write << information.get_username() + "\n";
-        write << amount + "\n";
-        write << card + "\n";
+        write << information.get_username() + " increased his/her credit by " + amount +"\n";
         report.close();
+        QMessageBox::information(this, "Change", "Payment operation completed successfully.");
+        clear_txt();
     }
     catch (char const *p)
     {
         QMessageBox::information(this, "Error", p);
-        clear_password();
+        clear_txt();
     }
 }
 
+//Double-Click to put the product in shopping_table
 void user_page::on_product_table_cellDoubleClicked(int row, int column)
 {
     try
@@ -376,6 +389,7 @@ void user_page::on_product_table_cellDoubleClicked(int row, int column)
     }
 }
 
+//Double-Click to remove product for shopping_table
 void user_page::on_shopping_table_cellDoubleClicked(int row, int column)
 {
     cost = 0;
@@ -394,9 +408,7 @@ void user_page::on_shopping_table_cellDoubleClicked(int row, int column)
         {
             itr->set_number(itr->get_number()-1);
             if(itr->get_number() <= 0)
-            {
                 buys.removeAt(i);
-            }
             break;
         }
         i++;
@@ -418,6 +430,7 @@ void user_page::on_shopping_table_cellDoubleClicked(int row, int column)
     ui->cost_prossbar->setValue(cost);
 }
 
+//function for search product
 void user_page::search()
 {
     QVector<product> search;

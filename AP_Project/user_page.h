@@ -38,7 +38,7 @@ private slots:
     void on_aboutme_btn_clicked();
     void on_payment_btn_clicked();
     void on_passwordapply_btn_clicked();
-    void clear_password();
+    void clear_txt();
     void on_increasecredit_btn_clicked();
     void on_product_table_cellDoubleClicked(int row, int column);
 

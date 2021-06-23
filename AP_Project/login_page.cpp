@@ -47,7 +47,6 @@ void login_page::showTime()
 //function for clear textbox
 void login_page::clear()
 {
-
     ui->password_txt->clear();
     ui->username_txt->clear();
     ui->admin_rbtn->setChecked(false);
@@ -95,6 +94,14 @@ void login_page::on_login_btn_clicked()
             {
                 QMessageBox::information(this, "Login", user + " entered successfully.");
                 file.close();
+                //write at the end of the reportuser.txt for daily report
+                QFile report("reportuser.txt");
+                report.open(QIODevice::Append | QIODevice::Text);
+                if(!report.isOpen())
+                    throw "File could not be opened.";
+                QTextStream write(&report);
+                write << check.get_username() + " logged in\n";
+                report.close();
                 this->close();
                 if(!isadmin)
                 {
@@ -140,14 +147,14 @@ void login_page::on_register_btn_clicked()
         file.open(QFile::ReadWrite | QFile::Text);
         if (!file.isOpen())
             throw "File could not be opened.";
-        QTextStream ReadFile(&file);
-        while (!ReadFile.atEnd())
+        QTextStream ReadWrite(&file);
+        while (!ReadWrite.atEnd())
         {
-            check.set_username(ReadFile.readLine());
-            check.set_password(ReadFile.readLine());
-            QString admin = ReadFile.readLine();
+            check.set_username(ReadWrite.readLine());
+            check.set_password(ReadWrite.readLine());
+            QString admin = ReadWrite.readLine();
             check.set_admin(admin == "1" ? 1 : 0);
-            check.set_credit(ReadFile.readLine().toDouble());
+            check.set_credit(ReadWrite.readLine().toDouble());
             if (check.get_username() == user)
                 throw "There is a user with this information. Please change your username.";
         }
@@ -155,14 +162,21 @@ void login_page::on_register_btn_clicked()
         check.set_password(pass);
         check.set_admin(isadmin);
         check.set_credit(20);
-        QTextStream WriteFile(&file);
-        WriteFile << check.get_username() + "\n";
-        WriteFile << check.get_password() + "\n";
-        WriteFile << (check.get_admin() == true ? "1\n" : "0\n");
-        WriteFile << "20\n";
+        ReadWrite << check.get_username() + "\n";
+        ReadWrite << check.get_password() + "\n";
+        ReadWrite << (check.get_admin() == true ? "1\n" : "0\n");
+        ReadWrite << "20\n";
         file.close();
+        //write at the end of the reportuser.txt for daily report
+        QFile report("reportuser.txt");
+        report.open(QIODevice::Append | QIODevice::Text);
+        if(!report.isOpen())
+            throw "File could not be opened.";
+        QTextStream write(&report);
+        write << check.get_username() + " registered\n";
+        report.close();
         QMessageBox::information(this, "Login", "Information successfully recorded.");
-        close();
+        this->close();
         if(!isadmin)
         {
             userpage = new user_page(check);

@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_user_page_t {
     QByteArrayData data[19];
-    char stringdata0[324];
+    char stringdata0[319];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,12 +44,12 @@ QT_MOC_LITERAL(9, 113, 8), // "showTime"
 QT_MOC_LITERAL(10, 122, 22), // "on_aboutme_btn_clicked"
 QT_MOC_LITERAL(11, 145, 22), // "on_payment_btn_clicked"
 QT_MOC_LITERAL(12, 168, 28), // "on_passwordapply_btn_clicked"
-QT_MOC_LITERAL(13, 197, 14), // "clear_password"
-QT_MOC_LITERAL(14, 212, 29), // "on_increasecredit_btn_clicked"
-QT_MOC_LITERAL(15, 242, 34), // "on_product_table_cellDoubleCl..."
-QT_MOC_LITERAL(16, 277, 3), // "row"
-QT_MOC_LITERAL(17, 281, 6), // "column"
-QT_MOC_LITERAL(18, 288, 35) // "on_shopping_table_cellDoubleC..."
+QT_MOC_LITERAL(13, 197, 9), // "clear_txt"
+QT_MOC_LITERAL(14, 207, 29), // "on_increasecredit_btn_clicked"
+QT_MOC_LITERAL(15, 237, 34), // "on_product_table_cellDoubleCl..."
+QT_MOC_LITERAL(16, 272, 3), // "row"
+QT_MOC_LITERAL(17, 276, 6), // "column"
+QT_MOC_LITERAL(18, 283, 35) // "on_shopping_table_cellDoubleC..."
 
     },
     "user_page\0on_close_btn_clicked\0\0"
@@ -57,8 +57,8 @@ QT_MOC_LITERAL(18, 288, 35) // "on_shopping_table_cellDoubleC..."
     "QMouseEvent*\0event\0mouseMoveEvent\0"
     "search\0showTime\0on_aboutme_btn_clicked\0"
     "on_payment_btn_clicked\0"
-    "on_passwordapply_btn_clicked\0"
-    "clear_password\0on_increasecredit_btn_clicked\0"
+    "on_passwordapply_btn_clicked\0clear_txt\0"
+    "on_increasecredit_btn_clicked\0"
     "on_product_table_cellDoubleClicked\0"
     "row\0column\0on_shopping_table_cellDoubleClicked"
 };
@@ -125,7 +125,7 @@ void user_page::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 6: _t->on_aboutme_btn_clicked(); break;
         case 7: _t->on_payment_btn_clicked(); break;
         case 8: _t->on_passwordapply_btn_clicked(); break;
-        case 9: _t->clear_password(); break;
+        case 9: _t->clear_txt(); break;
         case 10: _t->on_increasecredit_btn_clicked(); break;
         case 11: _t->on_product_table_cellDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 12: _t->on_shopping_table_cellDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
