@@ -131,7 +131,7 @@ public:
     {
         if (user_page->objectName().isEmpty())
             user_page->setObjectName(QString::fromUtf8("user_page"));
-        user_page->resize(1095, 689);
+        user_page->resize(1100, 700);
         user_page->setMinimumSize(QSize(0, 0));
         QFont font;
         font.setPointSize(12);

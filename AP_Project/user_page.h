@@ -41,7 +41,6 @@ private slots:
     void clear_txt();
     void on_increasecredit_btn_clicked();
     void on_product_table_cellDoubleClicked(int row, int column);
-
     void on_shopping_table_cellDoubleClicked(int row, int column);
 
 private:
@@ -54,7 +53,6 @@ private:
     QVector<buy> buys;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
-
 };
 
 #endif // USER_PAGE_H
