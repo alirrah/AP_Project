@@ -121,6 +121,7 @@ public:
         close_btn->setObjectName(QString::fromUtf8("close_btn"));
         close_btn->setMinimumSize(QSize(40, 40));
         close_btn->setMaximumSize(QSize(40, 40));
+        close_btn->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/icon/close.ico"), QSize(), QIcon::Normal, QIcon::Off);
         close_btn->setIcon(icon1);
@@ -228,6 +229,7 @@ public:
         ok_btn->setMinimumSize(QSize(80, 40));
         ok_btn->setMaximumSize(QSize(80, 40));
         ok_btn->setFont(font);
+        ok_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         button_panel->addWidget(ok_btn);
 

@@ -203,6 +203,8 @@ public:
         minimize_btn->setObjectName(QString::fromUtf8("minimize_btn"));
         minimize_btn->setMinimumSize(QSize(40, 40));
         minimize_btn->setMaximumSize(QSize(40, 40));
+        minimize_btn->setCursor(QCursor(Qt::PointingHandCursor));
+        minimize_btn->setMouseTracking(false);
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/icon/mini.ico"), QSize(), QIcon::Normal, QIcon::Off);
         minimize_btn->setIcon(icon1);
@@ -214,6 +216,7 @@ public:
         close_btn->setObjectName(QString::fromUtf8("close_btn"));
         close_btn->setMinimumSize(QSize(40, 40));
         close_btn->setMaximumSize(QSize(40, 40));
+        close_btn->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/icon/close.ico"), QSize(), QIcon::Normal, QIcon::Off);
         close_btn->setIcon(icon2);
@@ -341,6 +344,7 @@ public:
         name_rbtn->setObjectName(QString::fromUtf8("name_rbtn"));
         name_rbtn->setMinimumSize(QSize(0, 30));
         name_rbtn->setFont(font1);
+        name_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
         name_rbtn->setChecked(true);
 
         verticalLayout_9->addWidget(name_rbtn);
@@ -349,6 +353,8 @@ public:
         company_rbtn->setObjectName(QString::fromUtf8("company_rbtn"));
         company_rbtn->setMinimumSize(QSize(0, 30));
         company_rbtn->setFont(font1);
+        company_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
+        company_rbtn->setMouseTracking(true);
 
         verticalLayout_9->addWidget(company_rbtn);
 
@@ -356,6 +362,7 @@ public:
         group_rbtn->setObjectName(QString::fromUtf8("group_rbtn"));
         group_rbtn->setMinimumSize(QSize(0, 30));
         group_rbtn->setFont(font1);
+        group_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_9->addWidget(group_rbtn);
 
@@ -363,12 +370,14 @@ public:
         price_rbtn->setObjectName(QString::fromUtf8("price_rbtn"));
         price_rbtn->setMinimumSize(QSize(0, 30));
         price_rbtn->setFont(font1);
+        price_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_9->addWidget(price_rbtn);
 
         remain_rbtn = new QRadioButton(by_gbox);
         remain_rbtn->setObjectName(QString::fromUtf8("remain_rbtn"));
         remain_rbtn->setFont(font1);
+        remain_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_9->addWidget(remain_rbtn);
 
@@ -531,6 +540,7 @@ public:
         increasecredit_btn->setObjectName(QString::fromUtf8("increasecredit_btn"));
         increasecredit_btn->setMinimumSize(QSize(0, 30));
         increasecredit_btn->setFont(font1);
+        increasecredit_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_6->addWidget(increasecredit_btn);
 
@@ -655,6 +665,7 @@ public:
         passwordapply_btn->setObjectName(QString::fromUtf8("passwordapply_btn"));
         passwordapply_btn->setMinimumSize(QSize(0, 30));
         passwordapply_btn->setFont(font1);
+        passwordapply_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_4->addWidget(passwordapply_btn);
 
@@ -670,6 +681,7 @@ public:
         aboutme_btn->setObjectName(QString::fromUtf8("aboutme_btn"));
         aboutme_btn->setMinimumSize(QSize(0, 30));
         aboutme_btn->setFont(font1);
+        aboutme_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_2->addWidget(aboutme_btn);
 
@@ -677,6 +689,7 @@ public:
         payment_btn->setObjectName(QString::fromUtf8("payment_btn"));
         payment_btn->setMinimumSize(QSize(0, 30));
         payment_btn->setFont(font1);
+        payment_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_2->addWidget(payment_btn);
 
@@ -716,6 +729,7 @@ public:
         product_table->setEnabled(true);
         product_table->setMaximumSize(QSize(651, 16777215));
         product_table->setFont(font1);
+        product_table->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
         product_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
         product_table->horizontalHeader()->setCascadingSectionResizes(false);
         product_table->horizontalHeader()->setHighlightSections(true);
@@ -751,6 +765,7 @@ public:
         shopping_table->setHorizontalHeaderItem(4, __qtablewidgetitem9);
         shopping_table->setObjectName(QString::fromUtf8("shopping_table"));
         shopping_table->setFont(font1);
+        shopping_table->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
         shopping_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
         shopping_table->horizontalHeader()->setStretchLastSection(true);
 
@@ -773,7 +788,7 @@ public:
         QObject::connect(price_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
         QObject::connect(remain_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
 
-        tool_tabwidget->setCurrentIndex(0);
+        tool_tabwidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(user_page);

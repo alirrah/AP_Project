@@ -253,6 +253,7 @@ public:
         admin_rbtn->setMinimumSize(QSize(0, 30));
         admin_rbtn->setMaximumSize(QSize(16777215, 30));
         admin_rbtn->setFont(font);
+        admin_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
         admin_rbtn->setAcceptDrops(false);
 
         admin_panel->addWidget(admin_rbtn);
