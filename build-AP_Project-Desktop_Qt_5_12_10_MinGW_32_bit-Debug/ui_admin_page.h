@@ -215,6 +215,7 @@ public:
         tool_tab = new QTabWidget(product_tab);
         tool_tab->setObjectName(QString::fromUtf8("tool_tab"));
         tool_tab->setMaximumSize(QSize(400, 16777215));
+        tool_tab->setFont(font);
         search_tab = new QWidget();
         search_tab->setObjectName(QString::fromUtf8("search_tab"));
         verticalLayout_3 = new QVBoxLayout(search_tab);
@@ -225,11 +226,13 @@ public:
 
         group_gbox = new QGroupBox(search_tab);
         group_gbox->setObjectName(QString::fromUtf8("group_gbox"));
+        group_gbox->setFont(font);
         verticalLayout_4 = new QVBoxLayout(group_gbox);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         group_combox = new QComboBox(group_gbox);
         group_combox->setObjectName(QString::fromUtf8("group_combox"));
         group_combox->setMinimumSize(QSize(0, 30));
+        group_combox->setFont(font);
 
         verticalLayout_4->addWidget(group_combox);
 
@@ -239,6 +242,8 @@ public:
         word_txt = new QLineEdit(search_tab);
         word_txt->setObjectName(QString::fromUtf8("word_txt"));
         word_txt->setMinimumSize(QSize(0, 30));
+        word_txt->setFont(font);
+        word_txt->setAlignment(Qt::AlignCenter);
 
         verticalLayout_3->addWidget(word_txt);
 
@@ -248,35 +253,47 @@ public:
 
         by_gbox = new QGroupBox(search_tab);
         by_gbox->setObjectName(QString::fromUtf8("by_gbox"));
+        by_gbox->setFont(font);
         verticalLayout_5 = new QVBoxLayout(by_gbox);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         name_rbtn = new QRadioButton(by_gbox);
         name_rbtn->setObjectName(QString::fromUtf8("name_rbtn"));
         name_rbtn->setMinimumSize(QSize(0, 30));
+        name_rbtn->setFont(font);
+        name_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
+        name_rbtn->setChecked(true);
 
         verticalLayout_5->addWidget(name_rbtn);
 
         company_rbtn = new QRadioButton(by_gbox);
         company_rbtn->setObjectName(QString::fromUtf8("company_rbtn"));
         company_rbtn->setMinimumSize(QSize(0, 30));
+        company_rbtn->setFont(font);
+        company_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_5->addWidget(company_rbtn);
 
         group_rbtn = new QRadioButton(by_gbox);
         group_rbtn->setObjectName(QString::fromUtf8("group_rbtn"));
         group_rbtn->setMinimumSize(QSize(0, 30));
+        group_rbtn->setFont(font);
+        group_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_5->addWidget(group_rbtn);
 
         price_rbtn = new QRadioButton(by_gbox);
         price_rbtn->setObjectName(QString::fromUtf8("price_rbtn"));
         price_rbtn->setMinimumSize(QSize(0, 30));
+        price_rbtn->setFont(font);
+        price_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_5->addWidget(price_rbtn);
 
         remain_rbtn = new QRadioButton(by_gbox);
         remain_rbtn->setObjectName(QString::fromUtf8("remain_rbtn"));
         remain_rbtn->setMinimumSize(QSize(0, 30));
+        remain_rbtn->setFont(font);
+        remain_rbtn->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_5->addWidget(remain_rbtn);
 
@@ -302,6 +319,7 @@ public:
         name_lbl = new QLabel(tool_tab_2);
         name_lbl->setObjectName(QString::fromUtf8("name_lbl"));
         name_lbl->setMinimumSize(QSize(0, 30));
+        name_lbl->setFont(font);
 
         name_panel->addWidget(name_lbl);
 
@@ -309,6 +327,7 @@ public:
         name_txt->setObjectName(QString::fromUtf8("name_txt"));
         name_txt->setMinimumSize(QSize(0, 30));
         name_txt->setMaximumSize(QSize(306, 16777215));
+        name_txt->setAlignment(Qt::AlignCenter);
 
         name_panel->addWidget(name_txt);
 
@@ -321,6 +340,7 @@ public:
         company_lbl = new QLabel(tool_tab_2);
         company_lbl->setObjectName(QString::fromUtf8("company_lbl"));
         company_lbl->setMinimumSize(QSize(0, 30));
+        company_lbl->setFont(font);
 
         company_panel->addWidget(company_lbl);
 
@@ -328,6 +348,7 @@ public:
         company_txt->setObjectName(QString::fromUtf8("company_txt"));
         company_txt->setMinimumSize(QSize(0, 30));
         company_txt->setMaximumSize(QSize(306, 16777215));
+        company_txt->setAlignment(Qt::AlignCenter);
 
         company_panel->addWidget(company_txt);
 
@@ -340,6 +361,7 @@ public:
         group_lbl = new QLabel(tool_tab_2);
         group_lbl->setObjectName(QString::fromUtf8("group_lbl"));
         group_lbl->setMinimumSize(QSize(0, 30));
+        group_lbl->setFont(font);
 
         group_panel->addWidget(group_lbl);
 
@@ -347,6 +369,7 @@ public:
         group_txt->setObjectName(QString::fromUtf8("group_txt"));
         group_txt->setMinimumSize(QSize(0, 30));
         group_txt->setMaximumSize(QSize(306, 16777215));
+        group_txt->setAlignment(Qt::AlignCenter);
 
         group_panel->addWidget(group_txt);
 
@@ -359,6 +382,7 @@ public:
         price_lbl = new QLabel(tool_tab_2);
         price_lbl->setObjectName(QString::fromUtf8("price_lbl"));
         price_lbl->setMinimumSize(QSize(0, 30));
+        price_lbl->setFont(font);
 
         price_panel->addWidget(price_lbl);
 
@@ -366,6 +390,7 @@ public:
         price_txt->setObjectName(QString::fromUtf8("price_txt"));
         price_txt->setMinimumSize(QSize(0, 30));
         price_txt->setMaximumSize(QSize(306, 16777215));
+        price_txt->setAlignment(Qt::AlignCenter);
 
         price_panel->addWidget(price_txt);
 
@@ -378,6 +403,7 @@ public:
         remain_lbl = new QLabel(tool_tab_2);
         remain_lbl->setObjectName(QString::fromUtf8("remain_lbl"));
         remain_lbl->setMinimumSize(QSize(0, 30));
+        remain_lbl->setFont(font);
 
         remain_panel->addWidget(remain_lbl);
 
@@ -385,6 +411,7 @@ public:
         remain_txt->setObjectName(QString::fromUtf8("remain_txt"));
         remain_txt->setMinimumSize(QSize(0, 30));
         remain_txt->setMaximumSize(QSize(306, 16777215));
+        remain_txt->setAlignment(Qt::AlignCenter);
 
         remain_panel->addWidget(remain_txt);
 
@@ -400,18 +427,24 @@ public:
         insert_btn = new QPushButton(tool_tab_2);
         insert_btn->setObjectName(QString::fromUtf8("insert_btn"));
         insert_btn->setMinimumSize(QSize(0, 30));
+        insert_btn->setFont(font);
+        insert_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout->addWidget(insert_btn, 0, 0, 1, 1);
 
         edit_btn = new QPushButton(tool_tab_2);
         edit_btn->setObjectName(QString::fromUtf8("edit_btn"));
         edit_btn->setMinimumSize(QSize(0, 30));
+        edit_btn->setFont(font);
+        edit_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout->addWidget(edit_btn, 0, 1, 1, 1);
 
         delete_btn = new QPushButton(tool_tab_2);
         delete_btn->setObjectName(QString::fromUtf8("delete_btn"));
         delete_btn->setMinimumSize(QSize(0, 30));
+        delete_btn->setFont(font);
+        delete_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout->addWidget(delete_btn, 1, 0, 1, 2);
 
@@ -447,7 +480,10 @@ public:
         __qtablewidgetitem4->setTextAlignment(Qt::AlignCenter);
         product_table->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         product_table->setObjectName(QString::fromUtf8("product_table"));
+        product_table->setFont(font);
+        product_table->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
         product_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        product_table->setSelectionBehavior(QAbstractItemView::SelectRows);
         product_table->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout_2->addWidget(product_table);
@@ -462,11 +498,13 @@ public:
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         report_gbox = new QGroupBox(user_tab);
         report_gbox->setObjectName(QString::fromUtf8("report_gbox"));
+        report_gbox->setFont(font);
         verticalLayout_8 = new QVBoxLayout(report_gbox);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         report_txt = new QTextEdit(report_gbox);
         report_txt->setObjectName(QString::fromUtf8("report_txt"));
         report_txt->setEnabled(true);
+        report_txt->setFont(font);
         report_txt->setFrameShadow(QFrame::Sunken);
         report_txt->setLineWidth(1);
         report_txt->setTextInteractionFlags(Qt::NoTextInteraction);
@@ -479,12 +517,16 @@ public:
         report_btn = new QPushButton(report_gbox);
         report_btn->setObjectName(QString::fromUtf8("report_btn"));
         report_btn->setMinimumSize(QSize(0, 30));
+        report_btn->setFont(font);
+        report_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout_2->addWidget(report_btn, 0, 0, 1, 1);
 
         save_btn = new QPushButton(report_gbox);
         save_btn->setObjectName(QString::fromUtf8("save_btn"));
         save_btn->setMinimumSize(QSize(0, 30));
+        save_btn->setFont(font);
+        save_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout_2->addWidget(save_btn, 0, 1, 1, 1);
 
@@ -496,6 +538,7 @@ public:
 
         user_gbox = new QGroupBox(user_tab);
         user_gbox->setObjectName(QString::fromUtf8("user_gbox"));
+        user_gbox->setFont(font);
         verticalLayout_6 = new QVBoxLayout(user_gbox);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         user_table = new QTableWidget(user_gbox);
@@ -508,7 +551,10 @@ public:
         __qtablewidgetitem6->setTextAlignment(Qt::AlignCenter);
         user_table->setHorizontalHeaderItem(1, __qtablewidgetitem6);
         user_table->setObjectName(QString::fromUtf8("user_table"));
+        user_table->setFont(font);
+        user_table->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
         user_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        user_table->setSelectionBehavior(QAbstractItemView::SelectRows);
         user_table->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout_6->addWidget(user_table);
@@ -526,7 +572,7 @@ public:
 
         retranslateUi(admin_page);
 
-        main_tab->setCurrentIndex(0);
+        main_tab->setCurrentIndex(1);
         tool_tab->setCurrentIndex(0);
 
 
@@ -537,9 +583,22 @@ public:
     {
         admin_page->setWindowTitle(QApplication::translate("admin_page", "Form", nullptr));
         date_lbl->setText(QApplication::translate("admin_page", "1400/04/04  16:54", nullptr));
+#ifndef QT_NO_TOOLTIP
+        minimize_btn->setToolTip(QApplication::translate("admin_page", "Minimize", nullptr));
+#endif // QT_NO_TOOLTIP
         minimize_btn->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        close_btn->setToolTip(QApplication::translate("admin_page", "Close", nullptr));
+#endif // QT_NO_TOOLTIP
         close_btn->setText(QString());
         group_gbox->setTitle(QApplication::translate("admin_page", "Group", nullptr));
+#ifndef QT_NO_TOOLTIP
+        group_combox->setToolTip(QApplication::translate("admin_page", "Click to Show Spesific Group", nullptr));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_TOOLTIP
+        word_txt->setToolTip(QApplication::translate("admin_page", "Enter the Word for Search", nullptr));
+#endif // QT_NO_TOOLTIP
+        word_txt->setPlaceholderText(QApplication::translate("admin_page", "Word for Search", nullptr));
         by_gbox->setTitle(QApplication::translate("admin_page", "By", nullptr));
         name_rbtn->setText(QApplication::translate("admin_page", "Name", nullptr));
         company_rbtn->setText(QApplication::translate("admin_page", "Company", nullptr));
@@ -552,8 +611,17 @@ public:
         group_lbl->setText(QApplication::translate("admin_page", "Group :", nullptr));
         price_lbl->setText(QApplication::translate("admin_page", "Price :", nullptr));
         remain_lbl->setText(QApplication::translate("admin_page", "Remain :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        insert_btn->setToolTip(QApplication::translate("admin_page", "Click to Insert Product", nullptr));
+#endif // QT_NO_TOOLTIP
         insert_btn->setText(QApplication::translate("admin_page", "Insert", nullptr));
+#ifndef QT_NO_TOOLTIP
+        edit_btn->setToolTip(QApplication::translate("admin_page", "Click to Edit Product", nullptr));
+#endif // QT_NO_TOOLTIP
         edit_btn->setText(QApplication::translate("admin_page", "Edit", nullptr));
+#ifndef QT_NO_TOOLTIP
+        delete_btn->setToolTip(QApplication::translate("admin_page", "Click to Delete Product", nullptr));
+#endif // QT_NO_TOOLTIP
         delete_btn->setText(QApplication::translate("admin_page", "Delete", nullptr));
         tool_tab->setTabText(tool_tab->indexOf(tool_tab_2), QApplication::translate("admin_page", "Edit/Delete/Insert", nullptr));
         QTableWidgetItem *___qtablewidgetitem = product_table->horizontalHeaderItem(0);
@@ -566,15 +634,27 @@ public:
         ___qtablewidgetitem3->setText(QApplication::translate("admin_page", "Price", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = product_table->horizontalHeaderItem(4);
         ___qtablewidgetitem4->setText(QApplication::translate("admin_page", "Remain", nullptr));
+#ifndef QT_NO_TOOLTIP
+        product_table->setToolTip(QApplication::translate("admin_page", "Double-Click to Fill Lined Edits", nullptr));
+#endif // QT_NO_TOOLTIP
         main_tab->setTabText(main_tab->indexOf(product_tab), QApplication::translate("admin_page", "Products", nullptr));
         report_gbox->setTitle(QApplication::translate("admin_page", "Daily Report", nullptr));
+#ifndef QT_NO_TOOLTIP
+        report_btn->setToolTip(QApplication::translate("admin_page", "Click to Finish the Day and Show Report", nullptr));
+#endif // QT_NO_TOOLTIP
         report_btn->setText(QApplication::translate("admin_page", "End of the Day", nullptr));
+#ifndef QT_NO_TOOLTIP
+        save_btn->setToolTip(QApplication::translate("admin_page", "Click to Save the Report", nullptr));
+#endif // QT_NO_TOOLTIP
         save_btn->setText(QApplication::translate("admin_page", "Save", nullptr));
         user_gbox->setTitle(QApplication::translate("admin_page", "Store Users", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = user_table->horizontalHeaderItem(0);
         ___qtablewidgetitem5->setText(QApplication::translate("admin_page", "Username", nullptr));
         QTableWidgetItem *___qtablewidgetitem6 = user_table->horizontalHeaderItem(1);
         ___qtablewidgetitem6->setText(QApplication::translate("admin_page", "Credit", nullptr));
+#ifndef QT_NO_TOOLTIP
+        user_table->setToolTip(QApplication::translate("admin_page", "Double-Click to Remove User", nullptr));
+#endif // QT_NO_TOOLTIP
         main_tab->setTabText(main_tab->indexOf(user_tab), QApplication::translate("admin_page", "User/ Reports", nullptr));
     } // retranslateUi
 

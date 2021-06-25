@@ -376,7 +376,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
               <enum>QTabWidget::Rounded</enum>
              </property>
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <property name="elideMode">
               <enum>Qt::ElideLeft</enum>
@@ -1528,6 +1528,9 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
              </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
+             </property>
              <attribute name="horizontalHeaderCascadingSectionResizes">
               <bool>false</bool>
              </attribute>
@@ -1612,6 +1615,9 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
              </property>
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
+             </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
              </property>
              <attribute name="horizontalHeaderStretchLastSection">
               <bool>true</bool>

@@ -2,7 +2,7 @@ Milk(0.8 Lit)
 SUPERIOR
 Dairy
 1
-30
+24
 Yogurt
 Yoplat
 Dairy
@@ -12,17 +12,17 @@ Chicken Breasts(1 Kilogram)
 Mmeat
 Meat
 3.56
-55
+50
 Potato(1 Kilogram)
 aliveg
 Vegtables
 1.23
-20
+19
 Apple(1 Kilogram)
 res
 Furit
 2.45
-55
+54
 Bacon sliced(1 Kilogram)
 PRESSATA
 Sausages

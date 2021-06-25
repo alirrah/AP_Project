@@ -731,6 +731,7 @@ public:
         product_table->setFont(font1);
         product_table->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
         product_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        product_table->setSelectionBehavior(QAbstractItemView::SelectRows);
         product_table->horizontalHeader()->setCascadingSectionResizes(false);
         product_table->horizontalHeader()->setHighlightSections(true);
         product_table->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
@@ -767,6 +768,7 @@ public:
         shopping_table->setFont(font1);
         shopping_table->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
         shopping_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        shopping_table->setSelectionBehavior(QAbstractItemView::SelectRows);
         shopping_table->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout_3->addWidget(shopping_table);
@@ -788,7 +790,7 @@ public:
         QObject::connect(price_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
         QObject::connect(remain_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
 
-        tool_tabwidget->setCurrentIndex(1);
+        tool_tabwidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(user_page);
