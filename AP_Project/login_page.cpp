@@ -40,7 +40,11 @@ void login_page::on_minimize_btn_clicked()
 //show current time in date_lbl
 void login_page::showTime()
 {
-    QString time = QDate::currentDate().toString("yyyy/MM/dd") + "  " + QTime::currentTime().toString("hh:mm:ss");
+    QLocale loc = QLocale(QLocale::English, QLocale::UnitedStates);
+    QString time = loc.toString(QDate::currentDate());
+    time += "  " + (loc.toString(QTime::currentTime().hour()).size() ==2 ? loc.toString(QTime::currentTime().hour()) : "0" +loc.toString(QTime::currentTime().hour()));
+    time += ":" + (loc.toString(QTime::currentTime().minute()).size() ==2 ? loc.toString(QTime::currentTime().minute()) : "0" +loc.toString(QTime::currentTime().minute()));
+    time += ":" + (loc.toString(QTime::currentTime().second()).size() ==2 ? loc.toString(QTime::currentTime().second()) : "0" +loc.toString(QTime::currentTime().second()));
     ui->date_lbl->setText(time);
 }
 
@@ -100,7 +104,8 @@ void login_page::on_login_btn_clicked()
                 if(!report.isOpen())
                     throw "File could not be opened.";
                 QTextStream write(&report);
-                write << check.get_username() + " logged in\n";
+                write << ui->date_lbl->text() + "\n" ;
+                write << check.get_username() + " logged in " + (isadmin ? "as admin\n" : "as user\n");
                 report.close();
                 this->close();
                 if(!isadmin)
@@ -173,7 +178,8 @@ void login_page::on_register_btn_clicked()
         if(!report.isOpen())
             throw "File could not be opened.";
         QTextStream write(&report);
-        write << check.get_username() + " registered\n";
+        write << ui->date_lbl->text() + "\n" ;
+        write << check.get_username() + " registerd " + (isadmin ? "as admin\n" : "as user\n");
         report.close();
         QMessageBox::information(this, "Login", "Information successfully recorded.");
         this->close();

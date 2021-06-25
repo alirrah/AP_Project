@@ -1,3 +1,20 @@
-ali logged in
+Friday, June 25, 2021  12:02:40
+ali registerd as user
+Friday, June 25, 2021  12:07:11
+ali logged in as user
+Friday, June 25, 2021  12:08:21
+ali logged in as user
+Friday, June 25, 2021  12:08:32
 ali changed his/her password
-ali increased his/her credit by 1
+Friday, June 25, 2021  12:08:49
+ali increased his/her credit by 30
+Friday, June 25, 2021  12:12:12
+ali logged in as user
+Friday, June 25, 2021  12:13:47
+ali logged in as user
+Friday, June 25, 2021  12:14:30
+ali logged in as user
+Friday, June 25, 2021  12:15:01
+ali increased his/her credit by 5
+Friday, June 25, 2021  12:15:32
+ali changed his/her password

@@ -131,7 +131,7 @@ public:
     {
         if (user_page->objectName().isEmpty())
             user_page->setObjectName(QString::fromUtf8("user_page"));
-        user_page->resize(1000, 689);
+        user_page->resize(1095, 689);
         user_page->setMinimumSize(QSize(0, 0));
         QFont font;
         font.setPointSize(12);
@@ -249,7 +249,7 @@ public:
         cost_prossbar = new QProgressBar(information_panel);
         cost_prossbar->setObjectName(QString::fromUtf8("cost_prossbar"));
         cost_prossbar->setMinimumSize(QSize(0, 30));
-        cost_prossbar->setValue(24);
+        cost_prossbar->setValue(0);
         cost_prossbar->setTextVisible(false);
 
         horizontalLayout_2->addWidget(cost_prossbar);
@@ -341,6 +341,7 @@ public:
         name_rbtn->setObjectName(QString::fromUtf8("name_rbtn"));
         name_rbtn->setMinimumSize(QSize(0, 30));
         name_rbtn->setFont(font1);
+        name_rbtn->setChecked(true);
 
         verticalLayout_9->addWidget(name_rbtn);
 
@@ -400,6 +401,7 @@ public:
         amount_txt->setObjectName(QString::fromUtf8("amount_txt"));
         amount_txt->setMinimumSize(QSize(0, 30));
         amount_txt->setMaximumSize(QSize(222, 16777215));
+        amount_txt->setFont(font1);
         amount_txt->setAlignment(Qt::AlignCenter);
 
         amount_panel->addWidget(amount_txt);
@@ -424,6 +426,7 @@ public:
         card_txt->setObjectName(QString::fromUtf8("card_txt"));
         card_txt->setMinimumSize(QSize(0, 30));
         card_txt->setMaximumSize(QSize(222, 16777215));
+        card_txt->setFont(font1);
         card_txt->setMaxLength(16);
         card_txt->setAlignment(Qt::AlignCenter);
 
@@ -449,6 +452,7 @@ public:
         cvv2_txt->setObjectName(QString::fromUtf8("cvv2_txt"));
         cvv2_txt->setMinimumSize(QSize(222, 30));
         cvv2_txt->setMaximumSize(QSize(222, 16777215));
+        cvv2_txt->setFont(font1);
         cvv2_txt->setAlignment(Qt::AlignCenter);
 
         cvv2_panel->addWidget(cvv2_txt);
@@ -465,6 +469,7 @@ public:
         date_lbl_2 = new QLabel(credit_tab);
         date_lbl_2->setObjectName(QString::fromUtf8("date_lbl_2"));
         date_lbl_2->setMinimumSize(QSize(0, 30));
+        date_lbl_2->setFont(font1);
 
         date_panel->addWidget(date_lbl_2);
 
@@ -472,6 +477,8 @@ public:
         date_txt->setObjectName(QString::fromUtf8("date_txt"));
         date_txt->setMinimumSize(QSize(222, 30));
         date_txt->setMaximumSize(QSize(222, 16777215));
+        date_txt->setFont(font1);
+        date_txt->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         date_txt->setWrapping(false);
         date_txt->setFrame(true);
         date_txt->setAlignment(Qt::AlignCenter);
@@ -499,6 +506,7 @@ public:
         secondpassword_lbl = new QLabel(credit_tab);
         secondpassword_lbl->setObjectName(QString::fromUtf8("secondpassword_lbl"));
         secondpassword_lbl->setMinimumSize(QSize(0, 30));
+        secondpassword_lbl->setFont(font1);
 
         second_panel->addWidget(secondpassword_lbl);
 
@@ -506,6 +514,7 @@ public:
         second_txt->setObjectName(QString::fromUtf8("second_txt"));
         second_txt->setMinimumSize(QSize(222, 30));
         second_txt->setMaximumSize(QSize(222, 16777215));
+        second_txt->setFont(font1);
         second_txt->setEchoMode(QLineEdit::Password);
         second_txt->setAlignment(Qt::AlignCenter);
 
@@ -521,6 +530,7 @@ public:
         increasecredit_btn = new QPushButton(credit_tab);
         increasecredit_btn->setObjectName(QString::fromUtf8("increasecredit_btn"));
         increasecredit_btn->setMinimumSize(QSize(0, 30));
+        increasecredit_btn->setFont(font1);
 
         verticalLayout_6->addWidget(increasecredit_btn);
 
@@ -628,6 +638,7 @@ public:
         repeatpassword_txt->setObjectName(QString::fromUtf8("repeatpassword_txt"));
         repeatpassword_txt->setMinimumSize(QSize(30, 30));
         repeatpassword_txt->setMaximumSize(QSize(225, 16777215));
+        repeatpassword_txt->setFont(font1);
         repeatpassword_txt->setEchoMode(QLineEdit::Password);
         repeatpassword_txt->setAlignment(Qt::AlignCenter);
 
@@ -702,7 +713,10 @@ public:
         __qtablewidgetitem4->setTextAlignment(Qt::AlignCenter);
         product_table->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         product_table->setObjectName(QString::fromUtf8("product_table"));
+        product_table->setEnabled(true);
+        product_table->setMaximumSize(QSize(651, 16777215));
         product_table->setFont(font1);
+        product_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
         product_table->horizontalHeader()->setCascadingSectionResizes(false);
         product_table->horizontalHeader()->setHighlightSections(true);
         product_table->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
@@ -737,6 +751,7 @@ public:
         shopping_table->setHorizontalHeaderItem(4, __qtablewidgetitem9);
         shopping_table->setObjectName(QString::fromUtf8("shopping_table"));
         shopping_table->setFont(font1);
+        shopping_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
         shopping_table->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout_3->addWidget(shopping_table);
@@ -758,7 +773,7 @@ public:
         QObject::connect(price_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
         QObject::connect(remain_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
 
-        tool_tabwidget->setCurrentIndex(1);
+        tool_tabwidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(user_page);

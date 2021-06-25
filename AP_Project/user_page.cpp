@@ -97,7 +97,11 @@ void user_page::mouseMoveEvent(QMouseEvent *event)
 //show current time in time_lbl
 void user_page::showTime()
 {
-    QString time = QDate::currentDate().toString("yyyy/MM/dd") + "  " + QTime::currentTime().toString("hh:mm:ss");
+    QLocale loc = QLocale(QLocale::English, QLocale::UnitedStates);
+    QString time = loc.toString(QDate::currentDate());
+    time += "  " + (loc.toString(QTime::currentTime().hour()).size() ==2 ? loc.toString(QTime::currentTime().hour()) : "0" +loc.toString(QTime::currentTime().hour()));
+    time += ":" + (loc.toString(QTime::currentTime().minute()).size() ==2 ? loc.toString(QTime::currentTime().minute()) : "0" +loc.toString(QTime::currentTime().minute()));
+    time += ":" + (loc.toString(QTime::currentTime().second()).size() ==2 ? loc.toString(QTime::currentTime().second()) : "0" +loc.toString(QTime::currentTime().second()));
     ui->date_lbl->setText(time);
 }
 
@@ -166,6 +170,7 @@ void user_page::on_payment_btn_clicked()
         if(!report.isOpen())
             throw "File could not be opened.";
         QTextStream write(&report);
+        write << ui->date_lbl->text() + "\n";
         write << information.get_username() + "\n";
         write << QString::number(buys.size()) + "\n";
         for(auto itr = buys.begin(); itr != buys.end(); ++itr)
@@ -240,6 +245,7 @@ void user_page::on_passwordapply_btn_clicked()
         if(!report.isOpen())
             throw "File could not be opened.";
         QTextStream write(&report);
+        write << ui->date_lbl->text() + "\n";
         write << information.get_username() + " changed his/her password\n";
         report.close();
         QMessageBox::information(this, "Change", "Password changed successfully");
@@ -316,6 +322,7 @@ void user_page::on_increasecredit_btn_clicked()
         if(!report.isOpen())
             throw "File could not be opened.";
         QTextStream write(&report);
+        write << ui->date_lbl->text() + "\n";
         write << information.get_username() + " increased his/her credit by " + amount +"\n";
         report.close();
         QMessageBox::information(this, "Change", "Payment operation completed successfully.");

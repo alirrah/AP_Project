@@ -1,0 +1,40 @@
+Milk(0.8 Lit)
+SUPERIOR
+Dairy
+1
+30
+Yogurt
+Yoplat
+Dairy
+0.8
+50
+Chicken Breasts(1 Kilogram)
+Mmeat
+Meat
+3.56
+55
+Potato(1 Kilogram)
+aliveg
+Vegtables
+1.23
+20
+Apple(1 Kilogram)
+res
+Furit
+2.45
+55
+Bacon sliced(1 Kilogram)
+PRESSATA
+Sausages
+15
+23
+Hard cheeses(1 Kilogram)
+EDAM
+Cheeses
+27.54
+89
+Buns
+Sbed
+Bread
+0.86
+34

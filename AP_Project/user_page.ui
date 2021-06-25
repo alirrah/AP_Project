@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>1095</width>
     <height>689</height>
    </rect>
   </property>
@@ -258,7 +258,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
             </size>
            </property>
            <property name="value">
-            <number>24</number>
+            <number>0</number>
            </property>
            <property name="textVisible">
             <bool>false</bool>
@@ -367,7 +367,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
               <enum>QTabWidget::Rounded</enum>
              </property>
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <property name="elideMode">
               <enum>Qt::ElideLeft</enum>
@@ -500,6 +500,9 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                     </property>
                     <property name="text">
                      <string>Name</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -642,6 +645,11 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                      <height>16777215</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
                    <property name="toolTip">
                     <string>Enter Amount of Money</string>
                    </property>
@@ -704,6 +712,11 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                      <width>222</width>
                      <height>16777215</height>
                     </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
                    </property>
                    <property name="toolTip">
                     <string>Enter Your Card Number</string>
@@ -774,6 +787,11 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                      <height>16777215</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
                    <property name="toolTip">
                     <string>Enter Your CVV2 of Your Card</string>
                    </property>
@@ -813,6 +831,11 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>Expiration Date :</string>
                    </property>
@@ -832,8 +855,16 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                      <height>16777215</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
                    <property name="toolTip">
                     <string>Enter Your Ex Date of Your Card</string>
+                   </property>
+                   <property name="locale">
+                    <locale language="English" country="UnitedStates"/>
                    </property>
                    <property name="wrapping">
                     <bool>false</bool>
@@ -909,6 +940,11 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>Second Password :</string>
                    </property>
@@ -927,6 +963,11 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                      <width>222</width>
                      <height>16777215</height>
                     </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
                    </property>
                    <property name="toolTip">
                     <string>Enter Your Second Password</string>
@@ -964,6 +1005,11 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                    <width>0</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                  </font>
                  </property>
                  <property name="toolTip">
                   <string>Click to Compelete the Payment Operation</string>
@@ -1274,6 +1320,11 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                      <height>16777215</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
                    <property name="toolTip">
                     <string>Enter a New password</string>
                    </property>
@@ -1415,6 +1466,15 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
            </item>
            <item>
             <widget class="QTableWidget" name="product_table">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>651</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>10</pointsize>
@@ -1422,6 +1482,9 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
              </property>
              <property name="toolTip">
               <string>Double-Click to Selet a Product</string>
+             </property>
+             <property name="editTriggers">
+              <set>QAbstractItemView::NoEditTriggers</set>
              </property>
              <attribute name="horizontalHeaderCascadingSectionResizes">
               <bool>false</bool>
@@ -1501,6 +1564,9 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
              </property>
              <property name="toolTip">
               <string>Double-Click to Remove Product</string>
+             </property>
+             <property name="editTriggers">
+              <set>QAbstractItemView::NoEditTriggers</set>
              </property>
              <attribute name="horizontalHeaderStretchLastSection">
               <bool>true</bool>

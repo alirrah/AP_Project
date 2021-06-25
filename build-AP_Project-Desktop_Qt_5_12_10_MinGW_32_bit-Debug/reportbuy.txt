@@ -1,0 +1,26 @@
+Friday, June 25, 2021  12:09:00
+ali
+2
+Chicken Breasts(1 Kilogram)
+Mmeat
+Meat
+3.56
+3
+Potato(1 Kilogram)
+aliveg
+Vegtables
+1.23
+3
+Friday, June 25, 2021  12:13:12
+ali
+2
+Potato(1 Kilogram)
+aliveg
+Vegtables
+1.23
+1
+Chicken Breasts(1 Kilogram)
+Mmeat
+Meat
+3.56
+2
