@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_admin_page_t {
-    QByteArrayData data[13];
-    char stringdata0[169];
+    QByteArrayData data[14];
+    char stringdata0[191];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,14 +43,15 @@ QT_MOC_LITERAL(8, 107, 8), // "showTime"
 QT_MOC_LITERAL(9, 116, 6), // "search"
 QT_MOC_LITERAL(10, 123, 34), // "on_product_table_cellDoubleCl..."
 QT_MOC_LITERAL(11, 158, 3), // "row"
-QT_MOC_LITERAL(12, 162, 6) // "column"
+QT_MOC_LITERAL(12, 162, 6), // "column"
+QT_MOC_LITERAL(13, 169, 21) // "on_delete_btn_clicked"
 
     },
     "admin_page\0on_close_btn_clicked\0\0"
     "on_minimize_btn_clicked\0mousePressEvent\0"
     "QMouseEvent*\0event\0mouseMoveEvent\0"
     "showTime\0search\0on_product_table_cellDoubleClicked\0"
-    "row\0column"
+    "row\0column\0on_delete_btn_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -60,7 +61,7 @@ static const uint qt_meta_data_admin_page[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -68,13 +69,14 @@ static const uint qt_meta_data_admin_page[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   49,    2, 0x08 /* Private */,
-       3,    0,   50,    2, 0x08 /* Private */,
-       4,    1,   51,    2, 0x08 /* Private */,
-       7,    1,   54,    2, 0x08 /* Private */,
-       8,    0,   57,    2, 0x08 /* Private */,
-       9,    0,   58,    2, 0x08 /* Private */,
-      10,    2,   59,    2, 0x08 /* Private */,
+       1,    0,   54,    2, 0x08 /* Private */,
+       3,    0,   55,    2, 0x08 /* Private */,
+       4,    1,   56,    2, 0x08 /* Private */,
+       7,    1,   59,    2, 0x08 /* Private */,
+       8,    0,   62,    2, 0x08 /* Private */,
+       9,    0,   63,    2, 0x08 /* Private */,
+      10,    2,   64,    2, 0x08 /* Private */,
+      13,    0,   69,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -84,6 +86,7 @@ static const uint qt_meta_data_admin_page[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,   11,   12,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -101,6 +104,7 @@ void admin_page::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->showTime(); break;
         case 5: _t->search(); break;
         case 6: _t->on_product_table_cellDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 7: _t->on_delete_btn_clicked(); break;
         default: ;
         }
     }
@@ -135,13 +139,13 @@ int admin_page::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

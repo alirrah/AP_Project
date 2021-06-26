@@ -221,6 +221,7 @@ void admin_page::search()
     }
 }
 
+//move infmation from product_table to lined edit in tool_tab_2
 void admin_page::on_product_table_cellDoubleClicked(int row, int column)
 {
     try
@@ -244,6 +245,23 @@ void admin_page::on_product_table_cellDoubleClicked(int row, int column)
         ui->group_txt->setText(it->get_group());
         ui->price_txt->setText(QString::number(it->get_price()));
         ui->remain_txt->setText(QString::number(it->get_remain()));
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+    }
+}
+
+//remove product
+void admin_page::on_delete_btn_clicked()
+{
+    try
+    {
+        if(product_itr == nullptr)
+            throw "First, double-click on the cell from the table.";
+        products.removeOne(*product_itr);
+        product_itr = nullptr;
+        search();
     }
     catch (char const *p)
     {
