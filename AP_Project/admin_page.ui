@@ -221,7 +221,7 @@
          <enum>QTabWidget::West</enum>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="product_tab">
          <attribute name="title">
@@ -1061,5 +1061,86 @@
  <resources>
   <include location="resource.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>name_rbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>group_gbox</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>417</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>company_rbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>group_gbox</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>254</x>
+     <y>457</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>307</x>
+     <y>250</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>group_rbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>group_gbox</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>228</x>
+     <y>485</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>221</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>price_rbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>group_gbox</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>401</x>
+     <y>525</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>393</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>remain_rbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>group_gbox</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>350</x>
+     <y>566</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>350</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
