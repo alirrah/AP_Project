@@ -29,6 +29,8 @@ private slots:
     void showTime();
     void search();
 
+    void on_product_table_cellDoubleClicked(int row, int column);
+
 private:
     Ui::admin_page *ui;
     int m_nMouseClick_X_Coordinate;
@@ -37,6 +39,7 @@ private:
     QVector<member> users;
     QVector<product> products;
     QVector<QString> group;
+    QVector<product>::iterator product_itr;
 };
 
 #endif // ADMIN_PAGE_H

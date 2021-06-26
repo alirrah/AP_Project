@@ -578,7 +578,7 @@ public:
         QObject::connect(remain_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
 
         main_tab->setCurrentIndex(0);
-        tool_tab->setCurrentIndex(0);
+        tool_tab->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(admin_page);

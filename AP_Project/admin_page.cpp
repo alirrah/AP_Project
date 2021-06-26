@@ -3,6 +3,7 @@
 
 admin_page::admin_page(member user, QWidget *parent) :QWidget(parent), ui(new Ui::admin_page)
 {
+    product_itr = nullptr;
     ui->setupUi(this);
     information = user;
     //use timer to show current time in login page and connect to function showTime
@@ -217,5 +218,35 @@ void admin_page::search()
         ui->product_table->setItem(i, 2, new QTableWidgetItem(itr->get_group()));
         ui->product_table->setItem(i, 3, new QTableWidgetItem(QString::number(itr->get_price())));
         ui->product_table->setItem(i++, 4, new QTableWidgetItem(QString::number(itr->get_remain())));
+    }
+}
+
+void admin_page::on_product_table_cellDoubleClicked(int row, int column)
+{
+    try
+    {
+        product check(ui->product_table->item(row,0)->text(),ui->product_table->item(row,1)->text(),ui->product_table->item(row,2)->text(),ui->product_table->item(row,3)->text().toDouble(),ui->product_table->item(row,4)->text().toInt());
+        QVector<product>::iterator it;
+        for(auto itr = products.begin(); itr != products.end(); ++itr)
+        {
+            if(check == *itr)
+            {
+                it = itr;
+                break;
+            }
+            it = products.end();
+        }
+        if(it == products.end())
+            throw "The product could not be found.";
+        product_itr = it;
+        ui->name_txt->setText(it->get_name());
+        ui->company_txt->setText(it->get_company());
+        ui->group_txt->setText(it->get_group());
+        ui->price_txt->setText(QString::number(it->get_price()));
+        ui->remain_txt->setText(QString::number(it->get_remain()));
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
     }
 }
