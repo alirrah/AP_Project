@@ -4,6 +4,89 @@
 admin_page::admin_page(member user, QWidget *parent) :QWidget(parent), ui(new Ui::admin_page)
 {
     ui->setupUi(this);
+    information = user;
+    //use timer to show current time in login page and connect to function showTime
+    QTimer *timer = new QTimer();
+    timer->start();
+    //connect different part with each other
+    connect(timer,SIGNAL(timeout()),this,SLOT(showTime()));
+    connect(ui->word_txt, SIGNAL(textChanged(const QString &)), this, SLOT(search()));
+    connect(ui->name_rbtn, SIGNAL(clicked()), this, SLOT(search()));
+    connect(ui->group_rbtn, SIGNAL(clicked()), this, SLOT(search()));
+    connect(ui->company_rbtn, SIGNAL(clicked()), this, SLOT(search()));
+    connect(ui->price_rbtn, SIGNAL(clicked()), this, SLOT(search()));
+    connect(ui->remain_rbtn, SIGNAL(clicked()), this, SLOT(search()));
+    connect(ui->group_combox, SIGNAL(currentIndexChanged(int)), this, SLOT(search()));
+    try
+    {
+        //read food from file
+        product food;
+        QFile file("food.txt");
+        file.open(QFile::ReadWrite | QFile::Text);
+        if (!file.isOpen())
+            throw "File could not be opened.";
+        QTextStream ReadFile(&file);
+        while (!ReadFile.atEnd())
+        {
+            food.set_name(ReadFile.readLine());
+            food.set_company(ReadFile.readLine());
+            food.set_group(ReadFile.readLine());
+            food.set_price(ReadFile.readLine().toDouble());
+            food.set_remain(ReadFile.readLine().toInt());
+            products.push_back(food);
+            if(std::find(group.begin(), group.end(), food.get_group()) == group.end())
+                group.push_back(food.get_group());
+        }
+        file.close();
+        // add item to the group_combx
+        ui->group_combox->addItem("All");
+        for(auto itr = group.begin(); itr != group.end(); ++itr)
+        {
+            ui->group_combox->addItem(*itr);
+        }
+        ui->product_table->setRowCount(products.size());
+        ui->product_table->setColumnCount(5);
+        int i = 0;
+        for(auto itr = products.begin(); itr != products.end(); ++itr)
+        {
+            ui->product_table->setItem(i, 0, new QTableWidgetItem(itr->get_name()));
+            ui->product_table->setItem(i, 1, new QTableWidgetItem(itr->get_company()));
+            ui->product_table->setItem(i, 2, new QTableWidgetItem(itr->get_group()));
+            ui->product_table->setItem(i, 3, new QTableWidgetItem(QString::number(itr->get_price())));
+            ui->product_table->setItem(i++, 4, new QTableWidgetItem(QString::number(itr->get_remain())));
+        }
+        //read user from file
+        member user;
+        QFile usfile ("user.txt");
+        usfile.open(QFile::ReadWrite | QFile::Text);
+        if (!usfile.isOpen())
+            throw "File could not be opened.";
+        QTextStream Read(&usfile);
+        while (!Read.atEnd())
+        {
+            user.set_username(Read.readLine());
+            user.set_password(Read.readLine());
+            QString admin = Read.readLine();
+            user.set_admin(admin == "1" ? 1 : 0);
+            user.set_credit(Read.readLine().toDouble());
+            if(user.get_admin())
+                continue;
+            users.push_back(user);
+        }
+        usfile.close();
+        ui->user_table->setRowCount(users.size());
+        ui->user_table->setColumnCount(2);
+        i = 0;
+        for(auto itr = users.begin(); itr != users.end(); ++itr)
+        {
+            ui->user_table->setItem(i, 0, new QTableWidgetItem(itr->get_username()));
+            ui->user_table->setItem(i, 1, new QTableWidgetItem(QString::number(itr->get_credit())));
+        }
+    }
+    catch(char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+    }
 }
 
 admin_page::~admin_page()
@@ -32,4 +115,20 @@ void admin_page::mousePressEvent(QMouseEvent *event)
 void admin_page::mouseMoveEvent(QMouseEvent *event)
 {
     move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
+}
+
+//show current time in time_lbl
+void admin_page::showTime()
+{
+    QLocale loc = QLocale(QLocale::English, QLocale::UnitedStates);
+    QString time = loc.toString(QDate::currentDate());
+    time += "  " + (loc.toString(QTime::currentTime().hour()).size() ==2 ? loc.toString(QTime::currentTime().hour()) : "0" +loc.toString(QTime::currentTime().hour()));
+    time += ":" + (loc.toString(QTime::currentTime().minute()).size() ==2 ? loc.toString(QTime::currentTime().minute()) : "0" +loc.toString(QTime::currentTime().minute()));
+    time += ":" + (loc.toString(QTime::currentTime().second()).size() ==2 ? loc.toString(QTime::currentTime().second()) : "0" +loc.toString(QTime::currentTime().second()));
+    ui->date_lbl->setText(time);
+}
+
+void admin_page::search()
+{
+
 }

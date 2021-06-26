@@ -4,6 +4,10 @@
 #include <QWidget>
 #include "member.h"
 #include <QMoveEvent>
+#include <QMessageBox>
+#include "member.h"
+#include "product.h"
+#include <QVector>
 
 namespace Ui {
 class admin_page;
@@ -22,11 +26,17 @@ private slots:
     void on_minimize_btn_clicked();
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void showTime();
+    void search();
 
 private:
     Ui::admin_page *ui;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
+    member information;
+    QVector<member> users;
+    QVector<product> products;
+    QVector<QString> group;
 };
 
 #endif // ADMIN_PAGE_H
