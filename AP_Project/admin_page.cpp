@@ -57,6 +57,7 @@ admin_page::admin_page(member user, QWidget *parent) :QWidget(parent), ui(new Ui
             ui->product_table->setItem(i++, 4, new QTableWidgetItem(QString::number(itr->get_remain())));
         }
         //read user from file
+        QVector<member> users;
         member user;
         QFile usfile ("user.txt");
         usfile.open(QFile::ReadWrite | QFile::Text);
@@ -387,5 +388,56 @@ void admin_page::on_insert_btn_clicked()
         QMessageBox::information(this, "Error", p);
         product_itr = nullptr;
         clean_line_edit();
+    }
+}
+
+void admin_page::on_report_btn_clicked()
+{
+    try
+    {
+        ui->report_btn->setEnabled(false);
+        ui->report_txt->setText("---------- User Reports ----------\n\n");
+        QFile userfile("reportuser.txt");
+        userfile.open(QFile::ReadWrite | QFile::Text);
+        if (!userfile.isOpen())
+            throw "File could not be opened.";
+        QTextStream ReadFile(&userfile);
+        while (!ReadFile.atEnd())
+        {
+            ui->report_txt->moveCursor(QTextCursor::End);
+            ui->report_txt->insertPlainText(ReadFile.readLine() + "\n");
+            ui->report_txt->insertPlainText(ReadFile.readLine() + "\n\n");
+        }
+        userfile.close();
+        userfile.open(QFile::ReadWrite | QFile::Truncate);
+        userfile.close();
+        ui->report_txt->insertPlainText("---------- Sales Reports ----------\n\n");
+        QFile file("reportbuy.txt");
+        file.open(QFile::ReadWrite | QFile::Text);
+        if (!file.isOpen())
+            throw "File could not be opened.";
+        QTextStream Read(&file);
+        while (!Read.atEnd())
+        {
+            ui->report_txt->insertPlainText(Read.readLine() + "\n");
+            ui->report_txt->insertPlainText("User : " + Read.readLine() + "\n");
+            int number = Read.readLine().toInt();
+            while(number--)
+            {
+                ui->report_txt->insertPlainText("Product : " + Read.readLine() + "\n");
+                ui->report_txt->insertPlainText("Company : " + Read.readLine() + "\n");
+                ui->report_txt->insertPlainText("Group : " + Read.readLine() + "\n");
+                ui->report_txt->insertPlainText("Price : " + Read.readLine() + "\n");
+                ui->report_txt->insertPlainText("Number : " + Read.readLine() + "\n");
+            }
+            ui->report_txt->insertPlainText("\n");
+        }
+        file.close();
+        file.open(QFile::ReadWrite | QFile::Truncate);
+        file.close();
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
     }
 }

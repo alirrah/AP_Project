@@ -35,12 +35,13 @@ private slots:
 
     void on_insert_btn_clicked();
 
+    void on_report_btn_clicked();
+
 private:
     Ui::admin_page *ui;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
     member information;
-    QVector<member> users;
     QVector<product> products;
     QVector<QString> group;
     QVector<product>::iterator product_itr;
