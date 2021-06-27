@@ -8,6 +8,7 @@
 #include "member.h"
 #include "product.h"
 #include <QVector>
+#include <QFileDialog>
 
 namespace Ui {
 class admin_page;
@@ -36,6 +37,8 @@ private slots:
     void on_insert_btn_clicked();
 
     void on_report_btn_clicked();
+
+    void on_save_btn_clicked();
 
 private:
     Ui::admin_page *ui;

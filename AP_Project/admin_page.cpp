@@ -390,7 +390,7 @@ void admin_page::on_insert_btn_clicked()
         clean_line_edit();
     }
 }
-
+ //to show reportuser.txt and reportbuy.txt and clean them
 void admin_page::on_report_btn_clicked()
 {
     try
@@ -434,6 +434,28 @@ void admin_page::on_report_btn_clicked()
         }
         file.close();
         file.open(QFile::ReadWrite | QFile::Truncate);
+        file.close();
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+    }
+}
+
+//save text of report_txt in file
+void admin_page::on_save_btn_clicked()
+{
+    try
+    {
+        QString address = QFileDialog::getSaveFileName(this, "Save",ui->date_lbl->text() + " report", tr("Text Files (*.txt)"));
+        QFile file(address);
+        file.open(QIODevice::WriteOnly | QFile::Text);
+        if (!file.isOpen())
+            throw "File could not be opened.";
+        setWindowTitle(address);
+        QTextStream out(&file);
+        QString text = ui->report_txt->toPlainText();
+        out << text;
         file.close();
     }
     catch (char const *p)
