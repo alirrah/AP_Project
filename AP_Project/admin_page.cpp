@@ -1,10 +1,12 @@
 #include "admin_page.h"
 #include "ui_admin_page.h"
 
+#define setfromt(x) loc.toString(QTime::currentTime().x()).size() ==2 ? loc.toString(QTime::currentTime().x()) : "0" +loc.toString(QTime::currentTime().x())
+
 admin_page::admin_page(member user, QWidget *parent) :QWidget(parent), ui(new Ui::admin_page)
 {
-    product_itr = nullptr;
     ui->setupUi(this);
+    product_itr = nullptr;
     information = user;
     //use timer to show current time in login page and connect to function showTime
     QTimer *timer = new QTimer();
@@ -39,7 +41,9 @@ admin_page::admin_page(member user, QWidget *parent) :QWidget(parent), ui(new Ui
                 group.insert(food.get_group());
         }
         file.close();
+        //add group cells to group_combox
         set_group_combox();
+        //add products to products_table
         ui->product_table->setRowCount(products.size());
         ui->product_table->setColumnCount(5);
         int i = 0;
@@ -71,6 +75,7 @@ admin_page::admin_page(member user, QWidget *parent) :QWidget(parent), ui(new Ui
             users.push_back(user);
         }
         usfile.close();
+        //add user to user_table
         ui->user_table->setRowCount(users.size());
         ui->user_table->setColumnCount(2);
         i = 0;
@@ -142,9 +147,9 @@ void admin_page::showTime()
 {
     QLocale loc = QLocale(QLocale::English, QLocale::UnitedStates);
     QString time = loc.toString(QDate::currentDate());
-    time += "  " + (loc.toString(QTime::currentTime().hour()).size() ==2 ? loc.toString(QTime::currentTime().hour()) : "0" +loc.toString(QTime::currentTime().hour()));
-    time += ":" + (loc.toString(QTime::currentTime().minute()).size() ==2 ? loc.toString(QTime::currentTime().minute()) : "0" +loc.toString(QTime::currentTime().minute()));
-    time += ":" + (loc.toString(QTime::currentTime().second()).size() ==2 ? loc.toString(QTime::currentTime().second()) : "0" +loc.toString(QTime::currentTime().second()));
+    time += "  " + (setfromt(hour));
+    time += ":" + (setfromt(minute));
+    time += ":" + (setfromt(second));
     ui->date_lbl->setText(time);
 }
 
@@ -156,12 +161,8 @@ void admin_page::search()
     if(ui->group_rbtn->isChecked())
     {
         for(auto itr = products.begin(); itr != products.end(); ++itr)
-        {
             if(search_open(ui->word_txt->text(),itr->get_group()))
-            {
                 search.push_back(*itr);
-            }
-        }
     }
     else if(group == "All")
     {
@@ -257,7 +258,7 @@ void admin_page::on_product_table_cellDoubleClicked(int row, int column)
             it = products.end();
         }
         if(it == products.end())
-            throw "The product could not be found.";
+            throw "The product not found.";
         product_itr = it;
         ui->name_txt->setText(it->get_name());
         ui->company_txt->setText(it->get_company());
@@ -278,16 +279,21 @@ void admin_page::on_delete_btn_clicked()
     {
         if(product_itr == nullptr)
             throw "First, double-click on the cell from the table.";
-        //write at the end of the reportuser.txt for daily report
-        QFile report("reportuser.txt");
-        report.open(QIODevice::Append | QIODevice::Text);
-        if(!report.isOpen())
-            throw "File could not be opened.";
-        QTextStream write(&report);
-        write << ui->date_lbl->text() + "\n" ;
-        write << information.get_username() + " deleted " + product_itr->get_name() + "\n";
-        report.close();
-        products.removeOne(*product_itr);
+        QMessageBox::StandardButton reply = QMessageBox::question(this, "Delete procduct", "Are you sure to want to delete this product?", QMessageBox::Yes | QMessageBox:: No);
+        if(reply == QMessageBox::Yes)
+        {
+            //write at the end of the reportuser.txt for daily report
+            QFile report("reportuser.txt");
+            report.open(QIODevice::Append | QIODevice::Text);
+            if(!report.isOpen())
+                throw "File could not be opened.";
+            QTextStream write(&report);
+            write << ui->date_lbl->text() + "\n" ;
+            write << information.get_username() + " deleted " + product_itr->get_name() + "\n";
+            report.close();
+            products.removeOne(*product_itr);
+            QMessageBox::information(this, "Delete procduct", "The product deleted successfully.");
+        }
         product_itr = nullptr;
         search();
         set_group_combox();
@@ -306,28 +312,37 @@ void admin_page::on_edit_btn_clicked()
 {
     try
     {
-        if(ui->name_txt->text() == "" || ui->company_txt->text() == "" || ui->group_txt->text() == "" || ui->price_txt->text() == "" || ui->remain_txt->text() == "")
-            throw "None of the line edits can be empty.";
+        QString name = ui->name_txt->text();
+        QString company = ui->company_txt->text();
+        QString group = ui->group_txt->text();
+        QString price = ui->price_txt->text();
+        QString remain = ui->remain_txt->text();
+        if(name == "" || company == "" || group == "" || price == "" || remain == "")
+            throw "Some infomation is blank. Enter the information completely.";
         if(product_itr == nullptr)
             throw "First, double-click on the cell from the table.";
-        QString price = ui->price_txt->text();
         for(int i = 0; i < price.size(); i++)
             if(!price[i].isDigit() && price[i] != '.')
                 throw "Price consists of a number and a '.'";
-        //write at the end of the reportuser.txt for daily report
-        QFile report("reportuser.txt");
-        report.open(QIODevice::Append | QIODevice::Text);
-        if(!report.isOpen())
-            throw "File could not be opened.";
-        QTextStream write(&report);
-        write << ui->date_lbl->text() + "\n" ;
-        write << information.get_username() + " changed " + product_itr->get_name() + "\n";
-        report.close();
-        product_itr->set_name(ui->name_txt->text());
-        product_itr->set_company(ui->company_txt->text());
-        product_itr->set_group(ui->group_txt->text());
-        product_itr->set_price(ui->price_txt->text().toDouble());
-        product_itr->set_remain(ui->remain_txt->text().toInt());
+        QMessageBox::StandardButton reply = QMessageBox::question(this, "Edit procduct", "Are you sure to want to Edit this product?", QMessageBox::Yes | QMessageBox:: No);
+        if(reply == QMessageBox::Yes)
+        {
+            //write at the end of the reportuser.txt for daily report
+            QFile report("reportuser.txt");
+            report.open(QIODevice::Append | QIODevice::Text);
+            if(!report.isOpen())
+                throw "File could not be opened.";
+            QTextStream write(&report);
+            write << ui->date_lbl->text() + "\n" ;
+            write << information.get_username() + " changed " + product_itr->get_name() + "\n";
+            report.close();
+            product_itr->set_name(name);
+            product_itr->set_company(company);
+            product_itr->set_group(group);
+            product_itr->set_price(price.toDouble());
+            product_itr->set_remain(remain.toInt());
+            QMessageBox::information(this, "Edit procduct", "The product Edited successfully.");
+        }
         clean_line_edit();
         product_itr = nullptr;
         search();
@@ -356,31 +371,39 @@ void admin_page::on_insert_btn_clicked()
 {
     try
     {
-        if(ui->name_txt->text() == "" || ui->company_txt->text() == "" || ui->group_txt->text() == "" || ui->price_txt->text() == "" || ui->remain_txt->text() == "")
-            throw "None of the line edits can be empty.";
+        QString name = ui->name_txt->text();
+        QString company = ui->company_txt->text();
+        QString group = ui->group_txt->text();
         QString price = ui->price_txt->text();
+        QString remain = ui->remain_txt->text();
+        if(name == "" || company == "" || group == "" || price == "" || remain == "")
+            throw "Some infomation is blank. Enter the information completely.";
         for(int i = 0; i < price.size(); i++)
             if(!price[i].isDigit() && price[i] != '.')
                 throw "Price consists of a number and a '.'";
-        product pro(ui->name_txt->text(), ui->company_txt->text(), ui->group_txt->text(), ui->price_txt->text().toDouble(),ui->remain_txt->text().toInt());
+        product pro(name, company, group, price.toDouble(), remain.toInt());
         for(auto itr = products.begin(); itr != products.end(); ++itr)
             if(pro.get_name() == itr->get_name() && pro.get_company() == itr->get_company() && pro.get_group() == itr->get_group())
-                throw "There are such products. Please edit.";
-        //write at the end of the reportuser.txt for daily report
-        QFile report("reportuser.txt");
-        report.open(QIODevice::Append | QIODevice::Text);
-        if(!report.isOpen())
-            throw "File could not be opened.";
-        QTextStream write(&report);
-        write << ui->date_lbl->text() + "\n" ;
-        write << information.get_username() + " added " + pro.get_name() + "\n";
-        report.close();
-        products.push_back(pro);
+                throw "There are such products. Please edit it.";
+        QMessageBox::StandardButton reply = QMessageBox::question(this, "Insert procduct", "Are you sure to want to Insert this product?", QMessageBox::Yes | QMessageBox:: No);
+        if(reply == QMessageBox::Yes)
+        {
+            //write at the end of the reportuser.txt for daily report
+            QFile report("reportuser.txt");
+            report.open(QIODevice::Append | QIODevice::Text);
+            if(!report.isOpen())
+                throw "File could not be opened.";
+            QTextStream write(&report);
+            write << ui->date_lbl->text() + "\n" ;
+            write << information.get_username() + " added " + pro.get_name() + "\n";
+            report.close();
+            products.push_back(pro);
+            QMessageBox::information(this, "Insert procduct", "The product added successfully.");
+        }
         clean_line_edit();
         product_itr = nullptr;
         search();
         set_group_combox();
-        QMessageBox::information(this, "Error", "The product added successfully.");
     }
     catch (char const *p)
     {
@@ -389,11 +412,12 @@ void admin_page::on_insert_btn_clicked()
         clean_line_edit();
     }
 }
- //to show reportuser.txt and reportbuy.txt and clean them
+//to show reportuser.txt and reportbuy.txt and clean them
 void admin_page::on_report_btn_clicked()
 {
     try
     {
+
         ui->report_btn->setEnabled(false);
         ui->report_txt->setText("---------- User Reports ----------\n\n");
         QFile userfile("reportuser.txt");
@@ -408,7 +432,10 @@ void admin_page::on_report_btn_clicked()
             ui->report_txt->insertPlainText(ReadFile.readLine() + "\n\n");
         }
         userfile.close();
+        //make the file empthy
         userfile.open(QFile::ReadWrite | QFile::Truncate);
+        if (!userfile.isOpen())
+            throw "File could not be opened.";
         userfile.close();
         ui->report_txt->insertPlainText("---------- Sales Reports ----------\n\n");
         QFile file("reportbuy.txt");
@@ -432,7 +459,10 @@ void admin_page::on_report_btn_clicked()
             ui->report_txt->insertPlainText("\n");
         }
         file.close();
+        //make the file empthy
         file.open(QFile::ReadWrite | QFile::Truncate);
+        if (!file.isOpen())
+            throw "File could not be opened.";
         file.close();
     }
     catch (char const *p)
@@ -446,14 +476,14 @@ void admin_page::on_save_btn_clicked()
 {
     try
     {
-        QString address = QFileDialog::getSaveFileName(this, "Save","report", tr("Text Files (*.txt)"));
+        QString text = ui->report_txt->toPlainText();
+        QString address = QFileDialog::getSaveFileName(this, "Save", "report", tr("Text Files (*.txt)"));
         QFile file(address);
         file.open(QIODevice::WriteOnly | QFile::Text);
         if (!file.isOpen())
             throw "File could not be opened.";
         setWindowTitle(address);
         QTextStream out(&file);
-        QString text = ui->report_txt->toPlainText();
         out << text;
         file.close();
     }
@@ -463,7 +493,7 @@ void admin_page::on_save_btn_clicked()
     }
 }
 
-// add item to the group_combx
+//clean group_combox add item to it
 void admin_page::set_group_combox()
 {
     group.clear();

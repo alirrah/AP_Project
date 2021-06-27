@@ -93,6 +93,10 @@ user_page::user_page(member user,QWidget *parent) :QWidget(parent), ui(new Ui::u
         if(it == users.end())
             throw "The user not found";
         ui->information_lbl->setText("User : " + it->get_username() + "\t Credit : " + QString::number(it->get_credit()) + "$");
+        //to card_txt, cvv2_txt ,and second_txt get only number
+        ui->card_txt->setValidator(new QIntValidator(ui->card_txt));
+        ui->cvv2_txt->setValidator(new QIntValidator(ui->cvv2_txt));
+        ui->second_txt->setValidator(new QIntValidator(ui->second_txt));
     }
     catch(char const *p)
     {

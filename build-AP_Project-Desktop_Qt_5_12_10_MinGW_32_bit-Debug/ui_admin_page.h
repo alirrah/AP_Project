@@ -584,7 +584,7 @@ public:
         QObject::connect(price_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
         QObject::connect(remain_rbtn, SIGNAL(clicked()), group_gbox, SLOT(show()));
 
-        main_tab->setCurrentIndex(0);
+        main_tab->setCurrentIndex(1);
         tool_tab->setCurrentIndex(0);
 
 

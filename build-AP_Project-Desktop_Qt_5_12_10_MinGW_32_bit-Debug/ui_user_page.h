@@ -524,7 +524,7 @@ public:
         second_txt->setMinimumSize(QSize(222, 30));
         second_txt->setMaximumSize(QSize(222, 16777215));
         second_txt->setFont(font1);
-        second_txt->setEchoMode(QLineEdit::Password);
+        second_txt->setEchoMode(QLineEdit::Normal);
         second_txt->setAlignment(Qt::AlignCenter);
 
         second_panel->addWidget(second_txt);

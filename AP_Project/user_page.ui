@@ -1000,7 +1000,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                     <string>Enter Your Second Password</string>
                    </property>
                    <property name="echoMode">
-                    <enum>QLineEdit::Password</enum>
+                    <enum>QLineEdit::Normal</enum>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
