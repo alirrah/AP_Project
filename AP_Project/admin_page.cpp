@@ -327,3 +327,37 @@ void admin_page::clean_line_edit()
     ui->price_txt->clear();
     ui->remain_txt->clear();
 }
+
+//add new product and check not to have the same products
+void admin_page::on_insert_btn_clicked()
+{
+    try
+    {
+        QString price = ui->price_txt->text();
+        for(int i = 0; i < price.size(); i++)
+            if(!price[i].isDigit() && price[i] != '.')
+                throw "Price consists of a number and a '.'";
+        product pro(ui->name_txt->text(), ui->company_txt->text(), ui->group_txt->text(), ui->price_txt->text().toDouble(),ui->remain_txt->text().toInt());
+        for(auto itr = products.begin(); itr != products.end(); ++itr)
+            if(pro.get_name() == itr->get_name() && pro.get_company() == itr->get_company() && pro.get_group() == itr->get_group())
+                throw "There are such products. Please edit.";
+        //write at the end of the reportuser.txt for daily report
+        QFile report("reportuser.txt");
+        report.open(QIODevice::Append | QIODevice::Text);
+        if(!report.isOpen())
+            throw "File could not be opened.";
+        QTextStream write(&report);
+        write << ui->date_lbl->text() + "\n" ;
+        write << information.get_username() + " added " + pro.get_name() + "\n";
+        report.close();
+        products.push_back(pro);
+        clean_line_edit();
+        product_itr = nullptr;
+        search();
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+        clean_line_edit();
+    }
+}

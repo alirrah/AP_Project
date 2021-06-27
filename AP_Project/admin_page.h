@@ -33,6 +33,8 @@ private slots:
     void on_edit_btn_clicked();
     void clean_line_edit();
 
+    void on_insert_btn_clicked();
+
 private:
     Ui::admin_page *ui;
     int m_nMouseClick_X_Coordinate;
