@@ -21,6 +21,7 @@ public:
     void set_admin(bool);
     double get_credit();
     void set_credit(double);
+    bool operator==(member);
 };
 
 #endif // MEMBER_H

@@ -45,11 +45,13 @@ private slots:
 
 private:
     Ui::user_page *ui;
-    member information;
+   // member information;
     aboutme_page *about;
     double cost;
     QVector<product> products;
     QVector<QString> group;
+    QVector<member> users;
+    QVector<member>::iterator it;
     QVector<buy> buys;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;

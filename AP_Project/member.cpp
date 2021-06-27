@@ -51,3 +51,10 @@ void member::set_credit(double credit)
 {
     this->credit = credit;
 }
+
+bool member::operator==(member tmp)
+{
+    if(this->username == tmp.username && this->password == tmp.password && this->admin == tmp.admin && this->credit == tmp.credit)
+        return true;
+    return false;
+}
