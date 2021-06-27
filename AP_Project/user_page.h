@@ -14,6 +14,7 @@
 #include "aboutme_page.h"
 #include "product.h"
 #include "buy.h"
+#include <QSet>
 
 
 namespace Ui {
@@ -49,7 +50,6 @@ private:
     aboutme_page *about;
     double cost;
     QVector<product> products;
-    QVector<QString> group;
     QVector<member> users;
     QVector<member>::iterator it;
     QVector<buy> buys;

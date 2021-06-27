@@ -9,6 +9,7 @@
 #include "product.h"
 #include <QVector>
 #include <QFileDialog>
+#include <QSet>
 
 namespace Ui {
 class admin_page;
@@ -33,12 +34,10 @@ private slots:
     void on_delete_btn_clicked();
     void on_edit_btn_clicked();
     void clean_line_edit();
-
     void on_insert_btn_clicked();
-
     void on_report_btn_clicked();
-
     void on_save_btn_clicked();
+    void set_group_combox();
 
 private:
     Ui::admin_page *ui;
@@ -46,8 +45,8 @@ private:
     int m_nMouseClick_Y_Coordinate;
     member information;
     QVector<product> products;
-    QVector<QString> group;
     QVector<product>::iterator product_itr;
+    QSet<QString> group;
 };
 
 #endif // ADMIN_PAGE_H

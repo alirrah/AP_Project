@@ -1,6 +1,8 @@
 #include "user_page.h"
 #include "ui_user_page.h"
 
+#define setfromt(x) loc.toString(QTime::currentTime().x()).size() ==2 ? loc.toString(QTime::currentTime().x()) : "0" +loc.toString(QTime::currentTime().x())
+
 user_page::user_page(member user,QWidget *parent) :QWidget(parent), ui(new Ui::user_page)
 {
     ui->setupUi(this);
@@ -22,6 +24,7 @@ user_page::user_page(member user,QWidget *parent) :QWidget(parent), ui(new Ui::u
     try
     {
         //read food from file
+        QSet<QString> group;
         product food;
         QFile file("food.txt");
         file.open(QFile::ReadWrite | QFile::Text);
@@ -37,15 +40,14 @@ user_page::user_page(member user,QWidget *parent) :QWidget(parent), ui(new Ui::u
             food.set_remain(ReadFile.readLine().toInt());
             products.push_back(food);
             if(std::find(group.begin(), group.end(), food.get_group()) == group.end())
-                group.push_back(food.get_group());
+                group.insert(food.get_group());
         }
         file.close();
-        // add item to the group_combx
+        // add item to the group_combox
         ui->group_combox->addItem("All");
         for(auto itr = group.begin(); itr != group.end(); ++itr)
-        {
             ui->group_combox->addItem(*itr);
-        }
+        // add item to the products_table
         ui->product_table->setRowCount(products.size());
         ui->product_table->setColumnCount(5);
         int i = 0;
@@ -74,6 +76,7 @@ user_page::user_page(member user,QWidget *parent) :QWidget(parent), ui(new Ui::u
             users.push_back(check);
         }
         userfile.close();
+        // search user in the users and set it
         check.set_username(user.get_username());
         check.set_password(user.get_password());
         check.set_admin(user.get_admin());
@@ -88,9 +91,8 @@ user_page::user_page(member user,QWidget *parent) :QWidget(parent), ui(new Ui::u
             it = users.end();
         }
         if(it == users.end())
-            throw "The user could not be found";
+            throw "The user not found";
         ui->information_lbl->setText("User : " + it->get_username() + "\t Credit : " + QString::number(it->get_credit()) + "$");
-
     }
     catch(char const *p)
     {
@@ -103,7 +105,7 @@ user_page::~user_page()
     delete ui;
 }
 
-//close this window
+//save users and close this window
 void user_page::on_close_btn_clicked()
 {
     try
@@ -152,9 +154,9 @@ void user_page::showTime()
 {
     QLocale loc = QLocale(QLocale::English, QLocale::UnitedStates);
     QString time = loc.toString(QDate::currentDate());
-    time += "  " + (loc.toString(QTime::currentTime().hour()).size() ==2 ? loc.toString(QTime::currentTime().hour()) : "0" +loc.toString(QTime::currentTime().hour()));
-    time += ":" + (loc.toString(QTime::currentTime().minute()).size() ==2 ? loc.toString(QTime::currentTime().minute()) : "0" +loc.toString(QTime::currentTime().minute()));
-    time += ":" + (loc.toString(QTime::currentTime().second()).size() ==2 ? loc.toString(QTime::currentTime().second()) : "0" +loc.toString(QTime::currentTime().second()));
+    time += "  " + (setfromt(hour));
+    time += ":" + (setfromt(minute));
+    time += ":" + (setfromt(second));
     ui->date_lbl->setText(time);
 }
 
@@ -169,63 +171,71 @@ void user_page::on_aboutme_btn_clicked()
 //pay the bill and close the window
 void user_page::on_payment_btn_clicked()
 {
-    try
+    QMessageBox::StandardButton reply = QMessageBox::question(this, "End of Purchase", "Are you sure to want to finish the purchase and pay the amount?", QMessageBox::Yes | QMessageBox:: No);
+    if(reply == QMessageBox::Yes)
     {
-        if(cost == 0)
-            throw "You did not buy anything./nThanks for using this app.";
-        QFile file("user.txt");
-        file.open(QFile::ReadWrite | QFile::Text);
-        if (!file.isOpen())
-            throw "File could not be opened.";
-        QTextStream ReadWrite(&file);
-        it->set_credit(it->get_credit() - cost);
-        for(auto itr = users.begin(); itr != users.end(); ++itr)
+        try
         {
-            ReadWrite << itr->get_username() + "\n";
-            ReadWrite << itr->get_password() + "\n";
-            ReadWrite << (itr->get_admin() == true ? "1\n" : "0\n");
-            ReadWrite << QString::number(itr->get_credit()) + "\n";
+            if(cost <= 0)
+            {
+                QMessageBox::information(this, "End of Purchase", "You did not buy anything.Thanks for using this app.");
+                this->close();
+            }
+            QFile file("user.txt");
+            file.open(QFile::ReadWrite | QFile::Text);
+            if (!file.isOpen())
+                throw "File could not be opened.";
+            QTextStream ReadWrite(&file);
+            it->set_credit(it->get_credit() - cost);
+            for(auto itr = users.begin(); itr != users.end(); ++itr)
+            {
+                ReadWrite << itr->get_username() + "\n";
+                ReadWrite << itr->get_password() + "\n";
+                ReadWrite << (itr->get_admin() == true ? "1\n" : "0\n");
+                ReadWrite << QString::number(itr->get_credit()) + "\n";
+            }
+            file.close();
+            QFile food("food.txt");
+            food.open(QFile::WriteOnly | QFile::Text);
+            if (!food.isOpen())
+                throw "File could not be opened.";
+            QTextStream Write(&food);
+            for(auto itr = products.begin(); itr != products.end(); ++itr)
+            {
+                Write << itr->get_name() + "\n";
+                Write << itr->get_company() + "\n";
+                Write << itr->get_group() + "\n";
+                Write << QString::number(itr->get_price()) + "\n";
+                Write << QString::number(itr->get_remain()) + "\n";
+            }
+            food.close();
+            //write at the end of the reportbuy.txt for daily report
+            QFile report("reportbuy.txt");
+            report.open(QIODevice::Append | QIODevice::Text);
+            if(!report.isOpen())
+                throw "File could not be opened.";
+            QTextStream write(&report);
+            write << ui->date_lbl->text() + "\n";
+            write << it->get_username() + "\n";
+            write << QString::number(buys.size()) + "\n";
+            for(auto itr = buys.begin(); itr != buys.end(); ++itr)
+            {
+                write << itr->get_name() + "\n";
+                write << itr->get_company() + "\n";
+                write << itr->get_group() + "\n";
+                write << QString::number(itr->get_price()) + "\n";
+                write << QString::number(itr->get_number()) + "\n";
+            }
+            report.close();
+            QMessageBox::information(this, "End of Purchase", "Thanks for buying.");
+            this->close();
         }
-        file.close();
-        QFile food("food.txt");
-        food.open(QFile::WriteOnly | QFile::Text);
-        if (!food.isOpen())
-            throw "File could not be opened.";
-        QTextStream Write(&food);
-        for(auto itr = products.begin(); itr != products.end(); ++itr)
+        catch (char const *p)
         {
-            Write << itr->get_name() + "\n";
-            Write << itr->get_company() + "\n";
-            Write << itr->get_group() + "\n";
-            Write << QString::number(itr->get_price()) + "\n";
-            Write << QString::number(itr->get_remain()) + "\n";
+            QMessageBox::information(this, "Error", p);
         }
-        food.close();
-        //write at the end of the reportbuy.txt for daily report
-        QFile report("reportbuy.txt");
-        report.open(QIODevice::Append | QIODevice::Text);
-        if(!report.isOpen())
-            throw "File could not be opened.";
-        QTextStream write(&report);
-        write << ui->date_lbl->text() + "\n";
-        write << it->get_username() + "\n";
-        write << QString::number(buys.size()) + "\n";
-        for(auto itr = buys.begin(); itr != buys.end(); ++itr)
-        {
-            write << itr->get_name() + "\n";
-            write << itr->get_company() + "\n";
-            write << itr->get_group() + "\n";
-            write << QString::number(itr->get_price()) + "\n";
-            write << QString::number(itr->get_number()) + "\n";
-        }
-        report.close();
-        QMessageBox::information(this, "Change", "Thanks for buying./nThanks for using this app.");
-        this->close();
     }
-    catch (char const *p)
-    {
-        QMessageBox::information(this, "Error", p);
-    }
+
 }
 
 //change password by user
@@ -238,24 +248,30 @@ void user_page::on_passwordapply_btn_clicked()
         QString newpassword = ui->newpassword_txt->text();
         QString repeatpassword = ui->repeatpassword_txt->text();
         if(username == "" || oldpassword == "" || newpassword == "" || repeatpassword == "")
-            throw "Some infomation is blank. Enter complete information.";
+            throw "Some infomation is blank. Enter the information completely.";
         if(newpassword != repeatpassword)
             throw "New password and repeatition are not the same. Enter them the same as each other.";
         if(username != it->get_username())
-            throw "Enter your username correctly.";
+            throw "Username is not correct. Enter your username correctly.";
         if(oldpassword != it->get_password())
             throw "Password is incorrect. Please enter your password correctly.";
-        it->set_password(newpassword);
-        //write at the end of the reportuser.txt for daily report
-        QFile report("reportuser.txt");
-        report.open(QIODevice::Append | QIODevice::Text);
-        if(!report.isOpen())
-            throw "File could not be opened.";
-        QTextStream write(&report);
-        write << ui->date_lbl->text() + "\n";
-        write << it->get_username() + " changed his/her password\n";
-        report.close();
-        QMessageBox::information(this, "Change", "Password changed successfully");
+        if(oldpassword == newpassword)
+            throw "The old password and the new one can not be the same.";
+        QMessageBox::StandardButton reply = QMessageBox::question(this, "Change Password", "Are you sure to want to change your password?", QMessageBox::Yes | QMessageBox:: No);
+        if(reply == QMessageBox::Yes)
+        {
+            it->set_password(newpassword);
+            //write at the end of the reportuser.txt for daily report
+            QFile report("reportuser.txt");
+            report.open(QIODevice::Append | QIODevice::Text);
+            if(!report.isOpen())
+                throw "File could not be opened.";
+            QTextStream write(&report);
+            write << ui->date_lbl->text() + "\n";
+            write << it->get_username() + " changed his/her password\n";
+            report.close();
+            QMessageBox::information(this, "Change", "Password changed successfully");
+        }
         clear_txt();
     }
     catch (char const *p)
@@ -288,22 +304,29 @@ void user_page::on_increasecredit_btn_clicked()
         QString cvv2 = ui->cvv2_txt->text();
         QString secondpassword = ui->second_txt->text();
         if(amount == "" || card == "" || cvv2 == "" || secondpassword == "")
-            throw "Some infomation is blank. Enter comlete information.";
+            throw "Some infomation is blank. Enter the information completely.";
         if(amount.toDouble() <= 0)
             throw "The amount must be positive.";
-        it->set_credit(it->get_credit() + amount.toDouble());
-        ui->cost_prossbar->setMaximum(it->get_credit());
-        ui->information_lbl->setText("User : " + it->get_username() + "\t Credit : " + QString::number(it->get_credit()) + "$");
-        //write at the end of the reportuser.txt for daily report
-        QFile report("reportuser.txt");
-        report.open(QIODevice::Append | QIODevice::Text);
-        if(!report.isOpen())
-            throw "File could not be opened.";
-        QTextStream write(&report);
-        write << ui->date_lbl->text() + "\n";
-        write << it->get_username() + " increased his/her credit by " + amount +"\n";
-        report.close();
-        QMessageBox::information(this, "Change", "Payment operation completed successfully.");
+        for(int i = 0; i < amount.size(); i++)
+            if(!(amount[i].isDigit() || amount[i] == '.'))
+                throw "The amount consists only of the number and '.' .";
+        QMessageBox::StandardButton reply = QMessageBox::question(this, "Payment", "Are you sure to want to increase your credit?", QMessageBox::Yes | QMessageBox:: No);
+        if(reply == QMessageBox::Yes)
+        {
+            it->set_credit(it->get_credit() + amount.toDouble());
+            ui->cost_prossbar->setMaximum(it->get_credit());
+            ui->information_lbl->setText("User : " + it->get_username() + "\t Credit : " + QString::number(it->get_credit()) + "$");
+            //write at the end of the reportuser.txt for daily report
+            QFile report("reportuser.txt");
+            report.open(QIODevice::Append | QIODevice::Text);
+            if(!report.isOpen())
+                throw "File could not be opened.";
+            QTextStream write(&report);
+            write << ui->date_lbl->text() + "\n";
+            write << it->get_username() + " increased his/her credit by " + amount +"\n";
+            report.close();
+            QMessageBox::information(this, "Change", "Payment operation completed successfully.");
+        }
         clear_txt();
     }
     catch (char const *p)
@@ -423,12 +446,8 @@ void user_page::search()
     if(ui->group_rbtn->isChecked())
     {
         for(auto itr = products.begin(); itr != products.end(); ++itr)
-        {
             if(search_open(ui->word_txt->text(),itr->get_group()))
-            {
                 search.push_back(*itr);
-            }
-        }
     }
     else if(group == "All")
     {

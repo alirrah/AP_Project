@@ -1,6 +1,8 @@
 #include "login_page.h"
 #include "ui_login_page.h"
 
+#define setfromt(x) loc.toString(QTime::currentTime().x()).size() ==2 ? loc.toString(QTime::currentTime().x()) : "0" +loc.toString(QTime::currentTime().x())
+
 login_page::login_page(QWidget *parent): QMainWindow(parent), ui(new Ui::login_page)
 {
     ui->setupUi(this);
@@ -42,9 +44,9 @@ void login_page::showTime()
 {
     QLocale loc = QLocale(QLocale::English, QLocale::UnitedStates);
     QString time = loc.toString(QDate::currentDate());
-    time += "  " + (loc.toString(QTime::currentTime().hour()).size() ==2 ? loc.toString(QTime::currentTime().hour()) : "0" +loc.toString(QTime::currentTime().hour()));
-    time += ":" + (loc.toString(QTime::currentTime().minute()).size() ==2 ? loc.toString(QTime::currentTime().minute()) : "0" +loc.toString(QTime::currentTime().minute()));
-    time += ":" + (loc.toString(QTime::currentTime().second()).size() ==2 ? loc.toString(QTime::currentTime().second()) : "0" +loc.toString(QTime::currentTime().second()));
+    time += "  " + (setfromt(hour));
+    time += ":" + (setfromt(minute));
+    time += ":" + (setfromt(second));
     ui->date_lbl->setText(time);
 }
 
@@ -128,11 +130,11 @@ void login_page::on_login_btn_clicked()
     }
     catch (QString x)
     {
-        QMessageBox::information(this, "Warn", x);
+        QMessageBox::information(this, "Error", x);
     }
     catch (char const *x)
     {
-        QMessageBox::information(this, "Warn", x);
+        QMessageBox::information(this, "Error", x);
     }
     clear();
 }
@@ -198,7 +200,7 @@ void login_page::on_register_btn_clicked()
     }
     catch (char const *x)
     {
-        QMessageBox::information(this, "Warn", x);
+        QMessageBox::information(this, "Error", x);
     }
     clear();
 }

@@ -36,15 +36,10 @@ admin_page::admin_page(member user, QWidget *parent) :QWidget(parent), ui(new Ui
             food.set_remain(ReadFile.readLine().toInt());
             products.push_back(food);
             if(std::find(group.begin(), group.end(), food.get_group()) == group.end())
-                group.push_back(food.get_group());
+                group.insert(food.get_group());
         }
         file.close();
-        // add item to the group_combx
-        ui->group_combox->addItem("All");
-        for(auto itr = group.begin(); itr != group.end(); ++itr)
-        {
-            ui->group_combox->addItem(*itr);
-        }
+        set_group_combox();
         ui->product_table->setRowCount(products.size());
         ui->product_table->setColumnCount(5);
         int i = 0;
@@ -82,7 +77,7 @@ admin_page::admin_page(member user, QWidget *parent) :QWidget(parent), ui(new Ui
         for(auto itr = users.begin(); itr != users.end(); ++itr)
         {
             ui->user_table->setItem(i, 0, new QTableWidgetItem(itr->get_username()));
-            ui->user_table->setItem(i, 1, new QTableWidgetItem(QString::number(itr->get_credit())));
+            ui->user_table->setItem(i++, 1, new QTableWidgetItem(QString::number(itr->get_credit())));
         }
         //to remain_txt get only number
         ui->remain_txt->setValidator(new QIntValidator(ui->remain_txt));
@@ -295,6 +290,7 @@ void admin_page::on_delete_btn_clicked()
         products.removeOne(*product_itr);
         product_itr = nullptr;
         search();
+        set_group_combox();
         clean_line_edit();
     }
     catch (char const *p)
@@ -335,6 +331,7 @@ void admin_page::on_edit_btn_clicked()
         clean_line_edit();
         product_itr = nullptr;
         search();
+        set_group_combox();
     }
     catch (char const *p)
     {
@@ -382,6 +379,8 @@ void admin_page::on_insert_btn_clicked()
         clean_line_edit();
         product_itr = nullptr;
         search();
+        set_group_combox();
+        QMessageBox::information(this, "Error", "The product added successfully.");
     }
     catch (char const *p)
     {
@@ -447,7 +446,7 @@ void admin_page::on_save_btn_clicked()
 {
     try
     {
-        QString address = QFileDialog::getSaveFileName(this, "Save",ui->date_lbl->text() + " report", tr("Text Files (*.txt)"));
+        QString address = QFileDialog::getSaveFileName(this, "Save","report", tr("Text Files (*.txt)"));
         QFile file(address);
         file.open(QIODevice::WriteOnly | QFile::Text);
         if (!file.isOpen())
@@ -461,5 +460,21 @@ void admin_page::on_save_btn_clicked()
     catch (char const *p)
     {
         QMessageBox::information(this, "Error", p);
+    }
+}
+
+// add item to the group_combx
+void admin_page::set_group_combox()
+{
+    group.clear();
+    for(auto itr = products.begin(); itr != products.end(); ++itr)
+    {
+        group.insert(itr->get_group());
+    }
+    ui->group_combox->clear();
+    ui->group_combox->addItem("All");
+    for(auto itr = group.begin(); itr != group.end(); ++itr)
+    {
+        ui->group_combox->addItem(*itr);
     }
 }

@@ -1,8 +1,8 @@
 Milk(0.9 Lit)
 SUPERIOR
 Dairy
-1
-25
+1.3
+24
 Yogurt
 Yoplat
 Dairy
@@ -17,7 +17,7 @@ Potato(1 Kilogram)
 aliveg
 Vegtables
 1.23
-20
+19
 Apple(1 Kilogram)
 res
 Furit
@@ -31,8 +31,13 @@ Sausages
 Hard cheeses(1 Kilogram)
 EDAM
 Cheeses
-27.54
+27.5
 89
+Buns
+Sbed
+Brea
+0.86
+34
 Buns
 Sbed
 Bread
