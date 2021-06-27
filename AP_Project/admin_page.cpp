@@ -83,6 +83,8 @@ admin_page::admin_page(member user, QWidget *parent) :QWidget(parent), ui(new Ui
             ui->user_table->setItem(i, 0, new QTableWidgetItem(itr->get_username()));
             ui->user_table->setItem(i, 1, new QTableWidgetItem(QString::number(itr->get_credit())));
         }
+        //to remain_txt get only number
+        ui->remain_txt->setValidator(new QIntValidator(ui->remain_txt));
     }
     catch(char const *p)
     {
@@ -252,19 +254,76 @@ void admin_page::on_product_table_cellDoubleClicked(int row, int column)
     }
 }
 
-//remove product
+//remove the product
 void admin_page::on_delete_btn_clicked()
 {
     try
     {
         if(product_itr == nullptr)
             throw "First, double-click on the cell from the table.";
+        //write at the end of the reportuser.txt for daily report
+        QFile report("reportuser.txt");
+        report.open(QIODevice::Append | QIODevice::Text);
+        if(!report.isOpen())
+            throw "File could not be opened.";
+        QTextStream write(&report);
+        write << ui->date_lbl->text() + "\n" ;
+        write << information.get_username() + " deleted " + product_itr->get_name() + "\n";
+        report.close();
         products.removeOne(*product_itr);
+        product_itr = nullptr;
+        search();
+        clean_line_edit();
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+        clean_line_edit();
+    }
+}
+
+//the information of the product
+void admin_page::on_edit_btn_clicked()
+{
+    try
+    {
+        if(product_itr == nullptr)
+            throw "First, double-click on the cell from the table.";
+        QString price = ui->price_txt->text();
+        for(int i = 0; i < price.size(); i++)
+            if(!price[i].isDigit() && price[i] != '.')
+                throw "Price consists of a number and a '.'";
+        //write at the end of the reportuser.txt for daily report
+        QFile report("reportuser.txt");
+        report.open(QIODevice::Append | QIODevice::Text);
+        if(!report.isOpen())
+            throw "File could not be opened.";
+        QTextStream write(&report);
+        write << ui->date_lbl->text() + "\n" ;
+        write << information.get_username() + " changed " + product_itr->get_name() + "\n";
+        report.close();
+        product_itr->set_name(ui->name_txt->text());
+        product_itr->set_company(ui->company_txt->text());
+        product_itr->set_group(ui->group_txt->text());
+        product_itr->set_price(ui->price_txt->text().toDouble());
+        product_itr->set_remain(ui->remain_txt->text().toInt());
+        clean_line_edit();
         product_itr = nullptr;
         search();
     }
     catch (char const *p)
     {
         QMessageBox::information(this, "Error", p);
+        clean_line_edit();
     }
+}
+
+//clean the line edit in tool_tab_2
+void admin_page::clean_line_edit()
+{
+    ui->name_txt->clear();
+    ui->group_txt->clear();
+    ui->company_txt->clear();
+    ui->price_txt->clear();
+    ui->remain_txt->clear();
 }

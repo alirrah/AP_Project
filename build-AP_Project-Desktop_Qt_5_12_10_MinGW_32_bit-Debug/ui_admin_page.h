@@ -9,6 +9,7 @@
 #ifndef UI_ADMIN_PAGE_H
 #define UI_ADMIN_PAGE_H
 
+#include <QtCore/QLocale>
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
@@ -390,7 +391,10 @@ public:
         price_txt->setObjectName(QString::fromUtf8("price_txt"));
         price_txt->setMinimumSize(QSize(0, 30));
         price_txt->setMaximumSize(QSize(306, 16777215));
+        price_txt->setLocale(QLocale(QLocale::Persian, QLocale::Iran));
+        price_txt->setFrame(true);
         price_txt->setAlignment(Qt::AlignCenter);
+        price_txt->setClearButtonEnabled(false);
 
         price_panel->addWidget(price_txt);
 
@@ -615,6 +619,8 @@ public:
         company_lbl->setText(QApplication::translate("admin_page", "Company :", nullptr));
         group_lbl->setText(QApplication::translate("admin_page", "Group :", nullptr));
         price_lbl->setText(QApplication::translate("admin_page", "Price :", nullptr));
+        price_txt->setInputMask(QString());
+        price_txt->setText(QString());
         remain_lbl->setText(QApplication::translate("admin_page", "Remain :", nullptr));
 #ifndef QT_NO_TOOLTIP
         insert_btn->setToolTip(QApplication::translate("admin_page", "Click to Insert Product", nullptr));

@@ -28,10 +28,10 @@ private slots:
     void mouseMoveEvent(QMouseEvent *event);
     void showTime();
     void search();
-
     void on_product_table_cellDoubleClicked(int row, int column);
-
     void on_delete_btn_clicked();
+    void on_edit_btn_clicked();
+    void clean_line_edit();
 
 private:
     Ui::admin_page *ui;

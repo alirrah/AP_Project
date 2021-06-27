@@ -22,13 +22,13 @@ void aboutme_page::mouseMoveEvent(QMouseEvent *event)
     move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
 }
 
-// close this page
+// close this page by ok_btn
 void aboutme_page::on_ok_btn_clicked()
 {
     this->close();
 }
 
-// close this page
+// close this page by close_btn
 void aboutme_page::on_close_btn_clicked()
 {
     this->close();
