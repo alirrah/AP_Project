@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Admin Page</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/icon/Nitro Display.png</normaloff>:/icon/Nitro Display.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#main_panel

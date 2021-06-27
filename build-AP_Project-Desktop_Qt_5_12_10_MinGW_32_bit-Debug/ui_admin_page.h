@@ -107,6 +107,9 @@ public:
         if (admin_page->objectName().isEmpty())
             admin_page->setObjectName(QString::fromUtf8("admin_page"));
         admin_page->resize(1100, 700);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icon/Nitro Display.png"), QSize(), QIcon::Normal, QIcon::Off);
+        admin_page->setWindowIcon(icon);
         admin_page->setStyleSheet(QString::fromUtf8("#main_panel\n"
 "{\n"
 "	border-image: url(:/image/blurred-background-supermarket-aisle-with-products_62890-121.jpg);\n"
@@ -178,9 +181,9 @@ public:
         minimize_btn->setMinimumSize(QSize(40, 40));
         minimize_btn->setFont(font);
         minimize_btn->setCursor(QCursor(Qt::PointingHandCursor));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/icon/mini.ico"), QSize(), QIcon::Normal, QIcon::Off);
-        minimize_btn->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icon/mini.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        minimize_btn->setIcon(icon1);
         minimize_btn->setIconSize(QSize(25, 35));
 
         horizontalLayout->addWidget(minimize_btn);
@@ -194,9 +197,9 @@ public:
         font1.setKerning(true);
         close_btn->setFont(font1);
         close_btn->setCursor(QCursor(Qt::PointingHandCursor));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/icon/close.ico"), QSize(), QIcon::Normal, QIcon::Off);
-        close_btn->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icon/close.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        close_btn->setIcon(icon2);
         close_btn->setIconSize(QSize(35, 35));
 
         horizontalLayout->addWidget(close_btn);
@@ -590,7 +593,7 @@ public:
 
     void retranslateUi(QWidget *admin_page)
     {
-        admin_page->setWindowTitle(QApplication::translate("admin_page", "Form", nullptr));
+        admin_page->setWindowTitle(QApplication::translate("admin_page", "Admin Page", nullptr));
         date_lbl->setText(QApplication::translate("admin_page", "1400/04/04  16:54", nullptr));
 #ifndef QT_NO_TOOLTIP
         minimize_btn->setToolTip(QApplication::translate("admin_page", "Minimize", nullptr));

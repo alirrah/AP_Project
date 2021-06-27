@@ -278,6 +278,7 @@ void admin_page::on_delete_btn_clicked()
     catch (char const *p)
     {
         QMessageBox::information(this, "Error", p);
+        product_itr = nullptr;
         clean_line_edit();
     }
 }
@@ -287,6 +288,8 @@ void admin_page::on_edit_btn_clicked()
 {
     try
     {
+        if(ui->name_txt->text() == "" || ui->company_txt->text() == "" || ui->group_txt->text() == "" || ui->price_txt->text() == "" || ui->remain_txt->text() == "")
+            throw "None of the line edits can be empty.";
         if(product_itr == nullptr)
             throw "First, double-click on the cell from the table.";
         QString price = ui->price_txt->text();
@@ -314,6 +317,7 @@ void admin_page::on_edit_btn_clicked()
     catch (char const *p)
     {
         QMessageBox::information(this, "Error", p);
+        product_itr = nullptr;
         clean_line_edit();
     }
 }
@@ -333,6 +337,8 @@ void admin_page::on_insert_btn_clicked()
 {
     try
     {
+        if(ui->name_txt->text() == "" || ui->company_txt->text() == "" || ui->group_txt->text() == "" || ui->price_txt->text() == "" || ui->remain_txt->text() == "")
+            throw "None of the line edits can be empty.";
         QString price = ui->price_txt->text();
         for(int i = 0; i < price.size(); i++)
             if(!price[i].isDigit() && price[i] != '.')
@@ -358,6 +364,7 @@ void admin_page::on_insert_btn_clicked()
     catch (char const *p)
     {
         QMessageBox::information(this, "Error", p);
+        product_itr = nullptr;
         clean_line_edit();
     }
 }
