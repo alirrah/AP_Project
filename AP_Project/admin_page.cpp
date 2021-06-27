@@ -100,7 +100,28 @@ admin_page::~admin_page()
 //close this window
 void admin_page::on_close_btn_clicked()
 {
-    this->close();
+    try
+    {
+        QFile food("food.txt");
+        food.open(QFile::WriteOnly | QFile::Text);
+        if (!food.isOpen())
+            throw "File could not be opened.";
+        QTextStream Write(&food);
+        for(auto itr = products.begin(); itr != products.end(); ++itr)
+        {
+            Write << itr->get_name() + "\n";
+            Write << itr->get_company() + "\n";
+            Write << itr->get_group() + "\n";
+            Write << QString::number(itr->get_price()) + "\n";
+            Write << QString::number(itr->get_remain()) + "\n";
+        }
+        food.close();
+        this->close();
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+    }
 }
 
 //minimize the window
