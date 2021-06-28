@@ -2,11 +2,12 @@
 #include "ui_user_page.h"
 
 #define setfromt(x) loc.toString(QTime::currentTime().x()).size() ==2 ? loc.toString(QTime::currentTime().x()) : "0" +loc.toString(QTime::currentTime().x())
-
+#define setcost() (discount == 100 ? QString::number(cost) : (QString::number(cost) + " X " + QString::number(discount) + " % = " + QString::number(cost * discount / 100)))
 user_page::user_page(member user,QWidget *parent) :QWidget(parent), ui(new Ui::user_page)
 {
     ui->setupUi(this);
     cost = 0;
+    discount = 100;
     ui->cost_lbl->setText("Cost : " + QString::number(cost) + "$");
     ui->cost_prossbar->setMaximum(user.get_credit());
     //use timer to show current time in login page and connect to function showTime
@@ -119,7 +120,6 @@ void user_page::on_close_btn_clicked()
         if (!file.isOpen())
             throw "File could not be opened.";
         QTextStream ReadWrite(&file);
-        it->set_credit(it->get_credit() - cost);
         for(auto itr = users.begin(); itr != users.end(); ++itr)
         {
             ReadWrite << itr->get_username() + "\n";
@@ -190,7 +190,7 @@ void user_page::on_payment_btn_clicked()
             if (!file.isOpen())
                 throw "File could not be opened.";
             QTextStream ReadWrite(&file);
-            it->set_credit(it->get_credit() - cost);
+            it->set_credit(it->get_credit() - (cost * discount /100));
             for(auto itr = users.begin(); itr != users.end(); ++itr)
             {
                 ReadWrite << itr->get_username() + "\n";
@@ -358,7 +358,7 @@ void user_page::on_product_table_cellDoubleClicked(int row, int column)
         }
         if(it == products.end())
             throw "The product could not be found.";
-        if(cost + it->get_price() > user_page::it->get_credit())
+        if(((cost + it->get_price()) * discount / 100) > user_page::it->get_credit())
             throw "Money is not enough.";
         if(it->get_remain() <= 0)
             throw "The product is finished.";
@@ -392,8 +392,8 @@ void user_page::on_product_table_cellDoubleClicked(int row, int column)
             ui->shopping_table->setItem(i++, 4, new QTableWidgetItem(QString::number(itr->get_price())));
             cost += itr->get_price() * itr->get_number();
         }
-        ui->cost_lbl->setText("Cost : " + QString::number(cost) + "$");
-        ui->cost_prossbar->setValue(cost);
+        ui->cost_lbl->setText("Cost : " + setcost() + "$");
+        ui->cost_prossbar->setValue(cost * discount / 100);
     }
     catch (char const *p)
     {
@@ -438,8 +438,57 @@ void user_page::on_shopping_table_cellDoubleClicked(int row, int column)
         ui->shopping_table->setItem(i++, 4, new QTableWidgetItem(QString::number(itr->get_price())));
         cost += itr->get_price() * itr->get_number();
     }
-    ui->cost_lbl->setText("Cost : " + QString::number(cost) + "$");
-    ui->cost_prossbar->setValue(cost);
+    ui->cost_lbl->setText("Cost : " + setcost() + "$");
+    ui->cost_prossbar->setValue(cost * discount / 100);
+}
+
+//aplly discount
+void user_page::on_discount_btn_clicked()
+{
+    try
+    {
+        QString dis = ui->discount_txt->text();
+        if(dis == "")
+        {
+            discount = 100;
+            ui->cost_lbl->setText("Cost : " + setcost() + "$");
+            ui->cost_prossbar->setValue(cost * discount / 100);
+            return;
+        }
+        QFile file("discount.txt");
+        file.open(QFile::ReadWrite | QFile::Text);
+        if (!file.isOpen())
+            throw "File could not be opened.";
+        QTextStream ReadFile(&file);
+        while (!ReadFile.atEnd())
+        {
+            if(dis == ReadFile.readLine())
+            {
+                discount -= ReadFile.readLine().toDouble();
+                ui->cost_lbl->setText("Cost : " + setcost() + "$");
+                ui->cost_prossbar->setValue(cost * discount / 100);
+                file.close();
+                //write at the end of the reportuser.txt for daily report
+                QFile report("reportuser.txt");
+                report.open(QIODevice::Append | QIODevice::Text);
+                if(!report.isOpen())
+                    throw "File could not be opened.";
+                QTextStream write(&report);
+                write << ui->date_lbl->text() + "\n";
+                write << it->get_username() + " ";
+                QMessageBox::information(this, "Discount", "This discount because of " + ReadFile.readLine() + ".");
+                report.close();
+                return;
+            }
+        }
+        file.close();
+        QMessageBox::information(this, "Error", "No discount was found with this code.");
+
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+    }
 }
 
 //function for search product

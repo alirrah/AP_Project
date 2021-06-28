@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_user_page_t {
-    QByteArrayData data[19];
-    char stringdata0[319];
+    QByteArrayData data[20];
+    char stringdata0[343];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -49,7 +49,8 @@ QT_MOC_LITERAL(14, 207, 29), // "on_increasecredit_btn_clicked"
 QT_MOC_LITERAL(15, 237, 34), // "on_product_table_cellDoubleCl..."
 QT_MOC_LITERAL(16, 272, 3), // "row"
 QT_MOC_LITERAL(17, 276, 6), // "column"
-QT_MOC_LITERAL(18, 283, 35) // "on_shopping_table_cellDoubleC..."
+QT_MOC_LITERAL(18, 283, 35), // "on_shopping_table_cellDoubleC..."
+QT_MOC_LITERAL(19, 319, 23) // "on_discount_btn_clicked"
 
     },
     "user_page\0on_close_btn_clicked\0\0"
@@ -60,7 +61,8 @@ QT_MOC_LITERAL(18, 283, 35) // "on_shopping_table_cellDoubleC..."
     "on_passwordapply_btn_clicked\0clear_txt\0"
     "on_increasecredit_btn_clicked\0"
     "on_product_table_cellDoubleClicked\0"
-    "row\0column\0on_shopping_table_cellDoubleClicked"
+    "row\0column\0on_shopping_table_cellDoubleClicked\0"
+    "on_discount_btn_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -70,7 +72,7 @@ static const uint qt_meta_data_user_page[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -78,19 +80,20 @@ static const uint qt_meta_data_user_page[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   79,    2, 0x08 /* Private */,
-       3,    0,   80,    2, 0x08 /* Private */,
-       4,    1,   81,    2, 0x08 /* Private */,
-       7,    1,   84,    2, 0x08 /* Private */,
-       8,    0,   87,    2, 0x08 /* Private */,
-       9,    0,   88,    2, 0x08 /* Private */,
-      10,    0,   89,    2, 0x08 /* Private */,
-      11,    0,   90,    2, 0x08 /* Private */,
-      12,    0,   91,    2, 0x08 /* Private */,
-      13,    0,   92,    2, 0x08 /* Private */,
-      14,    0,   93,    2, 0x08 /* Private */,
-      15,    2,   94,    2, 0x08 /* Private */,
-      18,    2,   99,    2, 0x08 /* Private */,
+       1,    0,   84,    2, 0x08 /* Private */,
+       3,    0,   85,    2, 0x08 /* Private */,
+       4,    1,   86,    2, 0x08 /* Private */,
+       7,    1,   89,    2, 0x08 /* Private */,
+       8,    0,   92,    2, 0x08 /* Private */,
+       9,    0,   93,    2, 0x08 /* Private */,
+      10,    0,   94,    2, 0x08 /* Private */,
+      11,    0,   95,    2, 0x08 /* Private */,
+      12,    0,   96,    2, 0x08 /* Private */,
+      13,    0,   97,    2, 0x08 /* Private */,
+      14,    0,   98,    2, 0x08 /* Private */,
+      15,    2,   99,    2, 0x08 /* Private */,
+      18,    2,  104,    2, 0x08 /* Private */,
+      19,    0,  109,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -106,6 +109,7 @@ static const uint qt_meta_data_user_page[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,   16,   17,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,   16,   17,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -129,6 +133,7 @@ void user_page::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 10: _t->on_increasecredit_btn_clicked(); break;
         case 11: _t->on_product_table_cellDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 12: _t->on_shopping_table_cellDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 13: _t->on_discount_btn_clicked(); break;
         default: ;
         }
     }
@@ -163,13 +168,13 @@ int user_page::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 14)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 13;
+        _id -= 14;
     }
     return _id;
 }

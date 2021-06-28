@@ -43,11 +43,13 @@ private slots:
     void on_increasecredit_btn_clicked();
     void on_product_table_cellDoubleClicked(int row, int column);
     void on_shopping_table_cellDoubleClicked(int row, int column);
+    void on_discount_btn_clicked();
 
 private:
     Ui::user_page *ui;
     aboutme_page *about;
     double cost;
+    double discount;
     QVector<product> products;
     QVector<member> users;
     QVector<member>::iterator it;
