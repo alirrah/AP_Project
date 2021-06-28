@@ -508,3 +508,20 @@ void admin_page::set_group_combox()
         ui->group_combox->addItem(*itr);
     }
 }
+
+//make the discount.txt file empthy
+void admin_page::on_remove_btn_clicked()
+{
+    try
+    {
+        QFile file("discount.txt");
+        file.open(QFile::ReadWrite | QFile::Truncate);
+        if (!file.isOpen())
+            throw "File could not be opened.";
+        file.close();
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+    }
+}
