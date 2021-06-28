@@ -307,7 +307,7 @@ void admin_page::on_delete_btn_clicked()
     }
 }
 
-//the information of the product
+//edit the information of the product
 void admin_page::on_edit_btn_clicked()
 {
     try
@@ -518,6 +518,35 @@ void admin_page::on_remove_btn_clicked()
         file.open(QFile::ReadWrite | QFile::Truncate);
         if (!file.isOpen())
             throw "File could not be opened.";
+        file.close();
+    }
+    catch (char const *p)
+    {
+        QMessageBox::information(this, "Error", p);
+    }
+}
+
+//repalce new code
+void admin_page::on_new_btn_clicked()
+{
+    try
+    {
+        QString code = ui->code_txt->text();
+        QString percent = ui->precent_txt->text();
+        QString description = ui->description_txt->text();
+        if(code == "" || percent == "" || description == "")
+                throw "Some infomation is blank. Enter the information completely.";
+        for(int i = 0; i < percent.size(); i++)
+            if(!percent[i].isDigit() && percent[i] != '.')
+                throw "Price consists of a number and a '.'";
+        QFile file("discount.txt");
+        file.open(QFile::ReadWrite | QFile::Truncate);
+        QTextStream out(&file);
+        if (!file.isOpen())
+            throw "File could not be opened.";
+        out << code + "\n";
+        out << percent + "\n";
+        out << description + "\n";
         file.close();
     }
     catch (char const *p)

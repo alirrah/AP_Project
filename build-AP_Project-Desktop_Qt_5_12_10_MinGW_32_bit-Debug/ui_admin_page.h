@@ -109,6 +109,7 @@ public:
     QHBoxLayout *precent_panel;
     QLabel *precent_lbl;
     QLineEdit *precent_txt;
+    QLabel *label;
     QHBoxLayout *description_panel;
     QLabel *description_lbl;
     QLineEdit *description_txt;
@@ -619,10 +620,18 @@ public:
         precent_txt = new QLineEdit(discount_gbox);
         precent_txt->setObjectName(QString::fromUtf8("precent_txt"));
         precent_txt->setMinimumSize(QSize(0, 30));
+        precent_txt->setMaximumSize(QSize(345, 16777215));
         precent_txt->setFont(font);
         precent_txt->setAlignment(Qt::AlignCenter);
 
         precent_panel->addWidget(precent_txt);
+
+        label = new QLabel(discount_gbox);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setMaximumSize(QSize(12, 16777215));
+        label->setFont(font);
+
+        precent_panel->addWidget(label);
 
 
         verticalLayout_9->addLayout(precent_panel);
@@ -788,6 +797,7 @@ public:
         precent_txt->setToolTip(QApplication::translate("admin_page", "Enter Number as Persent", nullptr));
 #endif // QT_NO_TOOLTIP
         precent_txt->setPlaceholderText(QApplication::translate("admin_page", "New Discount Precent", nullptr));
+        label->setText(QApplication::translate("admin_page", "%", nullptr));
         description_lbl->setText(QApplication::translate("admin_page", "Description :", nullptr));
 #ifndef QT_NO_TOOLTIP
         description_txt->setToolTip(QApplication::translate("admin_page", "Enter Text as Description", nullptr));

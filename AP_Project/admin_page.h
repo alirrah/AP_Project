@@ -41,6 +41,8 @@ private slots:
 
     void on_remove_btn_clicked();
 
+    void on_new_btn_clicked();
+
 private:
     Ui::admin_page *ui;
     int m_nMouseClick_X_Coordinate;
