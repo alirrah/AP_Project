@@ -101,6 +101,20 @@ public:
     QGroupBox *user_gbox;
     QVBoxLayout *verticalLayout_6;
     QTableWidget *user_table;
+    QGroupBox *discount_gbox;
+    QVBoxLayout *verticalLayout_9;
+    QHBoxLayout *code_panel;
+    QLabel *code_lbl;
+    QLineEdit *code_txt;
+    QHBoxLayout *precent_panel;
+    QLabel *precent_lbl;
+    QLineEdit *precent_txt;
+    QHBoxLayout *description_panel;
+    QLabel *description_lbl;
+    QLineEdit *description_txt;
+    QHBoxLayout *horizontalLayout_8;
+    QPushButton *new_btn;
+    QPushButton *remove_btn;
 
     void setupUi(QWidget *admin_page)
     {
@@ -122,14 +136,14 @@ public:
 "{\n"
 " color: white;\n"
 " }\n"
-"#report_btn, #save_btn, #insert_btn, #delete_btn,#edit_btn, #close_btn, #minimize_btn\n"
+"#report_btn, #save_btn, #insert_btn, #delete_btn,#edit_btn, #close_btn, #minimize_btn, #new_btn, #remove_btn\n"
 "{\n"
 "  color: white;\n"
 "  background-color: #45ada8;\n"
 "  border-width: 0px;\n"
 "  border-radius: 3px;\n"
 "}\n"
-"#insert_btn:hover, #report_btn:hover , #minimize_btn:hover, #delete_btn:hover, #edit_btn:hover, #save_btn:hover\n"
+"#insert_btn:hover, #report_btn:hover , #minimize_btn:hover, #delete_btn:hover, #edit_btn:hover, #save_btn:hover, #new_btn:hover, #remove_btn:hover\n"
 "{\n"
 " background-color: #547980;\n"
 " }\n"
@@ -559,12 +573,106 @@ public:
         user_table->setHorizontalHeaderItem(1, __qtablewidgetitem6);
         user_table->setObjectName(QString::fromUtf8("user_table"));
         user_table->setFont(font);
-        user_table->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
+        user_table->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
         user_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
         user_table->setSelectionBehavior(QAbstractItemView::SelectRows);
         user_table->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout_6->addWidget(user_table);
+
+        discount_gbox = new QGroupBox(user_gbox);
+        discount_gbox->setObjectName(QString::fromUtf8("discount_gbox"));
+        verticalLayout_9 = new QVBoxLayout(discount_gbox);
+        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
+        code_panel = new QHBoxLayout();
+        code_panel->setObjectName(QString::fromUtf8("code_panel"));
+        code_panel->setContentsMargins(-1, 0, -1, -1);
+        code_lbl = new QLabel(discount_gbox);
+        code_lbl->setObjectName(QString::fromUtf8("code_lbl"));
+        code_lbl->setMinimumSize(QSize(0, 30));
+        code_lbl->setFont(font);
+
+        code_panel->addWidget(code_lbl);
+
+        code_txt = new QLineEdit(discount_gbox);
+        code_txt->setObjectName(QString::fromUtf8("code_txt"));
+        code_txt->setMinimumSize(QSize(0, 30));
+        code_txt->setMaximumSize(QSize(362, 16777215));
+        code_txt->setFont(font);
+        code_txt->setAlignment(Qt::AlignCenter);
+
+        code_panel->addWidget(code_txt);
+
+
+        verticalLayout_9->addLayout(code_panel);
+
+        precent_panel = new QHBoxLayout();
+        precent_panel->setObjectName(QString::fromUtf8("precent_panel"));
+        precent_panel->setContentsMargins(-1, 0, -1, -1);
+        precent_lbl = new QLabel(discount_gbox);
+        precent_lbl->setObjectName(QString::fromUtf8("precent_lbl"));
+        precent_lbl->setMinimumSize(QSize(0, 30));
+        precent_lbl->setFont(font);
+
+        precent_panel->addWidget(precent_lbl);
+
+        precent_txt = new QLineEdit(discount_gbox);
+        precent_txt->setObjectName(QString::fromUtf8("precent_txt"));
+        precent_txt->setMinimumSize(QSize(0, 30));
+        precent_txt->setFont(font);
+        precent_txt->setAlignment(Qt::AlignCenter);
+
+        precent_panel->addWidget(precent_txt);
+
+
+        verticalLayout_9->addLayout(precent_panel);
+
+        description_panel = new QHBoxLayout();
+        description_panel->setObjectName(QString::fromUtf8("description_panel"));
+        description_panel->setContentsMargins(-1, 0, -1, -1);
+        description_lbl = new QLabel(discount_gbox);
+        description_lbl->setObjectName(QString::fromUtf8("description_lbl"));
+        description_lbl->setMinimumSize(QSize(0, 30));
+        description_lbl->setFont(font);
+
+        description_panel->addWidget(description_lbl);
+
+        description_txt = new QLineEdit(discount_gbox);
+        description_txt->setObjectName(QString::fromUtf8("description_txt"));
+        description_txt->setMinimumSize(QSize(0, 30));
+        description_txt->setMaximumSize(QSize(362, 16777215));
+        description_txt->setFont(font);
+        description_txt->setAlignment(Qt::AlignCenter);
+
+        description_panel->addWidget(description_txt);
+
+
+        verticalLayout_9->addLayout(description_panel);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        horizontalLayout_8->setContentsMargins(-1, 0, -1, -1);
+        new_btn = new QPushButton(discount_gbox);
+        new_btn->setObjectName(QString::fromUtf8("new_btn"));
+        new_btn->setMinimumSize(QSize(0, 30));
+        new_btn->setFont(font);
+        new_btn->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout_8->addWidget(new_btn);
+
+        remove_btn = new QPushButton(discount_gbox);
+        remove_btn->setObjectName(QString::fromUtf8("remove_btn"));
+        remove_btn->setMinimumSize(QSize(0, 30));
+        remove_btn->setFont(font);
+        remove_btn->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout_8->addWidget(remove_btn);
+
+
+        verticalLayout_9->addLayout(horizontalLayout_8);
+
+
+        verticalLayout_6->addWidget(discount_gbox);
 
 
         horizontalLayout_7->addWidget(user_gbox);
@@ -667,8 +775,32 @@ public:
         QTableWidgetItem *___qtablewidgetitem6 = user_table->horizontalHeaderItem(1);
         ___qtablewidgetitem6->setText(QApplication::translate("admin_page", "Credit", nullptr));
 #ifndef QT_NO_TOOLTIP
-        user_table->setToolTip(QApplication::translate("admin_page", "Double-Click to Remove User", nullptr));
+        user_table->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
+        discount_gbox->setTitle(QApplication::translate("admin_page", "Discount", nullptr));
+        code_lbl->setText(QApplication::translate("admin_page", "Discount Code :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        code_txt->setToolTip(QApplication::translate("admin_page", "Enter Text as Code", nullptr));
+#endif // QT_NO_TOOLTIP
+        code_txt->setPlaceholderText(QApplication::translate("admin_page", "New Dicount Code", nullptr));
+        precent_lbl->setText(QApplication::translate("admin_page", "Discount Precent :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        precent_txt->setToolTip(QApplication::translate("admin_page", "Enter Number as Persent", nullptr));
+#endif // QT_NO_TOOLTIP
+        precent_txt->setPlaceholderText(QApplication::translate("admin_page", "New Discount Precent", nullptr));
+        description_lbl->setText(QApplication::translate("admin_page", "Description :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        description_txt->setToolTip(QApplication::translate("admin_page", "Enter Text as Description", nullptr));
+#endif // QT_NO_TOOLTIP
+        description_txt->setPlaceholderText(QApplication::translate("admin_page", "Description About Discount", nullptr));
+#ifndef QT_NO_TOOLTIP
+        new_btn->setToolTip(QApplication::translate("admin_page", "Click to Replace New Code ", nullptr));
+#endif // QT_NO_TOOLTIP
+        new_btn->setText(QApplication::translate("admin_page", "New", nullptr));
+#ifndef QT_NO_TOOLTIP
+        remove_btn->setToolTip(QApplication::translate("admin_page", "Click to Remove All of the Discount Code", nullptr));
+#endif // QT_NO_TOOLTIP
+        remove_btn->setText(QApplication::translate("admin_page", "Remoe All", nullptr));
         main_tab->setTabText(main_tab->indexOf(user_tab), QApplication::translate("admin_page", "User/ Reports", nullptr));
     } // retranslateUi
 

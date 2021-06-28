@@ -409,7 +409,7 @@ public:
         amount_txt = new QLineEdit(credit_tab);
         amount_txt->setObjectName(QString::fromUtf8("amount_txt"));
         amount_txt->setMinimumSize(QSize(0, 30));
-        amount_txt->setMaximumSize(QSize(222, 16777215));
+        amount_txt->setMaximumSize(QSize(246, 16777215));
         amount_txt->setFont(font1);
         amount_txt->setAlignment(Qt::AlignCenter);
 
@@ -434,7 +434,7 @@ public:
         card_txt = new QLineEdit(credit_tab);
         card_txt->setObjectName(QString::fromUtf8("card_txt"));
         card_txt->setMinimumSize(QSize(0, 30));
-        card_txt->setMaximumSize(QSize(222, 16777215));
+        card_txt->setMaximumSize(QSize(246, 16777215));
         card_txt->setFont(font1);
         card_txt->setMaxLength(16);
         card_txt->setAlignment(Qt::AlignCenter);
@@ -459,8 +459,8 @@ public:
 
         cvv2_txt = new QLineEdit(credit_tab);
         cvv2_txt->setObjectName(QString::fromUtf8("cvv2_txt"));
-        cvv2_txt->setMinimumSize(QSize(222, 30));
-        cvv2_txt->setMaximumSize(QSize(222, 16777215));
+        cvv2_txt->setMinimumSize(QSize(246, 30));
+        cvv2_txt->setMaximumSize(QSize(246, 16777215));
         cvv2_txt->setFont(font1);
         cvv2_txt->setAlignment(Qt::AlignCenter);
 
@@ -484,8 +484,8 @@ public:
 
         date_txt = new QDateEdit(credit_tab);
         date_txt->setObjectName(QString::fromUtf8("date_txt"));
-        date_txt->setMinimumSize(QSize(222, 30));
-        date_txt->setMaximumSize(QSize(222, 16777215));
+        date_txt->setMinimumSize(QSize(246, 30));
+        date_txt->setMaximumSize(QSize(246, 16777215));
         date_txt->setFont(font1);
         date_txt->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         date_txt->setWrapping(false);
@@ -522,7 +522,7 @@ public:
         second_txt = new QLineEdit(credit_tab);
         second_txt->setObjectName(QString::fromUtf8("second_txt"));
         second_txt->setMinimumSize(QSize(222, 30));
-        second_txt->setMaximumSize(QSize(222, 16777215));
+        second_txt->setMaximumSize(QSize(2222, 16777215));
         second_txt->setFont(font1);
         second_txt->setEchoMode(QLineEdit::Normal);
         second_txt->setAlignment(Qt::AlignCenter);
@@ -569,7 +569,7 @@ public:
         username_txt = new QLineEdit(password_tab);
         username_txt->setObjectName(QString::fromUtf8("username_txt"));
         username_txt->setMinimumSize(QSize(0, 30));
-        username_txt->setMaximumSize(QSize(225, 16777215));
+        username_txt->setMaximumSize(QSize(248, 16777215));
         username_txt->setFont(font1);
         username_txt->setAlignment(Qt::AlignCenter);
 
@@ -594,7 +594,7 @@ public:
         oldpassword_txt = new QLineEdit(password_tab);
         oldpassword_txt->setObjectName(QString::fromUtf8("oldpassword_txt"));
         oldpassword_txt->setMinimumSize(QSize(0, 30));
-        oldpassword_txt->setMaximumSize(QSize(225, 16777215));
+        oldpassword_txt->setMaximumSize(QSize(248, 16777215));
         oldpassword_txt->setFont(font1);
         oldpassword_txt->setEchoMode(QLineEdit::Password);
         oldpassword_txt->setAlignment(Qt::AlignCenter);
@@ -621,7 +621,7 @@ public:
         newpassword_txt = new QLineEdit(password_tab);
         newpassword_txt->setObjectName(QString::fromUtf8("newpassword_txt"));
         newpassword_txt->setMinimumSize(QSize(0, 30));
-        newpassword_txt->setMaximumSize(QSize(225, 16777215));
+        newpassword_txt->setMaximumSize(QSize(248, 16777215));
         newpassword_txt->setFont(font1);
         newpassword_txt->setEchoMode(QLineEdit::Password);
         newpassword_txt->setAlignment(Qt::AlignCenter);
@@ -647,7 +647,7 @@ public:
         repeatpassword_txt = new QLineEdit(password_tab);
         repeatpassword_txt->setObjectName(QString::fromUtf8("repeatpassword_txt"));
         repeatpassword_txt->setMinimumSize(QSize(30, 30));
-        repeatpassword_txt->setMaximumSize(QSize(225, 16777215));
+        repeatpassword_txt->setMaximumSize(QSize(6000, 16777215));
         repeatpassword_txt->setFont(font1);
         repeatpassword_txt->setEchoMode(QLineEdit::Password);
         repeatpassword_txt->setAlignment(Qt::AlignCenter);

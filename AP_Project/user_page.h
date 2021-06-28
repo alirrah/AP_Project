@@ -46,7 +46,6 @@ private slots:
 
 private:
     Ui::user_page *ui;
-   // member information;
     aboutme_page *about;
     double cost;
     QVector<product> products;

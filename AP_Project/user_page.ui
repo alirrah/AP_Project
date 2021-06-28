@@ -668,7 +668,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>222</width>
+                     <width>246</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -736,7 +736,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>222</width>
+                     <width>246</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -804,13 +804,13 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                   <widget class="QLineEdit" name="cvv2_txt">
                    <property name="minimumSize">
                     <size>
-                     <width>222</width>
+                     <width>246</width>
                      <height>30</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>222</width>
+                     <width>246</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -872,13 +872,13 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                   <widget class="QDateEdit" name="date_txt">
                    <property name="minimumSize">
                     <size>
-                     <width>222</width>
+                     <width>246</width>
                      <height>30</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>222</width>
+                     <width>246</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -987,7 +987,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>222</width>
+                     <width>2222</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -1118,7 +1118,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>225</width>
+                     <width>248</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -1195,7 +1195,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>225</width>
+                     <width>248</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -1275,7 +1275,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>225</width>
+                     <width>248</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -1346,7 +1346,7 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>225</width>
+                     <width>6000</width>
                      <height>16777215</height>
                     </size>
                    </property>
