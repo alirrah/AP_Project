@@ -230,6 +230,18 @@ void user_page::on_payment_btn_clicked()
                 write << QString::number(itr->get_price()) + "\n";
                 write << QString::number(itr->get_number()) + "\n";
             }
+            if(discount != 100)
+            {
+                //write at the end of the reportuser.txt for daily report
+                QFile report("reportuser.txt");
+                report.open(QIODevice::Append | QIODevice::Text);
+                if(!report.isOpen())
+                    throw "File could not be opened.";
+                QTextStream write(&report);
+                write << ui->date_lbl->text() + "\n";
+                write << it->get_username() + " used the discount code\n";
+                report.close();
+            }
             report.close();
             QMessageBox::information(this, "End of Purchase", "Thanks for buying.");
             this->close();
@@ -455,6 +467,8 @@ void user_page::on_discount_btn_clicked()
             ui->cost_prossbar->setValue(cost * discount / 100);
             return;
         }
+        if(discount != 100)
+            throw "You have already entered the discount code";
         QFile file("discount.txt");
         file.open(QFile::ReadWrite | QFile::Text);
         if (!file.isOpen())
@@ -467,17 +481,8 @@ void user_page::on_discount_btn_clicked()
                 discount -= ReadFile.readLine().toDouble();
                 ui->cost_lbl->setText("Cost : " + setcost() + "$");
                 ui->cost_prossbar->setValue(cost * discount / 100);
-                file.close();
-                //write at the end of the reportuser.txt for daily report
-                QFile report("reportuser.txt");
-                report.open(QIODevice::Append | QIODevice::Text);
-                if(!report.isOpen())
-                    throw "File could not be opened.";
-                QTextStream write(&report);
-                write << ui->date_lbl->text() + "\n";
-                write << it->get_username() + " used the discount code\n";
                 QMessageBox::information(this, "Discount", "This discount because of " + ReadFile.readLine() + ".");
-                report.close();
+                file.close();
                 return;
             }
         }
