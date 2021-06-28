@@ -250,7 +250,7 @@ public:
         image->setText(QString());
         lbl1->setText(QApplication::translate("aboutme_page", "This app is a grocery store.", nullptr));
         lbl2->setText(QApplication::translate("aboutme_page", "Written by : Alireza Rahmani Samani", nullptr));
-        lbl3->setText(QApplication::translate("aboutme_page", "Version : 1.0", nullptr));
+        lbl3->setText(QApplication::translate("aboutme_page", "Version : 1.1", nullptr));
         lbl4->setText(QApplication::translate("aboutme_page", "For : Advanced Programming", nullptr));
         lbl5->setText(QApplication::translate("aboutme_page", "Explanation :", nullptr));
         lbl6->setText(QApplication::translate("aboutme_page", "This program consists of two parts, the", nullptr));
