@@ -475,7 +475,7 @@ void user_page::on_discount_btn_clicked()
                     throw "File could not be opened.";
                 QTextStream write(&report);
                 write << ui->date_lbl->text() + "\n";
-                write << it->get_username() + " ";
+                write << it->get_username() + " used the discount code\n";
                 QMessageBox::information(this, "Discount", "This discount because of " + ReadFile.readLine() + ".");
                 report.close();
                 return;
