@@ -119,6 +119,11 @@ public:
     QPushButton *passwordapply_btn;
     QSpacerItem *verticalSpacer_7;
     QPushButton *aboutme_btn;
+    QFrame *Dicount_panel;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *discount_lbl;
+    QLineEdit *discount_txt;
+    QPushButton *discount_btn;
     QPushButton *payment_btn;
     QFrame *table_panel;
     QVBoxLayout *verticalLayout_3;
@@ -141,24 +146,24 @@ public:
         user_page->setWindowIcon(icon);
         user_page->setStyleSheet(QString::fromUtf8("#back_panel\n"
 "{\n"
-"border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);\n"
+"	border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);\n"
 " }\n"
-"#top_panel, #information_panel\n"
+"#top_panel, #information_panel, #Dicount_panel\n"
 "{\n"
-" background-color: qlineargradient(spread:reflect, x1:0.5, y1:0, x2:0, y2:0, stop:0 rgba(91, 204, 233, 200), stop:1 rgba(32, 80, 96, 150));\n"
+"	 background-color: qlineargradient(spread:reflect, x1:0.5, y1:0, x2:0, y2:0, stop:0 rgba(91, 204, 233, 200), stop:1 rgba(32, 80, 96, 150));\n"
 " }\n"
-"#date_lbl,#information_lbl, #cost_lbl, #product_lbl, #shopping_lbl\n"
+"#date_lbl,#information_lbl, #cost_lbl, #product_lbl, #shopping_lbl, #discount_lbl\n"
 "{\n"
-" color: white;\n"
+"	 color: white;\n"
 " }\n"
-"#passwordapply_btn, #increasecredit_btn, #close_btn, #minimize_btn,#aboutme_btn, #payment_btn\n"
+"#passwordapply_btn, #increasecredit_btn, #close_btn, #minimize_btn,#aboutme_btn, #payment_btn, #discount_btn\n"
 "{\n"
 "  color: white;\n"
 "  background-color: #45ada8;\n"
 "  border-width: 0px;\n"
 "  border-radius: 3px;\n"
 "}\n"
-"#passwordapply_btn:hover, #increasecredit_btn:hover , #minimize_btn:hover, #aboutme_btn:hover, #payment_btn:hover\n"
+"#passwordapply_btn:hover, #increasecredit_btn:hover , #minimize_btn:hover, #aboutme_btn:hover, #payment_btn:hover, #discount_btn:hover\n"
 "{\n"
 " background-color: #547980;\n"
 " }\n"
@@ -170,9 +175,14 @@ public:
 "{\n"
 "	 background-color: rgb(158, 0, 0);\n"
 "}\n"
-"#search_tab, #credit_tab, #password_tab\n"
+"#search_tab, #credit_tab, "
+                        "#password_tab\n"
 "{\n"
 "	background-color: rgb(240, 240, 240);\n"
+"}\n"
+"#discount_txt\n"
+"{\n"
+"	border-radius : 3px;\n"
 "}"));
         verticalLayout = new QVBoxLayout(user_page);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -685,6 +695,38 @@ public:
 
         verticalLayout_2->addWidget(aboutme_btn);
 
+        Dicount_panel = new QFrame(tool_panel);
+        Dicount_panel->setObjectName(QString::fromUtf8("Dicount_panel"));
+        horizontalLayout_3 = new QHBoxLayout(Dicount_panel);
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(9, 9, 9, 9);
+        discount_lbl = new QLabel(Dicount_panel);
+        discount_lbl->setObjectName(QString::fromUtf8("discount_lbl"));
+        discount_lbl->setMinimumSize(QSize(0, 30));
+        discount_lbl->setSizeIncrement(QSize(0, 30));
+        discount_lbl->setFont(font1);
+
+        horizontalLayout_3->addWidget(discount_lbl);
+
+        discount_txt = new QLineEdit(Dicount_panel);
+        discount_txt->setObjectName(QString::fromUtf8("discount_txt"));
+        discount_txt->setMinimumSize(QSize(0, 30));
+        discount_txt->setMaximumSize(QSize(16777215, 6000));
+        discount_txt->setFont(font1);
+        discount_txt->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_3->addWidget(discount_txt);
+
+        discount_btn = new QPushButton(Dicount_panel);
+        discount_btn->setObjectName(QString::fromUtf8("discount_btn"));
+        discount_btn->setMinimumSize(QSize(40, 30));
+
+        horizontalLayout_3->addWidget(discount_btn);
+
+
+        verticalLayout_2->addWidget(Dicount_panel);
+
         payment_btn = new QPushButton(tool_panel);
         payment_btn->setObjectName(QString::fromUtf8("payment_btn"));
         payment_btn->setMinimumSize(QSize(0, 30));
@@ -909,6 +951,15 @@ public:
         aboutme_btn->setToolTip(QApplication::translate("user_page", "Click to Open New Window About Me", nullptr));
 #endif // QT_NO_TOOLTIP
         aboutme_btn->setText(QApplication::translate("user_page", "About Me", nullptr));
+        discount_lbl->setText(QApplication::translate("user_page", "Discount Code :", nullptr));
+#ifndef QT_NO_TOOLTIP
+        discount_txt->setToolTip(QApplication::translate("user_page", "Enter your discount code", nullptr));
+#endif // QT_NO_TOOLTIP
+        discount_txt->setPlaceholderText(QApplication::translate("user_page", "Your Discount Code", nullptr));
+#ifndef QT_NO_TOOLTIP
+        discount_btn->setToolTip(QApplication::translate("user_page", "Click to apply discount", nullptr));
+#endif // QT_NO_TOOLTIP
+        discount_btn->setText(QApplication::translate("user_page", "Apply", nullptr));
 #ifndef QT_NO_TOOLTIP
         payment_btn->setToolTip(QApplication::translate("user_page", "Pay the Bill and Buying", nullptr));
 #endif // QT_NO_TOOLTIP

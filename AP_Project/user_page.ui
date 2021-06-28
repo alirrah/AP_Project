@@ -31,24 +31,24 @@
   <property name="styleSheet">
    <string notr="true">#back_panel
 {
-border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
+	border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
  }
-#top_panel, #information_panel
+#top_panel, #information_panel, #Dicount_panel
 {
- background-color: qlineargradient(spread:reflect, x1:0.5, y1:0, x2:0, y2:0, stop:0 rgba(91, 204, 233, 200), stop:1 rgba(32, 80, 96, 150));
+	 background-color: qlineargradient(spread:reflect, x1:0.5, y1:0, x2:0, y2:0, stop:0 rgba(91, 204, 233, 200), stop:1 rgba(32, 80, 96, 150));
  }
-#date_lbl,#information_lbl, #cost_lbl, #product_lbl, #shopping_lbl
+#date_lbl,#information_lbl, #cost_lbl, #product_lbl, #shopping_lbl, #discount_lbl
 {
- color: white;
+	 color: white;
  }
-#passwordapply_btn, #increasecredit_btn, #close_btn, #minimize_btn,#aboutme_btn, #payment_btn
+#passwordapply_btn, #increasecredit_btn, #close_btn, #minimize_btn,#aboutme_btn, #payment_btn, #discount_btn
 {
   color: white;
   background-color: #45ada8;
   border-width: 0px;
   border-radius: 3px;
 }
-#passwordapply_btn:hover, #increasecredit_btn:hover , #minimize_btn:hover, #aboutme_btn:hover, #payment_btn:hover
+#passwordapply_btn:hover, #increasecredit_btn:hover , #minimize_btn:hover, #aboutme_btn:hover, #payment_btn:hover, #discount_btn:hover
 {
  background-color: #547980;
  }
@@ -63,6 +63,10 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
 #search_tab, #credit_tab, #password_tab
 {
 	background-color: rgb(240, 240, 240);
+}
+#discount_txt
+{
+	border-radius : 3px;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -1447,6 +1451,97 @@ border-image : url(:/image/grocery-cart-shutterstock_1620856499.jpg);
              <property name="text">
               <string>About Me</string>
              </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="Dicount_panel">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <property name="leftMargin">
+               <number>9</number>
+              </property>
+              <property name="topMargin">
+               <number>9</number>
+              </property>
+              <property name="rightMargin">
+               <number>9</number>
+              </property>
+              <property name="bottomMargin">
+               <number>9</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="discount_lbl">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="sizeIncrement">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Discount Code :</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="discount_txt">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>6000</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string>Enter your discount code</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="placeholderText">
+                 <string>Your Discount Code</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="discount_btn">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>Click to apply discount</string>
+                </property>
+                <property name="text">
+                 <string>Apply</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
            <item>
